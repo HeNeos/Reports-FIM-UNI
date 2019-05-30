@@ -1,0 +1,434 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[spanish,mexico]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{multirow}
+\usepackage{wasysym}
+\usepackage[dvipsnames,pdftex]{color}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[left=3.0cm,right=2.0cm,top=3.0cm,bottom=2cm]{geometry}
+%\usepackage{helvet}
+%\renewcommand{\familydefault}{\sfdefault}
+\setlength{\oddsidemargin}{0in}
+\usepackage{float}
+ \setlength{\textwidth}{6in}
+ \setlength{\topmargin}{0in}
+ \setlength{\voffset}{-0.5in}
+ \setlength{\hoffset}{0.5in}
+ \setlength{\textheight}{9in}
+ \setlength{\textwidth}{6in}
+ \setlength{\topskip}{0in}
+ \setlength{\parskip}{2ex}
+ \renewcommand{\baselinestretch}{1}
+\usepackage{diagbox}
+\usepackage{array}
+\usepackage{listings}
+\usepackage{caption}
+%%% comandos definidos por el usuario
+
+\begin{document}
+\setcounter{page}{1}
+\pagenumbering{roman}
+\thispagestyle{empty}
+\begin{center}
+{\huge UNIVERSIDAD NACIONAL DE INGENIERÍA}\\[0.9cm]
+{\Large FACULTAD DE INGENIERÍA MECÁNICA}\\[0.6in]
+\end{center}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.2]{LogoUNI}
+\vspace{0cm}
+\end{center}
+\end{figure}
+\vspace{0.5cm}
+\begin{center}
+PRIMER INFORME DE LABORATORIO\\
+CIENCIA DE LOS MATERIALES II\\[14mm]
+{\Large DEFORMACIÓN EN FRÍO}\\[10mm]
+\vfill
+LIMA - PERÚ \hfill SEPTIEMBRE 2018
+\end{center}
+\newpage
+\thispagestyle{empty}
+\begin{center}
+{\huge DEFORMACIÓN EN FRÍO}\\[0.7cm]
+\small ENTREGADO:\\[0.3cm]
+\small 22 SEPTIEMBRE 2018\\[0.9cm]
+\end{center}
+\begin{flushleft}
+{\large INTEGRANTES:}\\[3cm]
+\end{flushleft}
+%\begin{tabular}{c@{\hspace{0.5in}}c}
+%\rule[1pt]{2.6in}{1pt}&\rule[1pt]{2.6in}{1pt}\\
+%Huaroto Villavicencio Josué, 20174070I & Fuentes Valdivia Martin, 2017\\[1.5cm]
+%\rule[1pt]{2.6in}{1pt}&\rule[1pt]{2.6in}{1pt}\\
+%Saldivar Montero Perruardo, 2017 & Nombre 3, 2017\\[1cm]
+%\rule[1pt]{2.6in}{1pt}&\rule[1pt]{2.6in}{1pt}\\
+%Nombre 4, 2017 & Nombre 5, 2017 \\[1.5cm]
+\begin{tabular}{c@{\hspace{0.5in}}c}
+\rule[1pt]{2.6in}{1pt}&\rule[1pt]{2.6in}{1pt}\\
+Huaroto Villavicencio Josué, 20174070I & Landeo Sosa Bruno, 20172024J\\[2.5cm]
+\rule[1pt]{2.6in}{1pt}&\rule[1pt]{2.6in}{1pt}\\
+Quesquen Vitor Angel, 20170270C & Saldivar Montero Eduardo, 20174013E\\[2.5cm]
+\rule[1pt]{2.6in}{1pt}&\rule[1pt]{2.6in}{1pt}\\
+Saravia Echevarria Henrry, 20170233K & Sotelo Cavero Sergio, 20172125K \\[1.6cm]
+\end{tabular}
+%\\[0.7cm]
+{\large PROFESOR:} \\[1.15cm]
+\begin{center}
+\begin{tabular}{c}
+\rule[3pt]{4.8in}{1pt}\\[1pt]
+ING. LUIS SOSA, JOSE 
+\end{tabular}
+\end{center}
+\vfill
+%\newpage
+%\begin{center}
+%{\Large \bf{RESUMEN}}
+%\end{center}
+\newpage
+\tableofcontents
+\listoffigures
+\addcontentsline{toc}{chapter}{Índice de Figuras}
+\chapter{Objetivos}
+\begin{enumerate}
+\item Percibir los cambios de características mecánicas que experimentan las probetas luego de ser sometidas a deformaciones en frío.
+\item Comparar la dureza, índice de grano, tamaño de grano y características físicas de las probetas relacionándolas con la deformación en frío que experimentaron (que fue gradualmente aumentando a medida que se pasaba a otra probeta).
+\item Conocer los mecanismos de deformación que experimentan las estructuras cristalinas. 
+\item Caracterizar al material de acuerdo con la dureza que adquirió en función a la deformación que este experimentó. 
+\end{enumerate}
+\pagenumbering{arabic} %%% esto es para regresar el modo de numeración a numeración arábiga
+\setcounter{page}{1}  %%% empezamos en página 1
+\chapter{Deformación en frío}
+\section{Materiales}
+\begin{enumerate}
+\item Probetas de cobre
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.33]{prob}
+\end{center}
+\caption{Probetas de cobre}
+\end{figure}
+\item Sierra
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.32]{sierra}
+\end{center}
+\caption{Sierra}
+\end{figure}
+\item Lijas
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.32]{lija1500}
+\end{center}
+\caption{Lija 1500}
+\end{figure}
+\item Pulidora
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.2]{pulidora}
+\end{center}
+\caption{Pulidora con óxido de aluminio}
+\end{figure}
+\item Nital
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.2]{nital}
+\end{center}
+\caption{Frasco con nital}
+\end{figure}
+\item Microscopio
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.3]{microscopio}
+\end{center}
+\caption{Microscopio micrográfico}
+\end{figure}
+\end{enumerate}
+\chapter{Procedimiento de medida}
+\begin{enumerate}
+\item Se inicia la experiencia midiendo la longitud de las probetas a las que se les comprimirá.
+\item Después del paso anterior, se procede con colocarlas en la prensa hidráulica. Se debe respetar cierta diferencia entre los porcentajes de deformación, para que se pueda notar diferencias en los granos obtenidos.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.3]{PrensaH}
+\end{center}
+\caption[Prensa hidráulica]{Prensa hidráulica en funcionamiento}
+\end{figure}
+\newpage
+\item Se cortan las probetas después de ser prensadas por los lados curvos, de forma que se pueda apreciar su interior. Para esto, se hará uso de un tornillo de banco y una sierra.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.24]{prensadora}
+\end{center}
+\caption{Tornillo de banco}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.24]{cortar}
+\end{center}
+\caption{Uso de la sierra}
+\end{figure}
+\item Después de los pasos anteriores, se comienza con el desbaste de la probeta, para ello se utilizará primero la lija número 80 y se inicia a lijar de tal forma que, transcurrido cierto tiempo lijando en una dirección, se cambia una dirección perpendicular a la anterior, con el fin de eliminar la capa de rayado; cabe resaltar que durante este proceso se usa el agua constantemente, dado que ayuda a eliminar las impurezas.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.35]{lijar}
+\end{center}
+\caption{Proceso de desbaste}
+\end{figure}
+\item Se repite el paso anterior con las lijas número 150, 320, 400, 600, 1200 en ese orden.
+\newpage
+\item Después del lijado, se procede con el pulido y secado.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.16]{procesopulidora}
+\end{center}
+\caption{Pulidora en funcionamiento}
+\end{figure}
+\item Pulida y secada, la probeta se limpia y se somete al ataque químico del nital, después se le sumerge en alcohol para frenar la reacción y se lleva al microscopio.
+\item Posteriormente, se le somete a un ensayo de dureza en durómetro Rockwell.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.25]{mrod}
+\end{center}
+\caption{Durómetro Rockwell digital}
+\end{figure}
+\end{enumerate}
+\chapter{Datos del laboratorio}
+\begin{itemize} 
+\item \textbf{Probeta 0:}\\
+$L_{0}=$ 11.62 mm\\
+$L_{f}=$ 11.62 mm\\
+$\%Def=$ 0\%\\
+\begin{table}[htb]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+Cara aplastada $(HRF)$ & Cara cortada $(HRF)$ \\
+\hline \hline
+\multirow{2}{1cm}{75.4} & 68.9 \\ \cline{2-2}
+& 71.0 \\ \hline
+\end{tabular}
+\end{table}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.8]{probeta0}
+\end{figure}
+\item \textbf{Probeta 1:}\\
+$L_{0}=$ 13.52 mm\\
+$L_{f}=$ 11.07 mm\\
+$\%Def=$ 18.1213\%\\
+\begin{table}[htb]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+Cara aplastada $(HRF)$ & Cara cortada $(HRF)$ \\
+\hline \hline
+\multirow{2}{1cm}{78} & 85.8 \\ \cline{2-2}
+& 77.6 \\ \hline
+\end{tabular}
+\end{table}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{probeta1}
+\end{figure}
+\newpage
+\item \textbf{Probeta 2:}\\
+$L_{0}=$ 13.52 mm\\
+$L_{f}=$ 10.78 mm\\
+$\%Def=$ 27.6024\%\\
+\begin{table}[htb]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+Cara aplastada $(HRF)$ & Cara cortada $(HRF)$ \\
+\hline \hline
+\multirow{2}{1cm}{69.7} & 85.4 \\ \cline{2-2}
+& 85.4 \\ \hline
+\end{tabular}
+\end{table}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4]{probeta2}
+\end{figure}
+\newpage
+\item \textbf{Probeta 3:}\\
+$L_{0}=$ 15.02 mm\\
+$L_{f}=$ 10 mm\\
+$\%Def=$ 33.4221\%\\
+\begin{table}[htb]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+Cara aplastada $(HRF)$ & Cara cortada $(HRF)$ \\
+\hline \hline
+\multirow{2}{1cm}{70.3} & 90.8 \\ \cline{2-2}
+& 92.0 \\ \hline
+\end{tabular}
+\end{table}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.47]{probeta3}
+\end{figure}
+\item \textbf{Probeta 4:}\\
+$L_{0}=$ 16.02 mm\\
+$L_{f}=$ 8.52 mm\\
+$\%Def=$ 46.8165\%\\
+\begin{table}[htb]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+Cara aplastada $(HRF)$ & Cara cortada $(HRF)$ \\
+\hline \hline
+\multirow{2}{1cm}{69.9} & 91.0 \\ \cline{2-2}
+& 95.1 \\ \hline
+\end{tabular}
+\end{table}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{probeta4}
+\end{figure}
+\newpage
+\item \textbf{Probeta 5:}\\
+$L_{0}=$ 17.45 mm\\
+$L_{f}=$ 7.77 mm\\
+$\%Def=$ 55.4728\%\\
+\begin{table}[htb]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+Cara aplastada $(HRF)$ & Cara cortada $(HRF)$ \\
+\hline \hline
+\multirow{2}{1cm}{75.4} & 68.9 \\ \cline{2-2}
+& 71.0 \\ \hline
+\end{tabular}
+\end{table}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.9]{probeta5}
+\end{figure}
+\end{itemize}
+%\chapter{Cálculos y resultados}
+%\section{Módulo de Young}
+\chapter{Conclusiones y recomendaciones}
+\begin{enumerate}
+\item Concluimos que la dureza del material aumenta a medida que este sufre mayor deformación, dato que observamos de comparar probetas y además caras (una experimentó mayor deformación que la otra).
+\item Se pudo observar que en las microfotografías los granos se mostraban más alargados conforme el porcentaje de deformación unitaria aumentaba.
+\item El diagrama de compresión es similar al de tracción hasta la parte elástica.
+\item La deformación en frío aumenta la resistencia mecánica del y disminuye la conductividad eléctrica del material
+\item Las caras aplastadas no muestran una tendencia variante.
+\end{enumerate}
+\chapter{Anexos}
+\section{Cuestionario}
+\begin{enumerate}
+\item \textbf{¿Cuál es la diferencia entre deformación en frío y deformación en caliente?}\\
+\begin{itemize}
+\item La deformación en frío es un tratamiento de deformación permanente que se realiza por debajo de la temperatura de recristalización, consiguiendo aumentar la dureza y la resistencia a la tracción de la pieza y disminuyen su plasticidad y tenacidad. 
+La deformación del material es debida a la deformación individual de sus granos, cualquier esfuerzo que actúe sobre la pieza se transmite por su interior a través de dichos granos. La deformación de estos granos y las tensiones que se originan en el material tienen como efecto un estado de acritud en el metal.
+\item La deformación en caliente se da a una temperatura superior a la de recristalización. Conforme elevamos la temperatura de un metal, deformándolo a la vez, aumenta la agitación térmica y disminuye la tensión critica de cizallamiento, aumentando así la capacidad de deformación de los granos. Dado que el metal se encuentra a alta temperatura, los cristales reformados comienzan a crecer nuevamente, pero estos no son tan grandes e irregulares como antes. Al avanzar el trabajo en caliente y enfriarse el metal, cada deformación genera cristales más pequeños, uniformes y hasta cierto grado aplanados, lo cual da al metal una condición a la que se le llama anisotropía u orientación de grano o fibra, es decir, el metal es más dúctil y deformable en la dirección de un eje que en la del otro.
+\end{itemize}
+\item \textbf{¿Qué porcentaje de la energía que se gasta en un proceso de deformación en frío se desprende en forma de energía calorífica?}\\
+Al desarrollar un trabajo sobre el material mediante deformación en frío, parte de él se invierte en calor desprendido y otra parte se transforma en un aumento de la energía interna de los átomos.
+$$
+ED \approx (0.8-0.9)\cdot ES
+$$
+\begin{itemize}
+\item $ED$ = Energía almacenada de las dislocaciones.
+\item $ES$ = Total energía almacenada.
+\end{itemize}
+Se puede estimar que el 90\% de la energía se desprende en forma de calor.
+\item \textbf{¿En qué se diferencian el mecanismo de deformación plástica por deslizamiento y el mecanismo de deformación plástica por maclaje?}\\
+El deslizamiento es el proceso por el cual se produce deformación plástica por el movimiento de dislocaciones. Debido a una fuerza externa, partes de la red cristalina deslizan respecto a otras, resultando en un cambio en la geometría cristalina del material. Dependiendo del tipo de red, diferentes sistemas de deslizamiento están presentes en el material. Principalmente el deslizamiento ocurre entre los planos que tienen menor vector de Burgers, con una gran densidad atómica y separación interplanar.\\
+En el maclado, una parte de la red se deforma formando una imagen especular de la red no deformada vecina a ella, donde los átomos se mueven distancias proporcionales a su distancia del plano de maclado, el eje del cristal se deforma, cambiando la orientación de la red, de modo que pueden obtenerse nuevos sistemas de deslizamiento favorables a la tensión de cizalla y permitir deslizamientos adicionales. Este mecanismo sólo involucra una pequeña fracción del volumen total de la red.
+\item \textbf{Describir el comportamiento de la dureza en función del porcentaje de deformación plástica en frío. Esquematizar el caso del cobre.}\\
+El endurecimiento por deformación plástica en frío es el fenómeno por medio del cual un metal dúctil se vuelve más duro y resistente a medida es deformado plásticamente.  Generalmente a este fenómeno también se le llama trabajo en frío, debido a que la deformación se da a una temperatura “fría” relativa a la temperatura de fusión absoluta del metal. \\
+El fenómeno de endurecimiento por deformación se explica así:  
+\begin{itemize}
+\item El metal posee dislocaciones en su estructura cristalina. 
+\item Cuando se aplica una fuerza sobre el material, las dislocaciones se desplazan causando la deformación plástica.
+\item Al moverse las dislocaciones, aumentan en número. 
+\item Al haber más dislocaciones en la estructura del metal, se estorban entre sí, 
+volviendo más difícil su movimiento. 
+\item Al ser más difícil que las dislocaciones se muevan, se requiere de una fuerza mayor para mantenerlas en movimiento. Se dice entonces que el material se ha endurecido.
+\end{itemize}
+\begin{figure}
+\centering
+\includegraphics[scale=1]{Picture1}
+\caption{Efecto del trabajo en frío en las propiedades mecánicas del cobre}
+\end{figure}
+\item \textbf{Una probeta  cilíndrica de cobre ha sufrido una deformación en frío por aplastamiento. La deformación sufrida ha sido de 16\% en longitud.  Si su radio después de la  deformación en frío es de  16,4 mm ¿Cuál era su radio antes de la deformación?}\\
+\begin{itemize}
+\item Antes de la deformación:\\
+\begin{itemize}
+\item Longitud: $L$
+\item Radio de la probeta: $R$
+\end{itemize}
+\item Después de la deformación:\\
+\begin{itemize}
+\item Longitud: 0.84$L$
+\item Radio de la probeta: 16.4$\,$mm
+\end{itemize}
+\end{itemize}
+Se cumple:
+$$
+A_{1}\cdot L_{1} = A_{2}\cdot L_{2}
+$$
+Entonces, tenemos:
+$$
+\pi \cdot R^{2} \cdot L = \pi \cdot (16.04)^{2} \cdot (0.84 \,L )
+$$
+$$
+R = 15.0308 \, mm
+$$
+\item \textbf{Explique brevemente por que los metales HC (Hexagonal compacto) son típicamente más frágiles que los metales FCC (Cubo centrado en las caras) y BCC (Cubo centrado en el cuerpo).}\\
+Esto es debido básicamente a los sistemas de deslizamiento de cada tipo de material, un sistema de deslizamiento esta definido por la combinación de un plano que se desliza y la dirección en que se da su desplazamiento.\\
+El deslizamiento en cristales cúbicos con centro en las caras (FCC) ocurre en el plano de empaquetamiento compacto, el cual es del tipo  \{111\} y se da en la dirección <110>. Dadas las permutaciones de los tipos de planos de deslizamiento y los tipos de dirección, los cristales FCC tienen 12 sistemas de deslizamiento.\\
+El deslizamiento en cristales BCC ocurre también en el plano de menor vector de Burgers; sin embargo, a diferencia de en los FCC, no hay auténticos planos de empaquetamiento compacto en las estructuras BCC. Por consiguiente, un sistema de deslizamiento en BCC requiere calor para activarse. Algunos materiales BCC pueden contener hasta 48 sistemas de deslizamiento.\\
+El deslizamiento en los metales HC es mucho más limitado que en las estructuras BCC y FCC. Esto ocurre debido a poca existencia de sistemas de deslizamiento activos en estas estructuras. La consecuencia de esto es que el metal es generalmente frágil y quebradizo.
+\item \textbf{¿Cómo cambia la conductividad eléctrica de un metal cuando se deforma en frío?}\\
+La distorsión de la estructura reticular impide el flujo de electrones y disminuye la conductividad eléctrica. Este efecto es leve en metales puros, pero apreciable en aleaciones.
+\item \textbf{¿A qué se denomina acritud?}\\
+Es una propiedad mecánica de los metales que surge como consecuencia de la deformación frío o también llamado proceso de endurecimiento de acritud, que permite aumentar la dureza, fragilidad y la resistencia a las deformaciones; sin embargo, se ve afectada la maleabilidad y ductibilidad, es por ello que se hace el recocido contra acritud que consiste en devolver al metal sus propiedades mecánicas como la plasticidad, ductibilidad y la tenacidad .Cabe resaltar que a los metales que poseen una elevada acritud se les denomina “agrios”.
+\end{enumerate}
+\begin{thebibliography}{99}  %%%este es un contador para el número de bibliografías utilizados.
+\addcontentsline{toc}{chapter}{Bibliograf\'{\i}a} %%% Para introducir la bibliografía en el índice.
+%\bibitem{Rahman}{Rahman,Aminur y Doe, Hidekazu; ``Ion transfer of tetraalkylammonium cations at an interface between 
+%frozen aqueous solution and 1,2-dichloroethane".{\em{Journal of Electroanalytical Chemistry}} {\bfseries 424},159,(1997).}
+%\bibitem{Martins}{Martins, M.C., Pereira, C.M., Girault,H.H y Silva, F.; ``Specific adsorption of tetraalkylammonium 
+%cations on the 1,2-dichloroethane/water interface".{\em{Electrochimica Acta}} {\bfseries 50},135,(2004).}
+%\bibitem{Ding}{Ding, Zhifeng. ``Spectroelectrochemistry and photoelectrochemistry of charge transfer at liquid/liquid
+%interfaces". {\em {Tesis, EPFL,}}(1999).}
+%\bibitem{IR}{Princeton Applied Research. \em{Technical Note 101}}
+%\bibitem{Beni}{Beni V., Ghita M. y Arrigan D. ``Cyclic and pulse voltammetric study of dopamine at the interface between
+%two inmiscible electrolyte solutions". {\em{Biosensors \& Biolectronics}} {\bfseries 20}, 2097, (2005).}
+%\bibitem{Samec2}{Samec Z., Lhotsky A., Jänchenová H., y Marecek, V. ``Interfacial tension and impedance measurements
+%of interfaces between two inmiscible electrolyte solutions". {\em{Journal of Electroanalytical Chemistry}} {\bfseries
+%43}, 47, (2000).}
+%\bibitem{Day}{Day R.A. y Underwood A.L. {\textit{Química Analítica Cuantitativa}},5ºed. Prentice-Hall, México, 1998.45-48.}
+\bibitem{Keyser}{Keyser, Carl. ``Técnicas de Laboratorio para prueba de Materiales''. {\em{Limusa-Wiley.}}}
+\bibitem{Zolotorevski}{Zolotorevski, V. ``Pruebas Mecánicas y Propiedades de los Metales''.{\em{Editorial MIR.}}}
+\bibitem{Lasheras}{Lasheras. ``Tecnología de los Materiales Industriales''.} 
+%\bibitem{Dieter}{Dieter. ``Metalurgia mecánica''.}
+\bibitem{Apraiz}{Apraiz, J. ``Tratamiento Térmico de los Aceros''.}
+\bibitem{Smith}{Smith, William F. y Ph.D. Hashemi, Javad ``Ciencia e ingeniería de materiales". {\em{
+Madrid: McGraw-Hill, Interamericana de España.}} 570, (2004).} 
+\bibitem{Callister}{Callister, William D. y Rethwisch, David G. ``Introducción a la ingeniería de los materiales''. {\em{Barcelona Reverté.}}, 960, (2007).} 
+\bibitem{Askeland}{Askeland, Donald R., Pradeep P. Phulé y Wright, Wendelin J. ``Ciencia e ingeniería de los materiales''.{\em{México, D.F. Internacional Thomson Editores.}} {\textit{$6^{ta}$ edición}}, 1004, (2012).}
+%\bibitem{HARDBANDING}{Tabla de conversión de escala de durezas. \begin{verbatim}http://%hardbandingsolutions.com/postle_sp/hardness.php
+%\end{verbatim}}
+\bibitem{Convertidor}{Documento de la UCA. Endurecimiento por deformación. \begin{verbatim}
+http://www.uca.edu.sv/facultad/clases/ing/m210031/Tema%2011.pdf
+\end{verbatim}}
+\bibitem{Tabla}{Propiedades de los metales. \begin{verbatim}
+https://www.feandalucia.ccoo.es/docu/p5sd8631.pdf
+\end{verbatim}}
+\bibitem{Tabla}{\begin{verbatim}
+http://cienciaymateriales.blogspot.com/2013/04/18-deformacion-en-fr
+io-definicion-y.html
+\end{verbatim}}
+\bibitem{ASTM}{Normas ASTM.}
+\bibitem{NTP}{Normas NTP.}
+\end{thebibliography}
+\end{document}
