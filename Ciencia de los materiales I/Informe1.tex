@@ -1,0 +1,390 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[spanish,mexico]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{wasysym}
+\usepackage[dvipsnames,pdftex]{color}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[left=3.0cm,right=2.0cm,top=3.0cm,bottom=2cm]{geometry}
+%\usepackage{helvet}
+%\renewcommand{\familydefault}{\sfdefault}
+\setlength{\oddsidemargin}{0in}
+\usepackage{float}
+ \setlength{\textwidth}{6in}
+ \setlength{\topmargin}{0in}
+ \setlength{\voffset}{-0.5in}
+ \setlength{\hoffset}{0.5in}
+ \setlength{\textheight}{9in}
+ \setlength{\textwidth}{6in}
+ \setlength{\topskip}{0in}
+ \setlength{\parskip}{2ex}
+ \renewcommand{\baselinestretch}{1}
+\usepackage{diagbox}
+\usepackage{array}
+\usepackage{listings}
+\usepackage{caption}
+%%% comandos definidos por el usuario
+
+\begin{document}
+\setcounter{page}{1}
+\pagenumbering{roman}
+\thispagestyle{empty}
+\begin{center}
+{\huge UNIVERSIDAD NACIONAL DE INGENIERÍA}\\[0.9cm]
+{\Large FACULTAD DE INGENIERÍA MECÁNICA}\\[0.6in]
+\end{center}
+\begin{figure}[h]
+\begin{center}
+
+\includegraphics[scale=0.2]{LogoUNI}
+\vspace{0cm}
+\end{center}
+\end{figure}
+\vspace{0.5cm}
+\begin{center}
+PRIMER INFORME DE LABORATORIO\\
+CIENCIA DE LOS MATERIALES I\\[14mm]
+{\Large ENSAYOS DE DUREZA}\\[10mm]
+\vfill
+LIMA - PERÚ \hfill MAYO 2018
+\end{center}
+\newpage
+\thispagestyle{empty}
+\begin{center}
+{\huge ENSAYOS DE DUREZA}\\[0.7cm]
+\small ENTREGADO:\\[0.3cm]
+\small 5 MAYO 2018\\[0.9cm]
+\end{center}
+\begin{flushleft}
+{\large INTEGRANTES:}\\[3cm]
+\end{flushleft}
+%\begin{tabular}{c@{\hspace{0.5in}}c}
+%\rule[1pt]{2.6in}{1pt}&\rule[1pt]{2.6in}{1pt}\\
+%Huaroto Villavicencio Josué, 20174070I & Fuentes Valdivia Martin, 2017\\[1.5cm]
+%\rule[1pt]{2.6in}{1pt}&\rule[1pt]{2.6in}{1pt}\\
+%Saldivar Montero Perruardo, 2017 & Nombre 3, 2017\\[1cm]
+%\rule[1pt]{2.6in}{1pt}&\rule[1pt]{2.6in}{1pt}\\
+%Nombre 4, 2017 & Nombre 5, 2017 \\[1.5cm]
+\begin{center}
+\begin{tabular}{c@{\hspace{0.5in}}c}
+\rule[1pt]{3.14in}{1pt}\\
+Fuentes Valdivia Martin, 20174124A \\[3cm]
+\rule[1pt]{3.14in}{1pt}\\
+Huaroto Villavicencio Josué, 20174070I \\[3cm]
+\rule[1pt]{3.14in}{1pt}\\
+Saldivar Montero Eduardo, 20174013E
+\end{tabular}
+\end{center}
+%\\[0.7cm]
+{\large PROFESOR:} \\[1.15cm]
+\begin{center}
+\begin{tabular}{c}
+\rule[3pt]{4.8in}{1pt}\\[1pt]
+ING. LUIS SOSA, JOSE 
+\end{tabular}
+\end{center}
+\vfill
+%\newpage
+%\begin{center}
+%{\Large \bf{RESUMEN}}
+%\end{center}
+\newpage
+\tableofcontents
+\newpage
+\listoftables
+\addcontentsline{toc}{chapter}{Índice de Tablas} %%% Para introducir una línea en el índice
+\listoffigures
+\addcontentsline{toc}{chapter}{Índice de Figuras}
+
+\chapter{Objetivos}
+\begin{enumerate}
+\item Conocer distintos métodos para la medición de la dureza de materiales metálicos.
+\item Determinar la dureza de algunos materiales métalicos por los métodos Brinell, Rockwell y Vickers.
+\item Comprobar la dureza de los distintos materiales obtenidos según distintas tablas de dureza.
+\item Comparar los distintos resultados obtenidos por los ensayos realizados en el laboratorio.
+\item Conocer el distinto funcionamiento de los durómetros en el laboratorio.
+\end{enumerate}
+\pagenumbering{arabic} %%% esto es para regresar el modo de numeración a numeración arábiga
+\setcounter{page}{1}  %%% empezamos en página 1
+\chapter{Ensayo de dureza Brinell}
+\section{Materiales}
+\begin{enumerate}
+\item Acero bajo carbono
+\begin{itemize}
+\item Largo: 12,47$mm$
+\item Diámetro: 25,20$mm$
+\end{itemize}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.27]{bjc}
+\caption{Acero bajo carbono}
+\end{center}
+\end{figure}
+\item Plancha estructural
+\begin{itemize}
+\item Largo: 42.1$cm$
+\item Ancho: 20$cm$
+\item Espesor: 21$mm$
+\end{itemize}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.47]{ple}
+\caption{Plancha estructural}
+\end{center}
+\end{figure}
+\end{enumerate}
+\section{Durómetro Brinell}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=126pt,height=282.5pt]{bri}
+\caption[Durómetro Brinell]{Durómetro Brinell Avery Denison Limited Leeds LS102DE ENGLAND}
+\end{center}
+\end{figure}
+\section{Procedimiento de medida}
+\begin{enumerate}
+\item Para el ensayo Brinell utilizamos bolas de acero templado.
+\item Lijar la superficie sobre la que se aplicará la carga, cuanto más uniforme sea mejor.
+\item Limpiar la base del durómetro Brinell o superficie de apoyo en la que se colocará la probeta o muestra.
+\item Colocar de manera horizontal y plana la probeta, perpendicular al revolver que sostiene al penetrador.
+\item Colocar la carga en la parte posterior del durómetro Brinell para que sea aplicada por el sistema hidráulico.
+\item Acercar la probeta, usando el volante de elevación, a una distancia considerable del penetrador.
+\item Aplicar la carga y esperar el tiempo necesario a que termine la aplicación.
+\item Terminada la aplicación, bajar el nivel de la probeta con el volante de elevación y medir el diámetro de la huella haciendo uso del vernier.
+\item Continuar realizando medidas, teniendo cuidado de dejar al menos un espacio de $2d$ ($d=$ diámetro de la huella) entre huella y huella y entre huella y borde de la superficie de la probeta.
+\item De preferencia después de realizadas varias medidas sobre una de las caras de la probeta, lijar tal superficie para evitar errores en las demás mediciones.
+\end{enumerate}
+\newpage
+\section{Datos del ensayo}
+El ensayo fue realizado según las siguientes condiciones:
+\begin{itemize}
+\item Penetrador: 10$\,mm \,\diameter$
+\item Carga: 3000$\,kgf$
+\end{itemize}
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|>{\centering}m{4.15cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2.5cm}|}
+\hline
+\diagbox[width=4.5cm,dir=SE]{Materiales}{Diámetro} & Medición 1 & Medición 2 \\
+\hline
+Accero bajo carbono & 4,12mm & 4,21mm \\
+\hline
+Plancha estructural & 4,82mm & - \\
+\hline
+\end{tabular}
+\caption[Datos de ensayo Brinell]{Medidas obtenidas en el ensayo Brinell}
+\end{center}
+\end{table}
+\chapter{Ensayo de dureza Rockwell}
+\section{Materiales}
+Para el ensayo de dureza Rockwell utilizamos los siguientes materiales:
+\begin{enumerate}
+\item Acero de bajo carbono (dulce)
+\item Acero de medio carbono (grado 60)
+\item Bronce (modificado)
+\end{enumerate}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.4]{mtro}
+\caption{Materiales usados en el ensayo Rockwell}
+\end{center}
+\end{figure}
+\section{Durómetros Rockwell}
+\subsection{Durómetro analógico}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.48]{mro}
+\caption[Durómetro Rockwell analógico]{Máquina de dureza Rockwell analógica marca Wilson}
+\end{center}
+\end{figure}
+\subsection{Durómetro digital}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.51]{mrod}
+\caption{Durómetro Rockwell digital}
+\end{center}
+\end{figure}
+\section{Procedimiento de medida}
+\subsection{Analógico, Escala $B$}
+\begin{enumerate}
+\item Para el ensayo Rockwell utilizamos una bola de acero tamplado de 1/16"$\diameter$.
+\item Limpiar las superficies sobre las que se aplicará la carga.
+\item Colocamos la contra carga en la parte posterior de la máquina de Rockwell, en este caso para el ensayo Rockwell $B$, colocamos $100\,kgf$.
+\item Con mucho cuidado de mover el porta penetrador, colocamos el penetrador en el usillo.
+\item Para el ensayo sobre superficie plana usamos una base plana para colocar la probeta. Para el ensayo sobre superficie curva utilizamos un Yunque–V. Para medir la dureza sobre superficie curva se debe lijar de manera una parte de la superficie de modo que quede de forma plana. Entonces se continúa con el procedimiento normal.
+\item Haciendo uso del volante acercamos la cara de la probeta al penetrador para aplicar la precarga y eliminar imperfecciones de la probeta como las estrías de rectificado, observaremos que al hacer contacto las agujas de Dial comenzarán a girar. La aguja pequeña debe estar en forma vertical, y la aguja grande debe quedar dentro del rango que indica que la máquina esté calibrada (líneas oscuras).
+\item Haciendo uso del carro del dial, colocamos la aguja grande de forma paralela con la línea que indica el valor “cero'' en la escala $B$ (escala negra).
+\item Después de los pasos anteriores, concluimos que ya hemos aplicado la precarga.
+\item Presionamos sobre la palanca de aplicación para que termine de aplicar la carga de $90\,kgf$, observaremos que la aguja mayor se mueve en sentido contrario a las manecillas del reloj.
+\item Pasados 15 segundos del procedimiento anterior (y ya habiendo cesado el movimiento de la palanca de amortiguación de carga ubicada en el lado izquierdo de la máquina) liberamos la carga moviendo en sentido contrario tal palanca.
+\item Tomamos nota de la carga que se puede observar señalada por la aguja mayor.
+\end{enumerate}
+\newpage
+\subsection{Digital, Escala $B$ y $H$}
+\begin{enumerate}
+\item El uso de la máquina de Rockwell digital es mucho más fácil, aunque se deben tener ciertas precauciones para la correcta medición.
+\item Se debe tener mucha precaución con la base sobre la que se sienta la máquina digital ya que cualquier movimiento sobre la mesa podría descalibrarla.
+\item Encender la máquina, y en la pantalla se coloca la escala en la que se desea trabajar.
+\item Lijar la superficie de la probeta sobre la que se aplicará la carga, y se limpia la base de la máquina.
+\item Colocar la probeta sobre la base de la máquina y usar el volante para elevar la probeta hasta que la máquina haga un sonido indicando que se terminó de aplicar la precarga.
+\item Se procede a aplicar la carga total y esperar 10 segundos aproximadamente para tomar nota del valor de la dureza que aparece en la pantalla de la máquina.
+\end{enumerate}
+\section{Datos del ensayo}
+El ensayo fue realizado según las siguientes condiciones:
+\begin{enumerate}
+\item Para los aceros:
+\begin{itemize}
+\item Carga: $100\,kgf$
+\item Penetrador: Bola de 1/16"$\diameter$
+\item Escala: $B$
+\end{itemize}
+\item Para el cobre y aluminio:
+\begin{itemize}
+\item Carga: $60\,kgf$
+\item Penetrador: Bola de 1/16"$\diameter$
+\item Escala: $H$
+\end{itemize}
+\end{enumerate}
+\newpage
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|>{\centering}m{4.7cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2.5cm}|}
+\hline
+\diagbox[width=5.1cm,dir=SE]{Materiales}{Dureza} & Medición 1 & Medición 2 & Medición 3 \\
+\hline
+Acero bajo carbono & 93$\,HRB$ & 93$\,HRB$ & 94$\,HRB$ \\
+\hline
+Acero medio carbono & 91,6$\,HRB$ & 93$\,HRB$ & 93$\,HRB$ \\
+\hline
+Bronce & 43$\,HRB$ & 42$\,HRB$ & 42,5$\,HRB$ \\
+\hline
+\end{tabular}
+\caption[Datos de ensayo Rockwell analógico 1]{Máquina Rockwell analógica}{Materiales en posición vertical}
+\end{center}
+\end{table}
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|>{\centering}m{5cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2.5cm}|}
+\hline
+\diagbox[width=5.4cm,dir=SE]{Materiales}{Dureza} & Medición 1 & Medición 2 & Medición 3 \\
+\hline
+Acero bajo carbono & 89$\,HRB$ & 88,9$\,HRB$ & 89$\,HRB$ \\
+\hline
+Acero bajo carbono (lijado) & 89,4$\,HRB$ & 89$\,HRB$ & 89$\,HRB$ \\
+\hline
+Bronce & 36,5$\,HRB$ & 38$\,HRB$ & 36$\,HRB$ \\
+\hline
+\end{tabular}
+\caption[Datos de ensayo Rockwell analógico 2]{Máquina Rockwell analógica}{Materiales en posición horizontal}
+\end{center}
+\end{table}
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|>{\centering}m{4.7cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2.5cm}|}
+\hline
+\diagbox[width=5.1cm,dir=SE]{Materiales}{Dureza} & Medición 1 & Medición 2 & Medición 3 \\
+\hline
+Acero bajo carbono & 93,1$\,HRB$ & - & - \\
+\hline
+Acero medio carbono & 90,6$\,HRB$ & - & - \\
+\hline
+Cobre & 60,5$\,HRH$ & 60,1$\,HRH$ & 59$\,HRH$ \\
+\hline
+Aluminio & 86,7$\,HRH$ & 88,9$\,HRH$ & 84$\,HRH$ \\
+\hline
+\end{tabular}
+\caption[Datos de ensayo Rockwell digital]{Máquina Rockwell digital}{Materiales en posición vertical}
+\end{center}
+\end{table}
+\chapter{Ensayo de dureza Vickers}
+\section{Material}
+\begin{enumerate}
+\item Placa de bronce
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8]{br}
+\caption[Placa de bronce]{Placa de bronce usada en el ensayo Vickers}
+\end{center}
+\end{figure}
+\end{enumerate}
+\section{Durómetro Vickers}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.99]{mvic}
+\caption[Durómetro Vickers]{Durómetro Vickers marca LEITZ, GERMANY}
+\end{center}
+\end{figure}
+\newpage
+\section{Procedimiento de medida}
+\begin{enumerate}
+\item Para el ensayo Vickers se utiliza un cuerpo penetrador de diamante en forma de pirámide.
+\item Se debe tener mucha precaución con la base sobre la que se sienta el durómetro porque podría descalibrarse.
+\item La superficie sobre la que se aplicará la carga debe estar perfectamente pulida.
+\item Colocar la carga en la parte posterior del durómetro Vickers.
+\item Colocar la probeta sobre la base del durómetro y aplicar la carga.
+\item La carga de prueba debe aplicarse y retirarse suavemente sin golpes o vibraciones. El tiempo de aplicación de la carga de prueba completa debe ser de 10 a 15 segundos a menos que se especifique otra cosa. 
+\item El centro de la huella no debe estar cercano a la orilla de la probeta u otra huella en una distancia igual a dos veces y media la longitud de la diagonal de la huella. Cuando se prueba material con recubrimiento, la superficie de unión debe considerarse como una orilla para él cálculo del espacio entre huellas.
+\item Deben medirse ambas diagonales de la huella y su valor promedio usarse como base para él cálculo del número de dureza Vickers. Se recomienda efectuar la medición con la huella centrada, tanto como sea posible, en el campo óptico del durómetro.
+\end{enumerate}
+\section{Datos del ensayo}
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|>{\centering}m{3cm}|>{\centering\arraybackslash}m{3.4cm}|>{\centering\arraybackslash}m{3.4cm}|}
+\hline
+Carga & Diagonal 1 & Diagonal 2 \\
+\hline
+100$\,gf$ & 25+15=40$\,\mu m$ & 25+13,8=38,8$\,\mu m$ \\
+\hline
+\end{tabular}
+\caption{Datos de ensayo Vickers}
+\end{center}
+\end{table}
+\chapter{Cálculos y resultados}
+\section{Ensayo Brinell}
+Para los datos obtenidos en la tabla 2.1, se sabe que la dureza calculada por el método Brinell se halla con la siguiente expresión:
+\begin{equation}
+HB = \frac{2P}{\pi D\left(D-\sqrt{D^{2}-d^{2}}\right)}
+\end{equation}
+Donde, $P$ es la carga aplicada (en este caso, 3000$\,kgf$), $D$ es el diámetro del penetrador (10$\,mm$), y $d$ es el diámetro de la huella.
+\subsection{Acero bajo carbono}
+Reemplazando los datos obtenidos:
+\begin{equation}
+\begin{aligned}
+HB &= \frac{2\times 3000\,kgf}{\pi \times 10 \times \left( 10 - \sqrt{{10}^{2}-\left(\frac{4,12+4,21}{2}\right)^{2}}\right)}\\[3.14pt]
+HB &= \frac{6000\,kgf}{\pi \times 10 \times 0,90864284\,mm^{2}} \\[3.14pt]
+HB &= 210,1881
+\end{aligned}
+\end{equation}
+Entonces, según el ensayo realizado, la dureza calculada por el método Brinell para un acero de bajo carbono es:
+$$
+HB = 210,1881
+$$
+\subsection{Plancha estructural}
+Reemplazando los datos:
+\begin{equation}
+\begin{aligned}
+HB = \frac{2\times 3000\,kgf}{\pi \times 10 \times \left( 10 - \sqrt{10^{2}-4,82^{2}}\right)\,mm^{2}} &= \frac{6000\,kgf}{\pi \times 10 \times 1,2382878\,mm^{2}} \\[3.14pt]
+&= 154,23388
+\end{aligned}
+\end{equation}
+Entonces, según el ensayo realizado, la dureza calculada por el método Brinell para una plancha estructural es:
+$$
+HB = 154,23388
+$$
+\subsection{Análisis de los resultados}
+Para el acero de bajo carbono, la dureza es de $210\,HB$, lo cual se puede encuadrar en los aceros duros, de acuerdo a la siguiente tabla:
+Además de este material, se utilizó una plancha estructural, cuya dureza Brinell resultó ser de aproximadamente $154\,HB$, por lo que se le puede enmarcar en los aceros dulces, de acuerdo a la tabla 5.1. 
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|>{\centering}m{6cm}|>{\centering\arraybackslash}m{4cm}|}
+\hline
+Material & Dureza Brinell \\ [4pt]
+\hline
+Acero de herramientas,templado & 500 \\ [4pt]
+\hline
+Acero duro (0,80$\%$ carbono) & 210 \\ [4pt]
+\hline
+Acero dulce (0,10$\%$ carbono) & 110 \\ [4pt]
+\hline
+Bronce & 100 \\ [4pt]
