@@ -1,0 +1,32 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PY{k+kn}{import} \PY{n+nn}{math}
+\PY{n}{aux1} \PY{o}{=} \PY{l+m+mi}{0}
+\PY{n}{aux2} \PY{o}{=} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}
+\PY{n}{res} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{10000}\PY{p}{,}\PY{l+m+mi}{6800}\PY{p}{,}\PY{l+m+mi}{2150}\PY{p}{,}\PY{l+m+mi}{100}\PY{p}{,}\PY{l+m+mi}{200}\PY{p}{,}\PY{l+m+mi}{4950}\PY{p}{]}
+\PY{n}{cap} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{100}\PY{p}{,}\PY{l+m+mf}{4.7}\PY{p}{,}\PY{l+m+mf}{2.2}\PY{p}{]}
+\PY{n}{ind} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{200}\PY{p}{,}\PY{l+m+mf}{0.001}\PY{p}{,}\PY{l+m+mf}{0.01}\PY{p}{,}\PY{l+m+mf}{0.0047}\PY{p}{]}
+\PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{):}
+    \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{):}
+        \PY{k}{for} \PY{n}{k} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{):}
+            \PY{n}{alpha} \PY{o}{=} \PY{l+m+mi}{500}\PY{o}{*}\PY{n}{res}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{o}{/}\PY{n}{ind}\PY{p}{[}\PY{n}{j}\PY{p}{];}
+            \PY{n}{omega} \PY{o}{=} \PY{l+m+mi}{1000000}\PY{o}{*}\PY{n}{math}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{ind}\PY{p}{[}\PY{n}{k}\PY{p}{]}\PY{o}{*}\PY{n}{cap}\PY{p}{[}\PY{n}{j}\PY{p}{]);}
+            \PY{k}{if} \PY{n+nb}{abs}\PY{p}{(}\PY{n}{alpha}\PY{o}{\PYZhy{}}\PY{n}{omega}\PY{p}{)}\PY{o}{\PYZlt{}}\PY{l+m+mf}{0.1}\PY{p}{:}
+                \PY{k}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}Criticamente amortiguado:\PYZdq{}}\PY{p}{)}
+                \PY{k}{print}\PY{p}{(}\PY{n}{res}\PY{p}{[}\PY{n}{i}\PY{p}{],}\PY{l+s+s2}{\PYZdq{}Ohm\PYZdq{}}\PY{p}{,}\PY{n}{cap}\PY{p}{[}\PY{n}{j}\PY{p}{],}\PY{l+s+s2}{\PYZdq{}nF\PYZdq{}}\PY{p}{,}\PY{n}{ind}\PY{p}{[}\PY{n}{k}\PY{p}{],}\PY{l+s+s2}{\PYZdq{}mH\PYZdq{}}\PY{p}{)}
+            \PY{k}{if} \PY{n}{alpha}\PY{o}{\PYZhy{}}\PY{n}{omega} \PY{o}{\PYZlt{}} \PY{l+m+mi}{0}\PY{p}{:}
+                \PY{k}{if} \PY{n}{aux1} \PY{o}{\PYZgt{}} \PY{n}{alpha}\PY{o}{\PYZhy{}}\PY{n}{omega}\PY{p}{:}
+                    \PY{n}{aux1} \PY{o}{=} \PY{n}{alpha}\PY{o}{\PYZhy{}}\PY{n}{omega}
+                    \PY{n}{firstansw} \PY{o}{=} \PY{n}{i}
+                    \PY{n}{secondansw} \PY{o}{=} \PY{n}{j}
+                    \PY{n}{thirdansw} \PY{o}{=} \PY{n}{k}
+            \PY{k}{if} \PY{n}{alpha}\PY{o}{\PYZhy{}}\PY{n}{omega} \PY{o}{\PYZgt{}} \PY{l+m+mi}{0}\PY{p}{:}
+                \PY{k}{if} \PY{n}{aux2} \PY{o}{\PYZlt{}} \PY{n}{alpha}\PY{o}{\PYZhy{}}\PY{n}{omega}\PY{p}{:}
+                    \PY{n}{aux2} \PY{o}{=} \PY{n}{alpha}\PY{o}{\PYZhy{}}\PY{n}{omega}
+                    \PY{n}{answ1} \PY{o}{=} \PY{n}{i}
+                    \PY{n}{answ2} \PY{o}{=} \PY{n}{j}
+                    \PY{n}{answ3} \PY{o}{=} \PY{n}{k}
+\PY{k}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}Subamortiguado:\PYZdq{}}\PY{p}{)}
+\PY{k}{print}\PY{p}{(}\PY{n}{res}\PY{p}{[}\PY{n}{firstansw}\PY{p}{],}\PY{l+s+s2}{\PYZdq{}Ohm\PYZdq{}}\PY{p}{,}\PY{n}{cap}\PY{p}{[}\PY{n}{secondansw}\PY{p}{],}\PY{l+s+s2}{\PYZdq{}nF\PYZdq{}}\PY{p}{,}\PY{n}{ind}\PY{p}{[}\PY{n}{thirdansw}\PY{p}{],}\PY{l+s+s2}{\PYZdq{}mH\PYZdq{}}\PY{p}{)}
+\PY{k}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}Sobreamortiguado:\PYZdq{}}\PY{p}{)}
+\PY{k}{print}\PY{p}{(}\PY{n}{res}\PY{p}{[}\PY{n}{answ1}\PY{p}{],}\PY{l+s+s2}{\PYZdq{}Ohm\PYZdq{}}\PY{p}{,}\PY{n}{cap}\PY{p}{[}\PY{n}{answ2}\PY{p}{],}\PY{l+s+s2}{\PYZdq{}nF\PYZdq{}}\PY{p}{,}\PY{n}{ind}\PY{p}{[}\PY{n}{answ3}\PY{p}{],}\PY{l+s+s2}{\PYZdq{}mH\PYZdq{}}\PY{p}{)}
+\end{Verbatim}

@@ -1,0 +1,16 @@
+\babel@toc {spanish}{}
+\contentsline {chapter}{\IeC {\'I}ndice de Figuras}{\es@scroman {ii}}
+\contentsline {chapter}{\numberline {1}Objetivos}{1}
+\contentsline {chapter}{\numberline {2}Circuitos transitorios}{2}
+\contentsline {section}{\numberline {2.1}Materiales}{3}
+\contentsline {section}{\numberline {2.2}Comprobaci\IeC {\'o}n experimental}{5}
+\contentsline {chapter}{\numberline {3}Rectificaci\IeC {\'o}n de ondas}{6}
+\contentsline {section}{\numberline {3.1}Rectificaci\IeC {\'o}n de media onda}{6}
+\contentsline {subsection}{\numberline {3.1.1}Materiales}{6}
+\contentsline {subsection}{\numberline {3.1.2}Experiencia}{7}
+\contentsline {subsection}{\numberline {3.1.3}Polarizaci\IeC {\'o}n directa}{7}
+\contentsline {section}{\numberline {3.2}Rectificador de onda completa}{9}
+\contentsline {subsection}{\numberline {3.2.1}Materiales}{10}
+\contentsline {subsection}{\numberline {3.2.2}Experiencia}{10}
+\contentsline {chapter}{Bibliograf\'{\i }a}{11}
+\contentsline {chapter}{Anexos}{12}

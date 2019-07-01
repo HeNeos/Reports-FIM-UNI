@@ -1,0 +1,30 @@
+import math
+aux1 = 0
+aux2 = -1
+res = [10000,6800,2150,100,200,4950]
+cap = [10,100,4.7,2.2]
+ind = [200,0.001,0.01,0.0047]
+for i in range(0,6):
+    for j in range(0,4):
+        for k in range(0,4):
+            alpha = 500*res[i]/ind[j];
+            omega = 1000000*math.sqrt(ind[k]*cap[j]);
+            if abs(alpha-omega)<0.1:
+                print("Criticamente amortiguado:")
+                print(res[i],"Ohm",cap[j],"nF",ind[k],"mH")
+            if alpha-omega < 0:
+                if aux1 > alpha-omega:
+                    aux1 = alpha-omega
+                    firstansw = i
+                    secondansw = j
+                    thirdansw = k
+            if alpha-omega > 0:
+                if aux2 < alpha-omega:
+                    aux2 = alpha-omega
+                    answ1 = i
+                    answ2 = j
+                    answ3 = k
+print("Subamortiguado:")
+print(res[firstansw],"Ohm",cap[secondansw],"nF",ind[thirdansw],"mH")
+print("Sobreamortiguado:")
+print(res[answ1],"Ohm",cap[answ2],"nF",ind[answ3],"mH")
