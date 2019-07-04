@@ -49,18 +49,17 @@
 \end{figure}
 \vspace{0.4cm}
 \begin{center}
-PRIMER INFORME DE LABORATORIO\\
 CIRCUITOS ELECTRICOS\\[14mm]
-{\Large CIRCUITOS TRANSITORIOS, DESPLAZAMIENTO Y RECTIFICACIÓN DE ONDAS}\\[10mm]
+{\Large CIRCUITOS TRANSITORIOS\\ Y RECTIFICACIÓN DE ONDAS}\\[10mm]
 \vfill
 LIMA - PERÚ \hfill JULIO 2019
 \end{center}
 \newpage
 \thispagestyle{empty}
 \begin{center}
-{\LARGE CIRCUITOS TRANSITORIOS, DESPLAZAMIENTO Y RECTIFICACIÓN DE ONDAS}\\[0.7cm]
+{\LARGE CIRCUITOS TRANSITORIOS\\ Y RECTIFICACIÓN DE ONDAS}\\[0.7cm]
 \small ENTREGADO:\\[0.3cm]
-\small 01 JULIO 2019\\[0.9cm]
+\small 04 JULIO 2019\\[0.9cm]
 \end{center}
 \begin{flushleft}
 {\large INTEGRANTES:}\\[3cm]
@@ -161,96 +160,14 @@ int firstansw = 0,secondansw = 0,thirdansw = 0;
 int answ1 = 0;
 int answ2 = 0;
 int answ3 = 0;
-int res[5] = {10000,4800,2150,100,200};
-float cap[4] = {10,100,4.7,2.2};
-float ind[4] = {200,0.1,0.01,0.0047};
-for(int i=0; i<5; i++){
-  for(int j=0; j<4; j++){
-    for(int k=0; k<4; k++){
-      float alpha = 500.0*res[i]/ind[j];
-      float omega = 1000000.0*sqrt(1.0*ind[k]*cap[j]);
-      if(abs(alpha-omega)<0.1){
-        cout<<"Criticamente amortiguado:\n";        
-        cout<<res[i]<<"Ohm "<<cap[j]<<"nF "<<ind[k]<< "mH\n";
-      }
-      if(alpha-omega < 0){
-        if(aux1 > alpha-omega){
-          aux1 = alpha-omega,firstansw = i,secondansw = j,thirdansw = k;         	
-        }
-      }
-      if(alpha-omega > 0){
-        if(aux2 < alpha - omega){
-          aux2 = alpha-omega,answ1 = i,answ2 = j,answ3 = k;
-        }
-      }
-    }		
-  }	
-}
-cout<<"Subamortiguado:\n";
-cout<<res[firstansw]<<"Ohm "<<cap[secondansw]<<"nF "<<ind[thirdansw]<<"mH\n";
-cout<<"Sobreamortiguado:\n";
-cout<<res[answ1]<<"Ohm "<<cap[answ2]<<"nF "<<ind[answ3]<<"mH\n";
-return 0; 
-}
-\end{pyglist}
-\newpage
-\begin{pyglist}[language=python,caption={Python},listingname={\textbf{Circuito transitorio}},style=tango]
-import math
-aux1 = 0
-aux2 = -1
-res = [10000,4800,2150,100,200]
-cap = [10,100,4.7,2.2]
-ind = [200,0.1,0.01,0.0047]
-for i in range(0,5):
-    for j in range(0,4):
-        for k in range(0,4):
-            alpha = 500*res[i]/ind[j];
-            omega = 1000000*math.sqrt(ind[k]*cap[j]);
-            if abs(alpha-omega)<0.1:
-                print("Criticamente amortiguado:")
-                print(res[i],"Ohm",cap[j],"nF",ind[k],"mH")
-            if alpha-omega < 0:
-                if aux1 > alpha-omega:
-                    aux1 = alpha-omega
-                    firstansw = i
-                    secondansw = j
-                    thirdansw = k
-            if alpha-omega > 0:
-                if aux2 < alpha-omega:
-                    aux2 = alpha-omega
-                    answ1 = i
-                    answ2 = j
-                    answ3 = k
-print("Subamortiguado:")
-print(res[firstansw],"Ohm",cap[secondansw],"nF",ind[thirdansw],"mH")
-print("Sobreamortiguado:")
-print(res[answ1],"Ohm",cap[answ2],"nF",ind[answ3],"mH")
-\end{pyglist}
-Ambos códigos arrojan como salida:\\
-Criticamente amortiguado:\\
-20 Ohm 100nF 0.01mH\\
-Subamortiguado:\\
-100 Ohm 100nF 200mH\\
-Sobreamortiguado:\\
-10000 Ohm 2.2nF 0.0047mH
-\end{comment}
-\begin{pyglist}[language=c++,caption={C++},listingname={\textbf{Circuito transitorio}},style=perldoc]
-#include <bits/stdc++.h> 
-using namespace std; 
-int main(){ 
-float aux1 = 1,aux2 = -1;
-int firstansw = 0,secondansw = 0,thirdansw = 0;
-int answ1 = 0;
-int answ2 = 0;
-int answ3 = 0;
 int res[6] = {10000,6800,2150,100,200,4950};
 float cap[4] = {10,100,4.7,2.2};
-float ind[4] = {200,0.001,0.01,0.0047};
+float ind[4] = {20,0.001,0.01,0.0047};
 for(int i=0; i<6; i++){
   for(int j=0; j<4; j++){
     for(int k=0; k<4; k++){
-      float alpha = 500.0*res[i]/ind[j];
-      float omega = 1000000.0*sqrt(1.0*ind[k]*cap[j]);
+      float alpha = 500.0*res[i]/ind[k];
+      float omega = 1000000.0/sqrt(1.0*ind[k]*cap[j]);
       if(abs(alpha-omega)<0.1){
         cout<<"Criticamente amortiguado:\n";        
         cout<<res[i]<<"Ohm "<<cap[j]<<"nF "<<ind[k]<< "mH\n";
@@ -282,7 +199,7 @@ aux1 = 0
 aux2 = -1
 res = [10000,6800,2150,100,200,4950]
 cap = [10,100,4.7,2.2]
-ind = [200,0.001,0.01,0.0047]
+ind = [20,0.001,0.01,0.0047]
 for i in range(0,6):
     for j in range(0,4):
         for k in range(0,4):
@@ -308,21 +225,46 @@ print(res[firstansw],"Ohm",cap[secondansw],"nF",ind[thirdansw],"mH")
 print("Sobreamortiguado:")
 print(res[answ1],"Ohm",cap[answ2],"nF",ind[answ3],"mH")
 \end{pyglist}
+\end{comment}
 Ambos códigos arrojan como salida:\\
 %Criticamente amortiguado:\\
 %20 Ohm 100nF 0.01mH\\
 Subamortiguado:\\
-100 Ohm \hspace{10pt} 100nF \hspace{10pt} 200mH\\
+100 Ohm \hspace{10pt} 2.2nF \hspace{10pt} 0.01mH\\
 Sobreamortiguado:\\
-10000 Ohm \hspace{10pt} 2.2nF \hspace{10pt} 0.0047mH\\
-El valor de críticamente amortiguado no es obtenido, pero al hacer un acoplamiento en serie de las resistencias de 6.8$\,$kOhm y 2.15$\,$kOhm con 10$\,$nF y 200$\,$mH se obtiene un comportamiento cercano al críticamente amortiguado:
+10000 Ohm \hspace{10pt} 100nF \hspace{10pt} 0.001mH\\
+El valor de críticamente amortiguado no es obtenido, pero al hacer un acoplamiento en paralelo de las resistencias de 6.8$\,$kOhm y 10$\,$kOhm con 4.7$\,$nF y 20$\,$mH se obtiene un comportamiento cercano al críticamente amortiguado:
 $$
-\alpha = 22375 \hspace{20pt} \omega = 22360.7 \longrightarrow \frac{\alpha - \omega}{\omega} \cdot 100\% = 0.064\%
+\alpha = 101190 \hspace{20pt} \omega = 103142 \longrightarrow \frac{\alpha - \omega}{\omega} \cdot 100\% = 1.928689\%
 $$
 Críticamente amortiguado:\\
-6.8$\,$kOhm + 2.15$\,$kOhm \hspace{10pt} 10$\,$nF \hspace{10pt} 200$\,$mH
+6.8$\,$kOhm + 10$\,$kOhm \hspace{10pt} 4.7$\,$nF \hspace{10pt} 20$\,$mH
 \section{Comprobación experimental}
-{\Huge Aquí va lo que nos falta SerGod >:v}
+\subsection{Subamortiguado}
+Con la configuración de 100$\,$Ohm, 2.2$\,$nF y 10$\,\mu$H.
+Con la configuración de 10$\,$kOhm, 100$\,$nF y 1$\,\mu$H.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.24]{sub.jpeg}
+\end{center}
+\end{figure}
+\subsection{Sobreamortiguado}
+Con la configuración de 10$\,$kOhm, 100$\,$nF y 1$\,\mu$H.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.24]{sob.jpeg}
+\end{center}
+\end{figure}
+\subsection{Críticamente amortiguado}
+Con la configuración de 10$\,$kOhm y 6.8$\,$kOhm en paralelo, 4.7$\,$nF y 20$\,$mH.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.33]{crit.jpeg}
+\end{center}
+\end{figure}
+\newpage
+\section{Justificación del error experimental}
+Observamos en las imágenes del osciloscopio que la forma de la onda no es muy parecida a los resultados teóricos. El error puede deberse a que a menudo es muy difícil conseguir un comportamiento críticamente amortiguado, sin embargo; lo ideal podría ser muy cercano; ello se observa en nuestro porcentaje de error que es menor al 2\%. La interferencia y las medidas que nos da el generador de corriente continua también pueden ser un factor que altera la gráfica del osciloscopio, pues se observa un comportamiento errático en el tiempo; lo que indica que no ha estado recibiendo una cantidad constante de voltaje. Las gráficas entonces coinciden con la solución esperada al considerar fuentes de corriente alterna. La explicación para esto es sencilla; los valores de inductancia son muy pequeños y para conseguir comportamientos sobreamortiguados y críticos fue necesario usar valores muy pequeños de resistencias y capacitancias; haciendo el comportamiento de la corriente más sensible al cambio de voltaje que podría entregarnos la fuente; así una pequeña interferencia entre la fuente y el circuito armado produce grandes cambios sinusoidales en la gráfica mostrada por el osciloscopio.
 \chapter{Rectificación de ondas}
 \section{Rectificación de media onda}
 Para la rectificación de media onda solo es necesario un diodo, estos elementos son capaces de cambiar la forma de señal de la onda en la entrada. En este caso el diodo elimina la mitad de la señal que recibe en la entrada, en función de como este polarizado el diodo; si la polarización es directa, se elimina la parte negativa de la señal, y si la polarización es inversa se elimina la parte positiva de la señal. Al momento de rectificar en media onda es necesario tener en cuenta los siguientes parámetros:
@@ -416,7 +358,29 @@ El circuito rectificador de onda completa es el más empleado para la alimentaci
 \item Para esta experiencia se obtiene en el osciloscopio una onda completa rectificada, donde los ciclos negativos se convirtieron en positivos. Se elige la escala adecuada y se comprueban los valores.
 \end{enumerate}
 \end{itemize}
-
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.42]{kesk2.jpeg}
+\caption{Rectificación de onda completa}
+\end{center}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.42]{kesk3.jpeg}
+\caption{Conexión para la rectificación de ondas}
+\end{center}
+\end{figure}
+\chapter*{Conclusiones}
+\addcontentsline{toc}{chapter}{Conclusiones}
+\begin{enumerate}
+\item Se comprueba el funcionamiento del diodo cuando se hace pasar una corriente con funcion de onda sinusoidal y esta es modificada quedando solo las partes positivas o las negativas segun la orientacion del diodo.
+\item El puente de diodos es el resultado de acoplar diodos con el fin de modificar la forma de la onda y hacerla mas estable.
+\item Se concluye que en circuitos RC y RL el aumento de la frecuencia es una buena opción para modificar el desfase.
+\item El régimen transitorio de un circuito solo puede ser subamortiguado, sobreamortiguado o críticamente amortiguado.
+\item El régimen transitorio nos indica como fluctua la corriente a través del tiempo antes de llegar a ser estable.
+\item Concluimos en que SerGod no nos pasó conclusiones.
+\item Lo mismo que el de arriba :v.
+\end{enumerate}
 \begin{thebibliography}{99}  %%%este es un contador para el número de bibliografías utilizados.
 \addcontentsline{toc}{chapter}{Bibliograf\'{\i}a} %%% Para introducir la bibliografía en el índice.
 %\bibitem{Rahman}{Rahman,Aminur y Doe, Hidekazu; ``Ion transfer of tetraalkylammonium cations at an interface between 
