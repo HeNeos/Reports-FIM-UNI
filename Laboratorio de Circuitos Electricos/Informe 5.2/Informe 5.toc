@@ -1,0 +1,10 @@
+\babel@toc {spanish}{}
+\babel@toc {spanish}{}
+\contentsline {chapter}{\numberline {1}Objetivos}{1}% 
+\contentsline {chapter}{\numberline {2}Circuito RLC en corriente alterna}{2}% 
+\contentsline {section}{\numberline {2.1}Circuito R en corriente alterna}{2}% 
+\contentsline {section}{\numberline {2.2}Circuito C en corriente alterna}{3}% 
+\contentsline {section}{\numberline {2.3}Circuito L en corriente alterna}{4}% 
+\contentsline {section}{\numberline {2.4}Circuito RLC en corriente alterna}{4}% 
+\contentsline {chapter}{\numberline {3}Recomendaciones}{5}% 
+\contentsline {chapter}{Bibliograf\'{\i }a}{6}% 
