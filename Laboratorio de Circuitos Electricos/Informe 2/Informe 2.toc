@@ -1,0 +1,9 @@
+\babel@toc {spanish}{}
+\babel@toc {spanish}{}
+\contentsline {chapter}{\numberline {1}Objetivos}{1}
+\contentsline {chapter}{\numberline {2}Teorema de Thevenin}{2}
+\contentsline {section}{\numberline {2.1}C\IeC {\'a}lculo de la tensi\IeC {\'o}n de Thevenin}{2}
+\contentsline {chapter}{\numberline {3}Teorema de Norton}{3}
+\contentsline {section}{\numberline {3.1}C\IeC {\'a}lculo del Norton Equivalente}{3}
+\contentsline {chapter}{\numberline {4}Teorema de m\IeC {\'a}xima potencia}{4}
+\contentsline {chapter}{Bibliograf\'{\i }a}{5}
