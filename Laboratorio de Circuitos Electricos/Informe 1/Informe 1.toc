@@ -1,0 +1,20 @@
+\babel@toc {spanish}{}
+\babel@toc {spanish}{}
+\contentsline {chapter}{\IeC {\'I}ndice de figuras}{\es@scroman {iv}}
+\contentsline {part}{I\hspace {1em}Introducci\IeC {\'o}n}{1}
+\contentsline {chapter}{\numberline {1}Objetivos}{2}
+\contentsline {chapter}{\numberline {2}Marco te\IeC {\'o}rico}{3}
+\contentsline {section}{\numberline {2.1}Ley de Ohm}{3}
+\contentsline {section}{\numberline {2.2}Leyes de Kirchhoff}{3}
+\contentsline {subsection}{\numberline {2.2.1}Ley de corrientes de Kirchhoff (LCK)}{4}
+\contentsline {subsection}{\numberline {2.2.2}Ley de tensiones de Kirchhoff (LTK)}{4}
+\contentsline {chapter}{\numberline {3}Instrumentos de laboratorio}{5}
+\contentsline {chapter}{\numberline {4}Uso de mult\IeC {\'\i }metro}{9}
+\contentsline {section}{\numberline {4.1}Resistencia}{9}
+\contentsline {section}{\numberline {4.2}Voltaje}{9}
+\contentsline {section}{\numberline {4.3}Amperios}{10}
+\contentsline {chapter}{\numberline {5}C\IeC {\'o}digo de colores}{11}
+\contentsline {part}{II\hspace {1em}Cuestionario}{13}
+\contentsline {part}{III\hspace {1em}Conclusiones y recomendaciones}{30}
+\contentsline {chapter}{\numberline {6}Conclusiones}{31}
+\contentsline {chapter}{Bibliograf\'{\i }a}{32}
