@@ -1,0 +1,14 @@
+\babel@toc {spanish}{}
+\babel@toc {spanish}{}
+\contentsline {chapter}{\numberline {1}Objetivos}{1}% 
+\contentsline {chapter}{\numberline {2}Marco te\IeC {\'o}rico}{2}% 
+\contentsline {section}{\numberline {2.1}Teorema de Thevenin}{2}% 
+\contentsline {subsection}{\numberline {2.1.1}C\IeC {\'a}lculo de la tensi\IeC {\'o}n de Thevenin}{2}% 
+\contentsline {section}{\numberline {2.2}Teorema de Norton}{2}% 
+\contentsline {subsection}{\numberline {2.2.1}C\IeC {\'a}lculo del Norton Equivalente}{2}% 
+\contentsline {section}{\numberline {2.3}Teorema de m\IeC {\'a}xima potencia}{3}% 
+\contentsline {chapter}{\numberline {3}Cuestionario}{4}% 
+\contentsline {section}{\numberline {3.1}Parte 1}{4}% 
+\contentsline {section}{\numberline {3.2}Parte 2}{11}% 
+\contentsline {chapter}{\numberline {4}Conclusiones y recomendaciones}{16}% 
+\contentsline {chapter}{Bibliograf\'{\i }a}{17}% 
