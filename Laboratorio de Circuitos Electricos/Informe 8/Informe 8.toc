@@ -1,0 +1,8 @@
+\babel@toc {spanish}{}
+\babel@toc {spanish}{}
+\contentsline {chapter}{\numberline {1}Objetivos}{1}% 
+\contentsline {chapter}{\numberline {2}Acoplamiento de inductancias}{2}% 
+\contentsline {chapter}{\numberline {3}Inductancia mutua}{3}% 
+\contentsline {chapter}{\numberline {4}Circuitos acoplados}{4}% 
+\contentsline {section}{\numberline {4.1}El transformador}{4}% 
+\contentsline {chapter}{Bibliograf\'{\i }a}{6}% 

@@ -1,0 +1,7 @@
+\babel@toc {spanish}{}
+\babel@toc {spanish}{}
+\contentsline {chapter}{\numberline {1}Circuitos Trif\IeC {\'a}sicos}{1}% 
+\contentsline {section}{\numberline {1.1}Circuito trif\IeC {\'a}sico balanceado}{1}% 
+\contentsline {section}{\numberline {1.2}Circuito trif\IeC {\'a}sico desbalanceado}{1}% 
+\contentsline {chapter}{\numberline {2}Potencia en circuitos trif\IeC {\'a}sicos}{2}% 
+\contentsline {chapter}{Bibliograf\'{\i }a}{3}% 

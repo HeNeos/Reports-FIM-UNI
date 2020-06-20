@@ -1,0 +1,197 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[spanish,mexico]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{wasysym}
+\usepackage[dvipsnames,pdftex]{color}
+\usepackage[x11names]{xcolor}
+\usepackage{tikz, tkz-euclide}
+\usepackage[american]{circuitikz}
+\usepackage{siunitx}
+\usetikzlibrary{arrows}
+\usepackage[colorinlistoftodos]{todonotes}
+%\usepackage[left=2cm,right=1.5cm,top=1cm,bottom=1cm]{geometry}
+%\usepackage{helvet}
+%\renewcommand{\familydefault}{\sfdefault}
+\setlength{\oddsidemargin}{0in}
+\usepackage{geometry}
+\geometry{a4paper, total = {180mm,270mm},
+			left = 25mm, top = 20mm,
+            right=15mm,bottom=20mm,%
+            footskip=10mm}
+\usepackage{float} 
+% \setlength{\topmargin}{0in}
+% \setlength{\voffset}{-0.5in}
+% \setlength{\hoffset}{0.3in}
+% \setlength{\textheight}{700pt}
+% \setlength{\textwidth}{440pt}
+% \setlength{\topskip}{0in}
+% \setlength{\parskip}{2ex}
+ \renewcommand{\baselinestretch}{1.5}
+\usepackage{diagbox}
+\usepackage{array}
+\usepackage{listings}
+\usepackage{caption}
+%%% comandos definidos por el usuario
+\begin{document}
+\setcounter{page}{1}
+\pagenumbering{roman}
+\thispagestyle{empty}
+\begin{center}
+{\huge UNIVERSIDAD NACIONAL DE INGENIERÍA}\\[0.9cm]
+{\Large FACULTAD DE INGENIERÍA MECÁNICA}\\[0.6in]
+\end{center}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.33]{logoUNI.png}
+\vspace{0cm}
+\end{center}
+\end{figure}
+\vspace{0.5cm}
+\begin{center}
+INFORME DE LABORATORIO\\
+LABORATORIO DE CIRCUITOS ELÉCTRICOS\\[5mm]
+{\large MEDIDA DE ENERGÍA, POTENCIA Y CORRECCIÓN DEL FACTOR DE POTENCIA EN CIRCUITOS MONOFÁSICOS}\\[10mm]
+\vfill
+LIMA - PERÚ \hfill DICIEMBRE 2019
+\end{center}
+\newpage
+\thispagestyle{empty}
+\begin{center}
+{\Huge MEDIDA DE ENERGÍA, POTENCIA Y CORRECCIÓN DEL FACTOR DE POTENCIA EN CIRCUITOS MONOFÁSICOS}\\[0.7cm]
+\small ENTREGADO:\\[0.05cm]
+\small 04 DICIEMBRE\\[1.2cm]
+\end{center}
+\begin{flushleft}
+{\large ALUMNO:}\\[2cm]
+\end{flushleft}
+%\begin{center}
+%\begin{tabular}{c@{\hspace{0.5in}}c}
+%\rule[1pt]{3.14in}{1pt}\\
+%Sotelo Cavero Sergio, 20172125K% & Nombre 5, 2017 \\[1.5cm]
+%\end{tabular}
+%\end{center}
+%\begin{center}
+%\begin{tabular}{c@{\hspace{0.6in}}c}
+%\rule[1pt]{3.14in}{1pt}\\
+%Huaroto Villavicencio Josué, 20174070I \\[2cm]
+%\rule[1pt]{3.14in}{1pt}\\
+%Landeo Sosa Bruno, 20174070I \\[2cm]
+%\rule[1pt]{3.14in}{1pt}\\
+%Quesquén Vitor Angel, 20172125K \\[2cm]
+%\rule[1pt]{3.14in}{1pt}\\
+%Sotelo Cavero Sergio, 20172125K \\[2cm]
+%\end{tabular}
+%\end{center}
+\begin{center}
+\begin{tabular}{c}
+\rule[1pt]{3.14in}{1pt}\\
+Huaroto Villavicencio Josué, 20174070I \\[2.5cm]
+\end{tabular}
+\end{center}
+%\rule[1pt]{3.14in}{1pt}\\
+%Maguiña Amaya Wladimir, 20172019F \\[3cm]
+%\rule[1pt]{3.14in}{1pt}\\
+%Luis Sosa Jose, 19774147I \\[3cm]
+%\rule[1pt]{3.14in}{1pt}\\
+%Sotelo Cavero Sergio, 20172125K
+%\end{tabular}
+%\end{center}
+%\\[0.7cm]
+{\large PROFESOR:} \\[2cm]
+\begin{center}
+\begin{tabular}{c}
+\rule[3pt]{4.8in}{1pt}\\[1pt]
+ING. SINCHI YUPANQUI, FRANCISCO 
+\end{tabular}
+\end{center}
+\vfill
+%\newpage
+%\begin{center}
+%{\Large \bf{RESUMEN}}
+%\end{center}
+\newpage
+\tableofcontents
+%\listoffigures
+%\addcontentsline{toc}{chapter}{Índice de figuras}
+\newpage
+\pagenumbering{arabic} %%% esto es para regresar el modo de numeración a numeración arábiga
+\setcounter{page}{1}  %%% empezamos en página 1
+%\part{Introducción}
+\chapter{Objetivos}
+\begin{enumerate}
+\item Analizar y evaluar experimentalmente la medida de potencia. Energía y factor de potencia en un circuito monofásico con ayuda de los instrumentos del laboratorio.
+\item Analizar y evaluar experimentalmente la medida de la corrección del factor de potencia en un circuito monofásico con ayuda de los instrumentos de laboratorio.
+\end{enumerate}
+\chapter{Energía y potencia eléctrica}
+La energía eléctrica se produce ante la presencia del movimiento de electrones, el cual es causado por una tensión eléctrica. La cantidad de energía eléctrica que se produzca dependerá entonces de cuántos electrones se trasladen por unidad de tiempo, el tiempo que perdure dicho movimiento y la magnitud de tensión que las ocasione. Para poder entender de manera clara lo señalado, se debe tener en cuenta que en condiciones de equilibrio, los átomos tienen la misma cantidad de protones y electrones, es decir, se encuentran estabilizados o neutralizados electrónicamente. Sin embargo, existen ocasiones en las cuales los átomos pueden descompensarse o electrizarse es decir tener una mayor cantidad de electrones o protones y, por lo tanto, una carga eléctrica (positiva o negativa), a estos átomos con carga eléctrica se les denomina iones.
+La presencia de los referidos átomos descompensados causa una tensión o voltaje (similar a la presión en el flujo de fluidos, como el agua o el aire), lo que provoca un flujo de electrones, es decir corriente eléctrica, que continúa hasta que se compensen las cargas eléctricas en los átomos. La cantidad de corriente eléctrica que se traslada por unidad de tiempo se denomina intensidad de corriente. En función de todos esos elementos, se puede definir la energía eléctrica como el producto del voltaje (V), la intensidad de la corriente eléctrica (I) y el tiempo transcurrido (t):
+$$
+E = V\,I\,t
+$$
+Donde:\\
+E : Energía eléctrica (medido en Watts por hora - Wh)\\
+V : Voltaje (medido en Voltios - V)\\
+I : Intensidad de corriente (medido en Amperios - A)\\
+t : Tiempo transcurrido (medido en Horas - h)\\
+Así como la energía eléctrica, otro concepto importante es el de potencia eléctrica, que en el caso de un circuito eléctrico o cuando se produzca energía a la máxima capacidad en un período determinado, la potencia eléctrica equivale a la energía eléctrica que se produce en cada unidad de tiempo, por lo tanto:
+$$
+P = \frac{E}{t}
+$$
+$$
+P = V\, I
+$$
+En el caso de la generación de energía eléctrica, se define a la potencia eléctrica, como la capacidad que se posee para generar electricidad. A modo de ejemplo, podemos decir que una generadora con una capacidad de 100 megawatts (MW), que produce en una hora 100 megawatts-hora (MWh), produciría en dos horas 200 MWh, en cuatro 400 MWh y así sucesivamente.
+\chapter{Medidores eléctricos}
+La separación entre las conexiones internas de cada uno de los usuarios del servicio eléctrico y la acometida correspondiente se produce en el medidor eléctrico.  El medidor eléctrico o contador de consumo eléctrico, está diseñado para cuantificar el consumo eléctrico efectuado por un agente durante un período de tiempo determinado.
+\section{Clasificación de los medidores eléctricos}
+Los medidores eléctricos se pueden clasificar de distintas formas tomando en consideración distintas características como la construcción del medidor, el tipo de energía y los parámetros que mide, y la conexión a la red eléctrica.
+\begin{itemize}
+\item Medidores electromecánicos o medidores de inducción:\\
+Este tipo de medidor registra el consumo eléctrico con el paso de la electricidad, la cual mueve un disco a una velocidad que es proporcional a la energía que se consume. Actualmente, éste es el tipo de medidor de uso más común en las conexiones de pequeños consumidores residenciales debido a sus menores costos en relación con los medidores electrónicos; por lo general, solo registran el consumo de energía sin incluir otros parámetros adicionales como, por ejemplo, la potencia.
+\item Medidores electromecánicos con registrador electrónico: \\
+Este tipo de medidores tiene una mecánica similar al modelo anterior. La diferencia se encuentra básicamente en que el disco giratorio que mide la energía consumida se conecta a un captador óptico, el cual muestra las cantidades de energía consumida a través de un registrador electrónico.
+\item Medidores electrónicos: \\
+Este tipo de medidores registran y muestran el consumo eléctrico a través de un sistema análogo – digital. Con esta tecnología se logra una medición más precisa de la electricidad consumida. Además de ello, algunos permiten medir otros parámetros del consumo eléctrico, como la energía reactiva, el factor de potencia, entre otros.
+\end{itemize}
+\chapter{Potencia aparente,efectiva,reactiva}
+La potencia eléctrica es el producto de la tensión por la corriente correspondiente. Podemos diferenciar los tres tipos:
+\begin{enumerate}
+\item Potencia aparente: $S = V\,I$
+\item Potencia efectiva: $P = V\,I\cos \phi$
+\item Potencia reactiva: $Q = V\,I\sin \phi$
+\end{enumerate}
+La potencia efectiva P se obtiene de multiplicar la potencia aparente S por el $\cos\phi$, el cual se le denomina como ``factor de potencia''. El ángulo formado en el triángulo de potencias por P y S equivale al desfase entre la corriente y la tensión y es el mismo ángulo de la impedancia; por lo tanto, el $\cos\phi$ depende directamente del desfase.
+\begin{thebibliography}{99}  %%%este es un contador para el número de bibliografías utilizados.
+\addcontentsline{toc}{chapter}{Bibliograf\'{\i}a} %%% Para introducir la bibliografía en el índice.
+%\bibitem{Rahman}{Rahman,Aminur y Doe, Hidekazu; ``Ion transfer of tetraalkylammonium cations at an interface between 
+%frozen aqueous solution and 1,2-dichloroethane".{\em{Journal of Electroanalytical Chemistry}} {\bfseries 424},159,(1997).}
+\bibitem{Gro}{Boylestad, Robert M. ``Introducción al análisis de circuitos''. {\em{Pearson}}}
+\bibitem{Gro}{Sadiku, Matthew N. ``Fundamemtos de circuitos eléctricos''. {\em{Mc Graw Hill}}}
+%\bibitem{Ding}{Ding, Zhifeng. ``Spectroelectrochemistry and photoelectrochemistry of charge transfer at liquid/liquid
+%interfaces". {\em {Tesis, EPFL,}}(1999).}
+%\bibitem{AL}{Alonso, Jose M. \em{Técnicas de mecanizado 1}}
+%\bibitem{AL}{Alonso, Jose M. ``Técnicas de mecanizado 1". {\em{Paraninfo}} {\bfseries España-Madrid}, 6-20, (2001).}
+%\bibitem{Samec2}{Samec Z., Lhotsky A., Jänchenová H., y Marecek, V. ``Interfacial tension and impedance measurements
+%of interfaces between two inmiscible electrolyte solutions". {\em{Journal of Electroanalytical Chemistry}} {\bfseries
+%43}, 47, (2000).}
+%\bibitem{Day}{Day R.A. y Underwood A.L. {\textit{Química Analítica Cuantitativa}},5ºed. Prentice-Hall, México, 1998. 45-48.}
+%\bibitem{Keyser}{Farah Abud, Michel. ``Determinación de la vida útil en herramientales de corte endurecido por el proceso de borurización en pasta''. {\em{Instituto tecnológico y de estudios superiores de Monterrey}}}
+%\bibitem{Zolotorevski}{Escalona, I. ``Máquinas: herramientas por arranque de viruta.''.{\em{El Cid Editor.}}}
+%\bibitem{Lasheras}{Lasheras. ``Tecnología de los Materiales Industriales''.} 
+%\bibitem{Dieter}{Dieter. ``Metalurgia mecánica''.}
+%\bibitem{Apraiz}{Apraiz, J. ``Tratamiento Térmico de los Aceros''.}
+%\bibitem{Smith}{Smith, William F. y Ph.D. Hashemi, Javad ``Ciencia e ingeniería de materiales". {\em{
+%Madrid: McGraw-Hill, Interamericana de España.}} 570, (2004).} 
+%\bibitem{Callister}{Callister, William D. y Rethwisch, David G. ``Introducción a la ingeniería de los materiales''. %{\em{Barcelona Reverté.}}, 960, (2007).} 
+%\bibitem{Askeland}{Askeland, Donald R., Pradeep P. Phulé y Wright, Wendelin J. ``Ciencia e ingeniería de los materiales''.{\em{México, D.F. Internacional Thomson Editores.}} {\textit{$6^{ta}$ edición}}, 1004, (2012).}
+%\bibitem{HARDBANDING}{Tabla de conversión de escala de durezas. \begin{verbatim}http://%hardbandingsolutions.com/postle_sp/hardness.php
+%\end{verbatim}}
+%\bibitem{HE}{Fresadora. \begin{verbatim} http://lizdenbow.blogspot.com/
+%\end{verbatim}}
+%\bibitem{ASTM}{Normas ASTM.}
+%\bibitem{NTP}{Normas NTP.}
+\end{thebibliography}
+\end{document}

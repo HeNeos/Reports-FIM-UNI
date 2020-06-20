@@ -1,0 +1,8 @@
+\babel@toc {spanish}{}
+\babel@toc {spanish}{}
+\contentsline {chapter}{\numberline {1}Objetivos}{1}% 
+\contentsline {chapter}{\numberline {2}Energía y potencia eléctrica}{2}% 
+\contentsline {chapter}{\numberline {3}Medidores eléctricos}{4}% 
+\contentsline {section}{\numberline {3.1}Clasificación de los medidores eléctricos}{4}% 
+\contentsline {chapter}{\numberline {4}Potencia aparente,efectiva,reactiva}{6}% 
+\contentsline {chapter}{Bibliograf\'{\i }a}{7}% 
