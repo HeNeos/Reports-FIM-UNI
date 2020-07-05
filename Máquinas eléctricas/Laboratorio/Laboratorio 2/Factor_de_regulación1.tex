@@ -1,0 +1,45 @@
+\documentclass{standalone}
+\usepackage{mathrsfs}
+\usepackage[x11names]{xcolor}
+\usepackage{tikz, tkz-euclide}
+\usepackage[american]{circuitikz}
+\usepackage{siunitx}
+\usepackage{textcomp}
+\usetikzlibrary{arrows}
+\begin{document}
+
+\begin{tikzpicture}[draw=DeepSkyBlue4,thick]
+\draw (0,0) to (5,0);
+\draw (6,0) to (11,0);
+\draw (0,0) to (0,6);
+\draw (0,6) to (5,6);
+\draw (6,6) to (11,6);
+\draw[draw opacity=0, fill=black!15] (0,3) circle (0.6);
+\tkzLabelPoint[above,blue](0.04,2.55){{\LARGE\(V_{1}\)}}
+\draw[draw opacity=0, fill=black] (0,0) circle (0.1);
+\draw[draw opacity=0, fill=black] (0,6) circle (0.1);
+
+\draw[draw opacity=0, fill=black] (5,0) circle (0.1);
+\draw[draw opacity=0, fill=black] (5,6) circle (0.1);
+
+\draw[draw opacity=0, fill=black] (6,0) circle (0.1);
+\draw[draw opacity=0, fill=black] (6,6) circle (0.1);
+
+\draw[draw opacity=0, fill=black] (11,0) circle (0.1);
+\draw[draw opacity=0, fill=black] (11,6) circle (0.1);
+
+\draw (5,6) to[L,color=Aquamarine4] (5,0));
+\draw (6,0) to[L,color=Aquamarine4] (6,6));
+
+\draw [->,>=stealth',thick,red] (0.5,5.7) -- (3.9,5.7);
+\draw [->,>=stealth',thick,red] (7.5,5.7) -- (10.5,5.7);
+
+\tkzLabelPoint[above,red](2.3,5){\Large{\( I_{1}\)}}
+\tkzLabelPoint[above,red](9.1,5){\Large{\( I_{2}\)}}
+
+\tkzLabelPoint[above,blue](10,2.8){\Large{\( Z_{L2}\)}}
+\tkzLabelPoint[above,blue](11.9,2.8){\Large{\( V_{2}\)}}
+
+\draw (11,0) to[european resistor, color=Aquamarine4] (11,6);
+\end{tikzpicture}
+\end{document}  
