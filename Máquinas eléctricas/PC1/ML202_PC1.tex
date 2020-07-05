@@ -1,0 +1,180 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{here}
+\newcommand{\mbf}{\mathbf} 
+\newcommand{\mrm}{\mathrm}
+\title{Primera práctica calificada: ML202B}
+\author{Josue Huaroto Villavicencio\\
+Código: 20174070I}
+\begin{document}
+\maketitle
+\section*{Problema 1}
+\begin{equation}
+NI_{1} - R_{1}\phi_{1} - 5\cdot 10^{-3}(R_{c}+R_{3}) = 0
+\end{equation}
+\begin{equation}
+NI_{2} - R_{2}\phi_{2} - 5\cdot 10^{-3}(R_{c}+R_{3}) = 0
+\end{equation}
+Ambas ecuaciones son idénticas debido a la simetría del circuito, entonces se puede concluir que:
+\begin{equation}
+\phi_{1} = \phi_{2} = 2.5\cdot 10^{-3} \mathrm{Wb}
+\end{equation}
+Para la rama central:
+$$
+B_{3} = \frac{5\cdot 10^{-3}}{S_{c}} = 1.0
+$$
+De la función B-H:
+$$
+H_{3} = 100
+$$
+Finalmente,
+$$
+R_{3} = \frac{l_{3}}{S_{c}\mu_{3}} = 6000
+$$
+Similarmente para la rama 1 y 2:
+$$
+B_{1} = B_{2} = 1
+$$
+$$
+H_{1} = H_{2} = 100
+$$
+$$
+R_{1} = R_{2} = 26000
+$$
+$$
+R_{c} = 795774.715459
+$$
+De la ecuación (1):
+$$
+I_{1} = I_{2} = \frac{R_{1}\phi_{1} + 5\cdot 10^{-3} (R_{c} + R_{3})}{N} = 11.31631549 \text{A}
+$$
+\section*{Problema 2}
+Hallamos el valor de $b$:
+$$
+b_{n} = nt = 0.04\mrm{m} \longrightarrow b = 0.038\mrm{m}
+$$
+Y las longitudes medias y áreas efectivas para cada tramo:
+$$
+l_{1} = l_{2} = 19+57+19-19+19+19-19/2 = 0.1045 \mrm{m}
+$$
+$$
+l_{3} = 19+57+19-19 = 0.076 \mrm{m}
+$$
+$$
+S_{1} = S_{2} = 0.000722 \mrm{m}^{2}
+$$
+$$
+S_{3} = 0.001444 \mrm{m}^{2}
+$$
+Construimos las ecuaciones del circuito
+\begin{equation}
+NI - (\phi_{1}+\phi_{2})R_{3} - \phi_{1}R_{1} = 0
+\end{equation}
+\begin{equation}
+NI - (\phi_{1}+\phi_{2})R_{3} - \phi_{1}R_{2} = 0
+\end{equation}
+Por la simetría del circuito, ambas ecuaciones (4) y (5) son iguales; entonces:
+\begin{equation}
+\phi_{1} = \phi_{2} = 0.75S_{3} = 0.001083 \mrm{Wb}
+\end{equation}
+Se halla los valores de $B$:
+$$
+B_{1} = B_{2} = B_{3} = 1.5\mrm{T}
+$$
+De la gráfica para H23, aproximamos $B$ a 1.49:
+$$
+B \approx 1.5 \longrightarrow H = 1117
+$$
+Con los valores de $B$ y $H$, hallamos $\mu$:
+$$
+\mu_{1} = \mu_{2} = \mu_{3} = 0.00134288272157
+$$
+Reemplazando para las reluctancias:
+$$
+R_{1} = R_{2} = 107780.70175438595
+$$
+$$
+R_{3} = 39192.98245614035
+$$
+De la condición del problema $L_{\max} = 0.4\mrm{H}$:
+\begin{equation}
+    \frac{N}{I} = \frac{0.4}{\phi_{1}+\phi_{2}}
+\end{equation}
+De la ecuación (4) y (7), resolviendo:
+\begin{equation}
+    N \approx 193\;\mrm{vueltas}, \hspace{40pt} I = 1.045095 \mrm{A}
+\end{equation}
+
+\section*{Problema 3}
+\begin{enumerate}
+    \item ¿Que es permeabilidad magnética? ¿Qué tipos existen y en qué unidades están
+dadas?\\
+La permeabilidad magnética es una característica de un material o medio; describe el comportamiento magnético relativo al vacío de un entorno.
+\begin{itemize}
+    \item $\mu_{r}$: Permeabilidad magnética relativa
+    \item $\mu_{0} = 4\pi\cdot 10^{-7}$: Permeabilidad magnética del vacío
+\end{itemize}
+Para materiales no ferromagnéticos, el valor de $\mu_{r} \approx 1$, mientras que para los ferromagnéticos, su valor es mucho más grande que 1.\\
+Sus unidades comúnmente son T-m/A-V
+    \item ¿cuales son las pérdidas en los materiales magnéticos, describa en forma detallada
+cada caso?
+\begin{itemize}
+    \item Pérdidas por histéresis. Representan una pérdida de energía que se manifiesta en forma de calor en los núcleos magnéticos. Su valor puede ser calculado al hallar el área bajo la curva en cada ciclo que realiza.
+    \item Pérdidas por Foucault. Su comprobación experimental demuestra que todo material conductor que confina un núcleo magnético \textbf{alterno} se calienta disipando energía en forma de calor; dichas pérdidas son las pérdidas por corriente de Foucault.
+\end{itemize}
+    \item Defina que es: Intensidad del campo magnético y densidad de flujo magnético.\\
+    \begin{itemize}
+        \item \textbf{Intensidad del campo magnético}. Es una medida que sirve para cuantificar el efecto que tiene un campo magnético sobre una partícula que esté atravesando dicho campo.
+        \item \textbf{Densidad del flujo magnético}. Cuantifica la intensidad del campo magnético sobre una región específica; de forma gráfica, representa cuantas \textit{líneas de fuerza} atraviesan una determinada área en el espacio.
+    \end{itemize}
+    \item Hacer un cuadro donde muestra: La magnitud, simbología y unidades en MKS, empleados en electromagnetismo, mínimo 6 unidades.\\
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|c|}
+            \hline
+             \textbf{Magnitud} & \textbf{Símbolo} & \textbf{Unidad} \\
+             \hline
+             Watt: Potencia & W & $\mrm{kg\,m^{2}/s^{3}}$ \\
+             Henrio: Indcutancia & H & $\mrm{m^{2}\,kg/c^{2}}$\\
+             Tesla:  Intensidad de flujo Magnético & T & $\mrm{kg/s^{2}\,A}$\\
+             Voltio: Voltaje & V & $\mrm{kg\,m^{2}/A\,s^{3}}$\\
+             Webber: Flujo magnético & \mrm{Wb} & $\mrm{kg\,m^{2}/A\,s^{2}}$\\
+             Ohmio:  Resistencia eléctirca & $\Omega$ & $\mrm{m^{2}\,kg/s^{3}A^{2}}$\\
+             \hline
+        \end{tabular}
+    \end{table}
+    \item Diga Usted que es reluctancia y permeancia.\\
+    \begin{itemize}
+        \item \textbf{Reluctancia.} Es la resistencia de un material o medio al paso de un flujo magnético; definido como la relación entre la fuerza magnetomotriz y el flujo magnético (Wb).
+        \item \textbf{Permeancia.} Es la facilidad que posee el flujo para atravesar un material. Mide la magnitud del flujo para un número de vueltas en un circuito eléctrico.
+    \end{itemize}
+\end{enumerate}
+\section*{Problema 4}
+De la condición del problema:
+$$
+\frac{N_{1}\phi_{1}}{I_{1}} = 1.5
+$$
+$$
+\frac{N_{2}\phi_{2}}{I_{2}} = ?
+$$
+Sabemos que:
+$$
+\phi_{\max} = \frac{V(t)}{2\pi f N \sin(\omega t + 90)}
+$$
+Entonces:
+$$
+\frac{\phi_{2}}{\phi_{1}} = \frac{V_{2}f_{1}}{V_{1}f_{2}} 
+$$
+Si dividimos las dos primeras ecuaciones:
+$$
+\frac{?}{1.5} = \frac{V_{2}f_{1}I_{1}}{V_{1}f_{2}I_{2}}
+$$
+Reemplazando:
+$$
+L_{2}^{2} = \frac{V_{2}f_{1}L^{2}_{1}}{V_{1}f_{2}} = 2.25
+$$
+Finalmente, $L_{2} = 1.5\,\mrm{H}$
+\end{document}
