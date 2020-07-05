@@ -1,0 +1,70 @@
+\documentclass{standalone}
+\usepackage{mathrsfs}
+\usepackage[x11names]{xcolor}
+\usepackage{tikz, tkz-euclide}
+\usepackage[american]{circuitikz}
+\usepackage{siunitx}
+\usepackage{textcomp}
+\usetikzlibrary{arrows}
+\begin{document}
+
+\begin{tikzpicture}[draw=DeepSkyBlue4,thin]
+\tkzDefPoints{
+0/0/A,
+2/0/B,
+8/0/C,
+11/0/D,
+16/0/E,
+
+16/8/F,
+13/8/G,
+11/8/H,
+8/8/I,
+5/8/J,
+3/5/K,
+0/8/L,
+
+5.5/3.3/T}
+
+
+\draw (0,0) to (2,0);
+\draw (2,0) to (8,0);
+\draw (8,0) to (11,0);
+\draw (11,0) to (16,0);
+
+\draw (16,0) to[cute inductor= {\LARGE \(V_{n}\) \textdblhyphen 127\text{V}}, color=Aquamarine4] (16,6)
+\tkzLabelPoint[above](14.5,3.6){{\LARGE Reactor}}
+
+\draw (16,6) to (13,6);
+\draw (13,6) to (13,7);
+\draw (13,7) to (11,7);
+\draw (11,7) to (11,6.6);
+\draw[draw opacity=0, fill=green!30] (11,6) circle (0.6);
+\tkzLabelPoint[above](11.05,5.7){{\LARGE\(W\)}}
+\draw (11,0) to (11,5.4);
+
+\draw (10.4,6) to (8,6);
+\draw (8,0) to (8,6);
+\draw (13,6) to (11.6,6);
+\draw[draw opacity=0, fill=blue!20] (8,3) circle (0.6);
+
+\tkzLabelPoint[above](8.03,2.7){{\LARGE\(V\)}}
+
+\draw (8,6) to (6.6,6);
+\draw[draw opacity=0, fill=red!20] (6,6) circle (0.6);
+\tkzLabelPoint[above](5.97,5.7){{\LARGE\(A\)}}
+\draw (5.4,6) to (4,6);
+\draw (4,6) to (4,3);
+\draw[->,line width=0.8mm] (4,3) -- (2.2,3);
+
+
+\draw (2,0) to[cute inductor, color=Aquamarine4] (2,6);
+\tkzLabelPoint[above](1,4.5){{\LARGE\(220\)V}}
+\tkzLabelPoint[above](1,1.5){{\LARGE\(60\)Hz}}
+\draw (2,6) to (0,6);
+\tkzLabelPoint[above](3.6,1.3){{\LARGE\((0-1.3)V_{n}\)}}
+
+\draw[draw opacity=0, fill=yellow!90] (0,6) circle (0.15);
+\draw[draw opacity=0, fill=yellow!90] (0,0) circle (0.15);
+\end{tikzpicture}
+\end{document}
