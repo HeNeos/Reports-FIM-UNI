@@ -1,0 +1,200 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-sloppy]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{here}
+\usepackage[left=1.8cm,right=1.8cm,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage{verbments}
+%\definecolor{fondo1}{rgb}{0.9764, 0.9764, 0.9762}
+%\definecolor{fondo2}{rgb}{0.1647, 0.4980, 0.7}
+\definecolor{fondo1}{rgb}{0.88, 0.88, 0.88}
+\definecolor{fondo2}{rgb}{0.15, 0.15, 0.5}
+\author{Josue Huaroto Villavicencio - 20174070I\\Sección: E}
+\title{2$^{\circ}$ Práctica de Cálculo por Elementos Finitos - MC516}
+\begin{document}
+\fvset{frame=bottomline, framerule=0.02cm,numbers=left, numbersep=8pt}
+\plset{language=python,texcl=true,listingnamefont=\sffamily\bfseries\color{white},captionbgcolor=fondo2, bgcolor=fondo1,listingname=\textbf{Código}, captionfont=\sffamily\color{white},fontsize=\normalsize}
+\maketitle
+%\tableofcontents
+\section{Diagrama de flujo}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.8]{Flujo.pdf}
+    \caption{Diagrama de flujo}
+\end{figure}
+\section{Ejecución del código}
+El solver principal se describió a detalle en el laboratorio anterior; por lo que, para este nuevo problema solo es necesario modificar las nuevas condiciones del problema.
+\begin{pyglist}[language=python,caption={Condiciones del problema},style=pastie]
+NodesCondition = []
+Nodes = 4 + 1
+E = 2*1e5 #MPA
+L = 1500 #mm
+b0 = 1000 #mm
+bf = 0 #mm
+e = 120 #mm
+P = 50000 #N
+K = []
+y = 0.0784532e-3 #N/mm3
+A = []
+alpha = 11e-6
+DeltaT = 85
+dL = L/(Nodes-1)
+
+for i in range(0,Nodes):
+    b = b0-i*((b0-bf)/(Nodes-1))
+    nb = b0-(i+1)*(b0-bf)/(Nodes-1)
+    A.append((b+nb)*e/2)
+for i in range(0,Nodes-1):
+    K.append([E*A[i]/(dL),i,i+1])
+
+NumberOfElement = len(K)
+StiffnessMatrix = np.zeros((Nodes,Nodes))
+U = np.zeros(Nodes).reshape(Nodes,1)
+F = np.zeros(Nodes).reshape(Nodes,1)
+Initialize(StiffnessMatrix,U,F)
+UBoundaryCondition(U,0,0)
+ 
+for i in range(1,Nodes):
+    W_T = E*(A[i-1])*alpha*DeltaT
+    W = y*0.5*(A[i]+A[i-1])*dL
+    if(i == 1):
+        W += y*0.5*(A[i-1])*dL
+    FBoundaryCondition(F,W+W_T,i)
+    FBoundaryCondition(F,-W_T,i-1)
+    
+FBoundaryCondition(F,y*0.5*A[Nodes-1]*dL,Nodes-1)
+FBoundaryCondition(F,P,NumberOfElement//2)
+ 
+U,F=Solve(StiffnessMatrix,U,F)
+
+print("Stiffness Matrix:\n",StiffnessMatrix,'\n')
+print("Displacements:\n",U,'\n')
+print("Forces:\n",F)
+\end{pyglist}
+Como puede observar, el código cambio realmente poco. Las modificaciones más significativas en el código recaen en el añadido de \textit{fuerzas térmicas}. También, se hizo una pequeña modificación a la formulación del modelo, para mejorar el tiempo de ejecución, haciendo que este sea 2 veces más rápido que el anterior:
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1.4]{Representation.pdf}
+    \caption{Representación esquemática del mallado}
+\end{figure}
+Al hacer el mallado de la geometría, notamos que no es posible añadir el peso en el centro de gravedad de un elemento porque dicho nodo no existe para tal elemento. En la figura 2 puede observar que si imaginariamente partimos un elemento en dos mitades y lo uniéramos a la mitad inferior del elemento siguiente, entonces existe un nodo en el centro de dicha unión; podemos aprovechar este nodo para colocar el peso de la mitad del elemento $i$ y la mitad del elemento $i+1$.
+\begin{enumerate}
+    \item Mallado con $n$ elementos y $n+1$ nodos
+    \item Iterar sobre elementos del 1 al $n-1$
+    \item Para un elemento $i$, colocamos el peso equivalente a la mitad del peso del elemento $i$ y $i+1$ juntos en el nodo $i+1$.
+    \item Colocamos la mitad faltante del elemento $1$ en el nodo $2$ y la mitad faltante del elemento $n$ en el nodo $n$.
+\end{enumerate}
+\section{Resultados del problema}
+Al finalizar la ejecución del solver, obtenemos las siguientes gráficas:
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{def40.pdf}
+    \caption{Desplazamientos con 40 elementos}
+    \includegraphics[scale = 0.6]{forze40.pdf}
+    \caption{Fuerzas con 40 elementos}
+\end{figure}
+Sin embargo; la gráfica de las fuerzas no es correcta, pues nos dice en realidad la reacción considerando la \textit{fuerza térmica}, que se incluyó solo por motivos de deformación. Como tal, dicha fuerza debe ser removida para la gráfica de esfuerzos:
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.52]{Stress_40_2.pdf}
+    %\caption{Esfuerzos para 40 elementos}
+    \includegraphics[scale = 0.52]{Stress_2.pdf}
+    \caption{Esfuerzos para 40 y 5000 elementos}
+\end{figure}
+Se observa, que luego de rectificar los esfuerzos para eliminar el componente térmico añadido, la gráfica de esfuerzos es la misma que para el caso no térmico. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.52]{N_Static_Stress.png}
+    \caption{Esfuerzos con 40 elementos para el caso no térmico}
+\end{figure}
+
+Esto comprueba con la teoría que los esfuerzos térmicos no son considerados debido a que su naturaleza no es mecánica, y solo deben tomarse en cuenta para las deformaciones como se detalla a continuación:
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.52]{Deformation_40_2.pdf}
+    %\caption{Deformaciones para 40 elementos}
+    \includegraphics[scale = 0.52]{Deformation_2.pdf}
+    \caption{Deformaciones para 40 y 5000 elementos}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.52]{N_Static_Deformation.png}
+    \caption{Deformaciones con 40 elementos para el caso no térmico}
+\end{figure}
+Como tal, es de esperarse que la reacción en el apoyo sea la misma que para el caso no térmico:\\
+La fuerza de reacción en el apoyo corresponde a la fuerza en el nodo 0: \fbox{-57060.788 N}
+
+\section{Problema generalizado para $n$ nodos}
+Al incrementar la cantidad de elementos y nodos, podemos observar que la reacción en el nodo 0 aumenta en magnitud; esto puede ser explicado considerando que la fuerza térmica añadida no depende de la longitud del elemento, y esta fuerza se aplicará sobre todos los elementos, por tanto, al incrementar la cantidad de elementos esta fuerza aparecerá mas veces haciendo que la reacción sea más grande. No obstante; estos valores convergen a un valor exacto teórico:
+\begin{equation}
+    F_{0} = P + EA_{0}\alpha \Delta T + \sum_{i \in \mathrm{Nodes}}  W_{i} = P + W + E(b\times e)\alpha\Delta T = 22497060.788 \mathrm{N}
+\end{equation}
+Donde, la componente térmica es igual a $22440000$ N; si restamos ambos resultados obtenemos el valor real de la reacción $ = 57060.7879$ N.
+\section{Verificación de resultados}
+Para la verificación de los cálculos se utilizó el software Fusion 360.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.272]{Static_Stress.png}
+    \caption{Esfuerzos para el caso estático}
+    \includegraphics[scale = 0.272]{Static_Deformation.png}
+    \caption{Deformaciones para el caso estático}
+    \includegraphics[scale = 0.272]{Termic_Stress.png}
+    \caption{Esfuerzos para el caso térmico}
+    \includegraphics[scale = 0.272]{Termic_Deformation.png}
+    \caption{Deformaciones para el caso térmico}
+\end{figure}
+
+\section{Conclusiones}
+\begin{enumerate}
+\item Se sugiere usar un elemento de mayor dimensión para poder modelar de forma más precisa los esfuerzos y deformaciones.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.24]{Termic_MaxStress.png}
+    \caption{Esfuerzo máximo}
+\end{figure}
+El esfuerzo máximo es distinto al calculado debido a que la fuerza se aplica de forma puntual y no de forma distribuida sobre un área; tan bien, sabemos que la reacción en el apoyo no se distribuye de forma regular sobre el área, sino que hay un mayor esfuerzo en las esquinas.
+\item La deformación total es mayormente debida a la deformación térmica y no debido a las cargas mecánicas y por tanto la deformación tiene una tendencia lineal.
+\item Se logra verificar que efectivamente, la presencia de una diferencia de temperatura no genera esfuerzos de origen mecánico al no encontrar un tope en su libre desplazamiento.
+\item Es posible despreciar el peso de la placa porque es muy pequeña la fuerza en comparación con la carga central.
+\item La cantidad de elementos para la convergencia de la solución es de aproximadamente 50.
+\item El modelo de colocar el peso en un nodo compartido por elementos distintos nos ayuda a mejorar el tiempo de ejecución y con la misma precisión.
+\item El tiempo esperado por solución es de a lo mucho 3 segundos para 10000 elementos en C++.
+\item La implementación del código en MATLAB es más simple y corta pero demasiado lenta; tardando varios minutos para ejecutar 1000 elementos.
+\item Debido a limitaciones de memoria no es posible usar más elementos, siendo el límite de 20000 elementos; usando 3.2 GB de RAM.
+\end{enumerate}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline 
+Lenguaje/Cantidad de elementos & Tiempo de ejecución (s) \\ 
+\hline 
+C++/5000 & 1.2 \\ 
+\hline 
+Python/5000 & 4.34 \\ 
+\hline 
+MATLAB/5000 & 1954.7 \\ 
+\hline 
+\end{tabular}
+\end{center}
+\begin{thebibliography}{9}
+\bibitem{d1} Optimized methods in FEM:\\
+https://www.sciencedirect.com/topics/engineering/gauss-seidel-method
+\bibitem{d3}
+Strassen Algorithm:\\
+https://www.sciencedirect.com/science/article/pii/0898122195002162
+\bibitem{d3}
+Sparse Matrix:\\
+https://en.wikipedia.org/wiki/Sparse$\_$matrix
+\bibitem{d4}
+Sparse Matrix Library:\\
+https://github.com/uestla/Sparse-Matrix
+\bibitem{d5}
+Mailman algorithm:\\
+http://www.cs.yale.edu/homes/el327/papers/matrixVectorApp.pdf
+\bibitem{d6}
+Fast Algorithms with Preprocessing for Matrix-Vector Multiplication Problems:\\
+https://www.sciencedirect.com/science/article/pii/S0885064X84710211
+\end{thebibliography}
+\end{document}
