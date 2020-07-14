@@ -36,14 +36,14 @@ end
 
 function newS = PreSolvingS(S,NodesCondition)
   Nodes = size(S)(1);
-  nsize = Nodes-size(NodesCondition)(1);
+  nsize = Nodes-size(NodesCondition)(2);
   newS = zeros(nsize,nsize);
   contr = 0;
   for i=1:Nodes
     contc = 0;
     flagr = 0;
-    for k=1:size(NodesCondition)(1)
-      if i==NodesCondition
+    for k=1:size(NodesCondition)(2)
+      if i==NodesCondition(k)
         flagr = 1;
         break
       end
@@ -54,7 +54,7 @@ function newS = PreSolvingS(S,NodesCondition)
     contr += 1;
     for j=1:Nodes
       flagc = 0;
-      for k=1:size(NodesCondition)(1)
+      for k=1:size(NodesCondition)(2)
         if j==NodesCondition(k)
           flagc = 1;
           break
@@ -71,13 +71,13 @@ end
 
 function newF = PreSolvingF(nF,nS,nU,NodesCondition)
   Nodes = size(nF)(1);
-  nsize = Nodes-size(NodesCondition)(1);
+  nsize = Nodes-size(NodesCondition)(2);
   newF = zeros(nsize,1);
   contr = 0;
   for i=1:Nodes
     flagr = 0;
-    for k=1:NodesCondition
-      if(i == NodesCondition(k))
+    for k=1:size(NodesCondition)(2)
+      if i == NodesCondition(k)
         flagr = 1;
         break
       end
@@ -91,7 +91,7 @@ function newF = PreSolvingF(nF,nS,nU,NodesCondition)
   end
     for i=1:Nodes
       flagr = 0;
-      for k=1:size(NodesCondition)(1)
+      for k=1:size(NodesCondition)(2)
         if i==NodesCondition(k)
           flagr = 1;
           break
@@ -113,7 +113,7 @@ function [nU, nF] = Solve(nS, nU, nF, NodesCondition)
   contr = 0;
   for i=1:Nodes
     flagr = 0;
-    for k=1:size(NodesCondition)(1)
+    for k=1:size(NodesCondition)(2)
       if i == NodesCondition(k)
         flagr = 1;
         break
