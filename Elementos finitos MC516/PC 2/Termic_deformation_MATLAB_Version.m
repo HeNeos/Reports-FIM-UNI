@@ -36,74 +36,74 @@ end
 
 function newS = PreSolvingS(S,NodesCondition)
   Nodes = size(S)(1);
-  nsize = Nodes-size(NodesCondition)(1);
+  nsize = Nodes-size(NodesCondition)(2);
   newS = zeros(nsize,nsize);
   contr = 0;
   for i=1:Nodes
     contc = 0;
     flagr = 0;
-    for k=1:size(NodesCondition)(1)
-      if i==NodesCondition
+    for k=1:size(NodesCondition)(2)
+      if i==NodesCondition(k)
         flagr = 1;
         break
-      end
-    end
+      endif
+    endfor
     if flagr == 1
       continue
-    end
+    endif
     contr += 1;
     for j=1:Nodes
       flagc = 0;
-      for k=1:size(NodesCondition)(1)
+      for k=1:size(NodesCondition)(2)
         if j==NodesCondition(k)
           flagc = 1;
           break
-        end
-      end
+        endif
+      endfor
       if flagc == 1
         continue
-      end
+      endif
       contc += 1;
       newS(contr,contc) = S(i,j);
-    end
-  end
-end
+    endfor
+  endfor
+endfunction
 
 function newF = PreSolvingF(nF,nS,nU,NodesCondition)
   Nodes = size(nF)(1);
-  nsize = Nodes-size(NodesCondition)(1);
+  nsize = Nodes-size(NodesCondition)(2);
   newF = zeros(nsize,1);
   contr = 0;
   for i=1:Nodes
     flagr = 0;
-    for k=1:NodesCondition
-      if(i == NodesCondition(k))
+    for k=1:size(NodesCondition)(2)
+      if i == NodesCondition(k)
         flagr = 1;
         break
-      end
-    end
+      endif
+    endfor
     if flagr == 1
       for k=1:Nodes
         nF(k,1) = nF(k,1) - nS(k,1)*nU(i,1);
-      end
+      endfor
       continue
-    end
-  end
+    endif
+  endfor
     for i=1:Nodes
       flagr = 0;
-      for k=1:size(NodesCondition)(1)
+      for k=1:size(NodesCondition)(2)
         if i==NodesCondition(k)
           flagr = 1;
           break
-        end
-      end
+        endif
+      endfor
       if flagr == 1
         continue
-      end
+      endif
       contr += 1;
       newF(contr,1) = nF(i,1);
-    end
-end
+    endfor
+endfunction
 
 function [nU, nF] = Solve(nS, nU, nF, NodesCondition)
   Nodes = size(nS)(1);
@@ -113,20 +113,20 @@ function [nU, nF] = Solve(nS, nU, nF, NodesCondition)
   contr = 0;
   for i=1:Nodes
     flagr = 0;
-    for k=1:size(NodesCondition)(1)
+    for k=1:size(NodesCondition)(2)
       if i == NodesCondition(k)
         flagr = 1;
         break
-      end
-    end
+      endif
+    endfor
     if flagr == 1
       continue
-    end
+    endif
     contr += 1;
     nU(i,1) = u(contr,1);
-  end
+  endfor
   nF = nS*nU;
-end
+endfunction
 
 
 
