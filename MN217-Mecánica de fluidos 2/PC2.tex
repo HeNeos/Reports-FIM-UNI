@@ -1,0 +1,324 @@
+\documentclass[a4paper,12pt]{exam}
+\usepackage[spanish,es-sloppy]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{here}
+\author{Josue Huaroto Villavicencio}
+\date{Código: 20174070I \hspace{90pt} Sección: B}
+\title{2$^{\circ}$ Práctica califica MN217}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\footer{}{\thepage}{}
+\usepackage{amssymb}
+\usepackage[left=1.5cm,right=1.5cm,top=1.8cm,bottom=1.8cm]{geometry}
+\pointpoints{punto}{puntos}
+\bonuspointpoints{punto extra}{puntos extra}
+\chqword{Pregunta}
+\chpgword{Página}
+\chpword{Puntos}
+\chbpword{Puntos extra}
+\chsword{Puntos obtenidos}
+\chtword{Total}
+\begin{document}
+\maketitle
+\begin{questions} 
+\question[4] Un tubo de 150\,mm se ramifica en dos ramales, uno de 100\,mm y otro de 50\,mm, como se aprecia en la figura. Ambos tubos son de cobre y miden 30\,m de longitud. El fluido es de DR $= 0.823$; viscosidad cinemática $\nu = 1.99\cdot 10^{-6}\,\mathrm{m^{2}/s}$. Determine, ¿cuál debe de ser el coeficiente de Resistencia $K$ de la válvula, con el fin de obtener el mismo flujo volumétrico de 550 L/min en cada ramal?
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{pr1.png}
+\end{figure}
+\textbf{Solución:\\}
+De la condición del problema de $\dot{\forall}_{1} = \dot{\forall}_{2} = 550\,$L/min; por la ecuación de continuidad, el flujo en la tubería de 150\,mm debe ser $\dot{\forall}_{1}+\dot{\forall}_{2} = 1100\,$L/min $ = \dot{\forall}$.\\
+De los datos del fluido:
+\begin{itemize}
+\item $\rho = 0.823\,\mathrm{kg/m^{3}}$
+\item $\nu = 1.99\cdot 10^{-6}\, \mathrm{m^{2}/s}$
+\end{itemize}
+Suponemos que los tubos utilizados son de cobre tipo K. Tomando como valores los de la tabla muy aproximados a los del problema:
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline 
+$D_{i} = 100\,\mathrm{mm}$ & $D_{i} = 50\,\mathrm{mm} $ \\ 
+\hline 
+$D_{e} \approx 104.8\,\mathrm{mm}$ & $D_{e} \approx 53.98\,\mathrm{mm} $ \\ 
+\hline 
+$e \approx 0.0015\,\mathrm{mm}$ & $e \approx 0.0015\,\mathrm{mm}$ \\ 
+\hline 
+$A_{f} \approx 7.538\cdot 10^{-3}\,\mathrm{m^{2}}$ & $A_{f} \approx 1.945\cdot 10^{-3}\,\mathrm{m^{2}}$ \\ 
+\hline 
+$L = 30\,\mathrm{m}$ & $L = 30\,\mathrm{m}$ \\ 
+\hline 
+\end{tabular} 
+\end{center}
+Teniendo el caudal que pasa por cada tubo, podemos hallar las velocidades en cada uno de ellos:
+$$
+v_{1} = 1.216\,\mathrm{m/s} \hspace{40pt} v_{2} = 4.7129\,\mathrm{m/s}
+$$
+Y también el número de Reynolds para cada uno:
+$$
+\mathrm{Re_{1}} = 58650.084 \hspace{40pt} \mathrm{Re_{2}} = 117300.17
+$$
+Llegamos a la conclusión de que ambos son turbulentos.\\
+Calculando las pérdidas:\\
+\textit{Tubería de 100\,mm:}\\
+$$
+h_{f}+h_{s} = f\frac{L}{D} \frac{v^{2}}{2g} + \lambda \frac{v^{2}}{2g} + K\frac{v^{2}}{2g}
+$$
+De la ecuación de Colebrook:
+$$
+\frac{1}{\sqrt{f}} = -2\log \left(\frac{e/D}{3.7} + \frac{2.51}{\mathrm{Re}\sqrt{f}}\right) \longrightarrow f = 0.02022
+$$
+Pérdidas primarias = $0.02022\cdot\frac{30\,\mathrm{m}}{100\,\mathrm{mm}}\cdot \frac{(1.1216\mathrm{m/s})^{2}}{2\cdot 9.81\mathrm{m/s^{2}}} = 0.3889\,\mathrm{m}$.\\
+Considerando que los codos son atornillados, según ``Pipe Friction Manual''; el $\lambda$ de los codos es de aproximadamente 0.63.\\[4pt]
+Pérdidas secundarias = $0.63\cdot \frac{(1.1216\mathrm{m/s})^{2}}{2\cdot 9.81\mathrm{m/s^{2}}} = 0.04039\,\mathrm{m} \cdot 2 = 0.080789\,\mathrm{m}$\\[4pt]
+Pérdida de la válvula = $K\cdot \frac{(1.1216\mathrm{m/s})^{2}}{2\cdot 9.81\mathrm{m/s^{2}}} = 0.06412 K\,\mathrm{m}$\\[4pt]
+Pérdidas totales = $0.469689 + 0.06412K$\\[5pt]
+\textit{Tubería de 50\,mm:}\\
+$$
+h_{f}+h_{s} = f\frac{L}{D} \frac{v^{2}}{2g} + \lambda \frac{v^{2}}{2g}
+$$
+De la ecuación de Colebrook:
+$$
+\frac{1}{\sqrt{f}} = -2\log \left(\frac{e/D}{3.7} + \frac{2.51}{\mathrm{Re}\sqrt{f}}\right) \longrightarrow f = 0.01758
+$$
+Pérdidas primarias = $0.01758\cdot\frac{30\,\mathrm{m}}{50\,\mathrm{mm}}\cdot \frac{(4.7129\mathrm{m/s})^{2}}{2\cdot 9.81\mathrm{m/s^{2}}} = 11.941189\,\mathrm{m}$.\\[4pt]
+Pérdidas secundarias = $0.63\cdot \frac{(4.7129\mathrm{m/s})^{2}}{2\cdot 9.81\mathrm{m/s^{2}}} = 0.713211\,\mathrm{m} \cdot 2 = 1.426422\,\mathrm{m}$\\[4pt]
+Pérdidas totales = 46.53912\,m\\[5pt]
+En las tuberías en paralelo la pérdida debe mantenerse constante:
+$$
+13.367611 = 0.469689 + 0.06412K \longrightarrow \fbox{$K$ = 201.15287}
+$$
+Si usamos longitud equivalente en vez de lambda: \\
+$$
+13.1353 = 0.466687+0.06412K \longrightarrow \fbox{$K$ = 197.57674}
+$$
+\newpage
+\question[4] En la coraza de la figura fluye agua a 10$^{\circ}$C a razón de 850\,L/min. La coraza está hecha de tubo de cobre de 2 pulgadas, tipo K, y los tubos también son de cobre de 3/8 pulg, tipo K. La longitud del intercambiador es de 10.80\,m.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{pr2.png}
+\end{figure}
+\begin{parts}
+\part Calcule el número de Reynolds para el flujo en la coraza.\\
+Hallando el caudal:
+$$
+\forall = 850\,\mathrm{L/min} = 0.01417\,\mathrm{m^{3}/s}
+$$
+El área a utilizar sería el área de la coraza restada de los 4 canales:
+$$
+A = 1.945\cdot 10^{-3} -4\times 1.267\cdot 10^{-4}\,\mathrm{m^{2}} = 1.4382\cdot 10^{-3}\mathrm{m^{2}}
+$$
+Mientras que el perímetro sería igual a $\pi\cdot D_{\mathrm{cor}} + 4\times \pi D_{\mathrm{canal}} = 0.3155\mathrm{m}$.
+$$
+D_{H} = 4\frac{A}{p} = 18.2315\,\mathrm{mm} 
+$$
+De la expresión del caudal, hallamos la velocidad $v$:
+$$
+v = \frac{Q}{A} = 9.8526\,\mathrm{m/s}
+$$
+Con estos valores ya hallados se puede hallar el número de Reynolds:
+$$
+\mathrm{Re} = \frac{v\,D_{H}}{\nu} = \fbox{138175.61 = Re}
+$$
+\part Determine la potencia del motor eléctrico ($\eta_{m}=98\%$) que accione a la bomba ($\eta_{B}=83\%$).\\
+Para determinar las pérdidas, primero hallamos el valor de $f$ que se obtiene por la ecuación de Colebrook:
+$$
+\frac{1}{\sqrt{f}} = -2\log \left(\frac{e/D}{3.7} + \frac{2.51}{\mathrm{Re}\sqrt{f}}\right) 
+$$
+Del problema 3, ya se desarrolló una implementación en Python para hallar el valor de $f$ mediante binary search:
+$$
+f = 0.017353858338478363
+$$
+Con los valores, se puede hallar la pérdida primaria:
+$$
+h = f\frac{L}{D_{H}}\frac{v^{2}}{2g} = 0.01735386\cdot \frac{10.8}{0.0182315}\frac{9.8526^{2}}{2\cdot 9.81} = 50.8588\,\mathrm{m}
+$$
+Considerando que el \textbf{intercambiador es horizontal}:
+$$
+P_{H} = 9.81\cdot 0.01417 \cdot 50.8588 = 7.0698\,\mathrm{kW} \longrightarrow \fbox{$P_{B} = \frac{7.0698}{0.98\times 0.83} = 8.6917\,\mathrm{kW}$}
+$$
+Si consideramos que el \textbf{intercambiador es vertical}:
+$$
+P_{H} = 9.81\cdot 0.01417\cdot (50.8588 + 10.8) = 8.571\,\mathrm{kW} \longrightarrow \fbox{$P_{B} = 10.5373\,\mathrm{kW}$}
+$$
+\part Determine el costo de la energía eléctrica anual del equipo impulso, si funciona un promedio de 9\,h/día, durante todo el año. El costo de la energía es de \$0.485/kW-h.\\
+Si el \textbf{intercambiador es vertical}:
+$$
+\mathrm{Costo\;\;anual} = 10.5373\,\mathrm{kW}\times 3265\,\text{h/año}\times 0.485\,\mathrm{\$/kWh} = \mathrm{U\$D}\, 16788.29
+$$
+Si el \textbf{intercambiador es horizontal}:
+$$
+\mathrm{Costo\;\;anual} = 8.6917\,\mathrm{kW}\times 3265\,\text{h/año}\times 0.485\,\mathrm{\$/kWh} = \mathrm{U\$D}\, 13847.83
+$$
+\end{parts}
+\newpage
+\question[4] Considere el P1, donde la válvula tiene un valor de L/D = 240; elabore:
+\begin{parts}
+\part El Diagrama de Flujo para determinar los caudales en los ramales 1 y 2.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.85]{flujo.png}
+\end{figure}
+\begin{figure}[H]
+\includegraphics[scale=0.52]{code1.png}
+\caption{Código del problema 3 implementado en Python}
+\end{figure}
+\part El gráfico de $\mathrm{Q_{T}}$ vs $\mathrm{Q_{1}, Q_{2}}$. Para $\mathrm{Q_{T}}$=500 L/min, 550, 600, 650, 700 y 750 L/min.\\
+Obteniendo los siguientes datos:
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline 
+$Q_{t}\;(\mathrm{L/s})$ & $Q_{1}\;(\mathrm{L/s})$ & $Q_{2}\;$(L/s) & $v_{1}\;$(m/s) & $v_{2}\;$(m/s) \\ 
+\hline 
+500 & 400.2587544 & 99.7412456 & 0.88498 & 0.85468077 \\ 
+\hline 
+550 & 441.4885992 & 108.5114008 & 0.97614 & 0.929832055 \\ 
+\hline 
+600 & 482.639295 & 117.360705 & 1.067125 & 1.005661568 \\ 
+\hline 
+650 & 523.7221488 & 126.2778512 & 1.15796 & 1.082072418 \\ 
+\hline 
+700 &  564.7484676 & 135.2515324 & 1.24867 & 1.15896771551\\ 
+\hline 
+750 & 605.7295584 & 144.2704416 & 1.33928 & 1.23625057 \\ 
+\hline 
+\end{tabular} 
+\end{center}
+Graficamos los valores de $Q_{t}\,\mathrm{vs}\, Q_{1}$ y $Q_{t}\,\mathrm{vs}\,Q_{2}$
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{q1vsqt.pdf}
+\caption{$Q_{t}$ vs $Q_{1}$}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{q2vsqt.pdf}
+\caption{$Q_{t}$ vs $Q_{2}$}
+\end{figure}
+Si consideramos en los codos una perdida de longitud equivalente = 30:
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.72]{aux1.pdf}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.72]{aux2.pdf}
+\end{figure}
+Y los valores son:
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline 
+$Q_{t}\;(\mathrm{L/s})$ & $Q_{1}\;(\mathrm{L/s})$ & $Q_{2}\;$(L/s) \\ 
+\hline 
+500 & 400.8964692 & 99.10353\\ 
+\hline 
+550 & 442.194156 & 107.805844\\ 
+\hline 
+600 & 483.4104324 & 116.5895676\\ 
+\hline 
+650 & 524.565651 & 125.434349\\ 
+\hline 
+700 & 565.6688574 & 134.3311426\\ 
+\hline 
+750 & 606.7268358 & 143.2731642\\ 
+\hline 
+\end{tabular} 
+\end{center}
+Los valores obtenidos se ajustan a los datos presentados antes. Sin embargo, la gráfica es un tanto peculiar que se mantenga lineal; para corroborar los resultados se procedió a probar con 100 valores distintos de caudal para graficar los respectivos $Q_{t}$ vs $Q_{1}$ y $Q_{t}$ vs $Q_{2}$: 
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.76]{ext1.png}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.76]{ext2.png}
+\end{figure}
+Se probó con un caudal de $Q_{t}$ desde 50 hasta 5500 L/min. Se observa una pequeña desviación de los datos para valores muy pequeños, siendo que esto se deba a que el fluido se vuelve de régimen laminar al tener un caudal muy bajo.\\
+También se tomó valores para $\lambda$ distinto en los codos. Se observa en el gráfico que, manteniendo el caudal $Q_{t}$ constante, los valores de $Q_{1}, Q_{2}$ se distribuyen de manera lineal respecto a $\lambda$. Este comportamiento se observa para todos los valores de $Q_{t}$ como se detalla en la imagen:
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.8]{ext3.pdf}
+\end{figure}
+\end{parts}
+\newpage
+\question[4] Considere el flujo de aire a 15$^{\circ}$C sobre la placa pana delgada, lisa y de ancho $b$, que se muestra en la figura.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{pr4.png}
+\end{figure}
+El flujo sobre el lado inferior de la placa es turbulento sobre toda la placa, y el flujo sobre el lado superior es laminar en la parte frontal y después se hace turbulento. Compare la resistencia por unidad de ancho sobre la pared superior con el de la mitad inferior. La velocidad de corriente libre es de 10\,m/s; considere las longitudes $X_{\mathrm{crit}}$ y $L = 2 X_{\mathrm{crit}}$.\\
+A temperatura de 15$^{\circ}$C.
+$$
+\nu = 1.46\cdot 10^(-5) m^{2}/s
+$$
+Para el número de Reynolds:
+$$
+\mathrm{Re} = \frac{10\cdot (2X_{\mathrm{crit}})}{1.46\cdot 10^{-5}}=1369863.014\cdot X_{crit}
+$$
+El flujo es turbulento; hallamos el valor de $X_{crit}$ para el cual aún se mantiene laminar:
+$$
+X_{crit} = 0.73\,\mathrm{m}
+$$
+El espesor en la capa límite:
+$$
+\delta_{c}=\frac{(5.20\times X_{crit})}{\sqrt{(\mathrm{Re}_{crit}}}=  \frac{5.2\cdot 0.73}{\sqrt{500000}}=5.3683\,\mathrm{mm}
+$$
+La resistencia superficial es igual a la resistencia producida en la zona de laminar y la resistencia en la zona turbulenta.\\
+La resistencia laminar por unidad de ancho en la cara superior.
+$$
+R_{L}= \frac{C_{D}\cdot \rho\cdot A\cdot v^{2}}{2}= \frac{1.328}{\sqrt{500000}}\cdot 1.225 \cdot 0.73\cdot \frac{10^{2}}{2}= 0.08397\,\mathrm{kg/m}
+$$
+Mientras que la resistencia turbulenta por unidad de ancho.
+$$
+R_{T}= \frac{0.074}{1000000^{0.2}}\cdot 1.225 \cdot 1.46 \cdot \frac{10^{2}}{2} = 0.4175\,\mathrm{kg/m}
+$$
+La resistencia turbulenta ficticia por unidad de ancho hasta el $X_{crit}$.
+$$
+R_{\mathrm{Ficticia}} = \frac{0.074}{500000^{0.2}}\cdot 1.225 \cdot 0.73 \cdot \frac{10^{2}}{2}= 0.2398\,\mathrm{kg/m}
+$$
+Resistencia por unidad de ancho en la cara superior:
+$$
+R_{S} = \frac{0.08397}{0.4175-0.2398}= 0.26167\,\mathrm{kg/m}
+$$
+La resistencia turbulenta por unidad de ancho para la cara inferior:
+$$
+R_{I} = \frac{0.074}{999999.9998^{0.2}}\cdot 1.225\cdot 0.73\cdot \frac{10^{2}}{2} = 0.2087\,\mathrm{kg/m}
+$$
+Comparamos las resistencias de la cara superior y la cara inferior; observamos que hay mayor oposición en la cara superior que en la inferior; esto debido a que se desarrolla un flujo turbulento.
+$$
+\fbox{$R_{S}/R_{I} = 1.2538$}
+$$
+$$
+R_{S}=1.2536\,R_{I}
+$$
+\newpage
+\question[4] Determine la resistencia superficial total de un tren de pasajeros que viaja a 50\,mph. El tren mide 600\,pies de longitud y tiene un área de sección transversal cuadrada de 100\,pies$^{2}$.\\
+\underline{Sugerencia:} Considere que el tren tiene superficies lisa sin interrupciones e ignore el lado 
+del fondo.
+Suponiendo que el fluido sobre el que se trabaja es aire a temperatura ambiente:
+$$
+\nu = 1.51\cdot 10^{-5}
+$$
+Entonces, el número de Reynolds sería:
+$$
+\mathrm{Re} = \frac{v\cdot L}{\nu} = 2.707\cdot 10^{8}
+$$
+El flujo será turbulento, hallamos el valor de $x$ para el cual aún se mantiene como laminar:
+$$
+\mathrm{Re} = \frac{v\cdot x}{\nu} = 5\cdot 10^{5} \longrightarrow x = 0.3378\,\mathrm{m}
+$$
+Ahora podemos hallar los valores de $C_{Af}$ para la parte laminar y turbulenta:
+$$
+C_{Afl} = \frac{1.328}{\sqrt{Re}} = 1.878\cdot 10^{-3} \hspace{30pt} C_{Afl} = \frac{0.074}{\sqrt[5]{\mathrm{Re}}} = 5.363\cdot 10^{-3} \hspace{30pt} C_{Aft} = \frac{3.913}{(\ln\mathrm{Re})^{2.58}} = 1.858\cdot 10^{-3}
+$$
+Con los valores obtenidos se puede hallar la fuerza $F$:
+$$
+F = \frac{\rho}{2} u_{\infty}^{2} \cdot b\cdot (C_{Afl}\cdot x + C_{Afl}\cdot L - C_{Aft}\cdot x) = 310.42\,\mathrm{N}
+$$
+Siendo la resistencia total, 3 veces el $F$ hallado por estar sometido al fluido en 3 direcciones, $x,y,z$:
+$$
+\fbox{$F_{T} = 931.258\,\mathrm{N}$}
+$$
+\end{questions}
+\end{document}

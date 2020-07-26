@@ -1,0 +1,11 @@
+\babel@toc {spanish}{}
+\contentsline {chapter}{\numberline {1}Objetivos}{1}% 
+\contentsline {chapter}{\numberline {2}Fundamento te\IeC {\'o}rico}{2}% 
+\contentsline {chapter}{\numberline {3}Materiales}{4}% 
+\contentsline {chapter}{\numberline {4}C\IeC {\'a}lculos y resultados}{6}% 
+\contentsline {section}{\numberline {4.1}Potencia el\IeC {\'e}ctrica}{6}% 
+\contentsline {section}{\numberline {4.2}Potencia mec\IeC {\'a}nica}{7}% 
+\contentsline {section}{\numberline {4.3}C\IeC {\'a}lculo de potencia mec\IeC {\'a}nica}{7}% 
+\contentsline {section}{\numberline {4.4}C\IeC {\'a}lculo de eficiencia}{8}% 
+\contentsline {chapter}{\numberline {5}Conclusiones y recomendaciones}{10}% 
+\contentsline {chapter}{Bibliograf\'{\i }a}{11}% 

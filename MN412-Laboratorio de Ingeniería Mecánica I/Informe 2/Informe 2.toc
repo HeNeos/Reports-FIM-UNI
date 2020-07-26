@@ -1,0 +1,13 @@
+\babel@toc {spanish}{}
+\contentsline {chapter}{\numberline {1}Objetivos}{1}% 
+\contentsline {chapter}{\numberline {2}C\IeC {\'a}lculos y resultados}{2}% 
+\contentsline {section}{\numberline {2.1}Estudio del flujo en vertedero triangular}{2}% 
+\contentsline {subsection}{\numberline {2.1.1}Relaci\IeC {\'o}n entre el tanque y el caudal en la salida}{2}% 
+\contentsline {subsection}{\numberline {2.1.2}Relaci\IeC {\'o}n entre el caudal y la altura del medidor flotante para el perfil triangular}{3}% 
+\contentsline {section}{\numberline {2.2}Tubo de Venturi}{5}% 
+\contentsline {section}{\numberline {2.3}Placa orificio}{5}% 
+\contentsline {subsection}{\numberline {2.3.1}Procedimiento}{5}% 
+\contentsline {subsection}{\numberline {2.3.2}C\IeC {\'a}lculos y resultados}{6}% 
+\contentsline {subsubsection}{Medici\IeC {\'o}n de la velocidad del fluido}{7}% 
+\contentsline {chapter}{\numberline {3}Conclusiones}{8}% 
+\contentsline {chapter}{Bibliograf\'{\i }a}{14}% 

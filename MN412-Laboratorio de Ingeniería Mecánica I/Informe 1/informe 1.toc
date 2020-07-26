@@ -1,0 +1,24 @@
+\babel@toc {spanish}{}
+\contentsline {chapter}{\numberline {1}Objetivos}{1}
+\contentsline {chapter}{\numberline {2}Marco te\IeC {\'o}rico}{2}
+\contentsline {section}{\numberline {2.1}Term\IeC {\'o}metro de inmersi\IeC {\'o}n parcial}{2}
+\contentsline {section}{\numberline {2.2}Term\IeC {\'o}metro de inmersi\IeC {\'o}n total}{3}
+\contentsline {subsection}{\numberline {2.2.1}Correcciones del cuerpo emergente}{3}
+\contentsline {section}{\numberline {2.3}Termocuplas}{4}
+\contentsline {subsection}{\numberline {2.3.1}Tipos de termocuplas}{4}
+\contentsline {subsection}{\numberline {2.3.2}Usos t\IeC {\'\i }picos en la industria}{5}
+\contentsline {subsection}{\numberline {2.3.3}Linealizaci\IeC {\'o}n}{5}
+\contentsline {section}{\numberline {2.4}Term\IeC {\'o}metro bimet\IeC {\'a}lico}{5}
+\contentsline {chapter}{\numberline {3}C\IeC {\'a}lculos y resultados}{7}
+\contentsline {section}{\numberline {3.1}Termocupla-Bimet\IeC {\'a}lico}{7}
+\contentsline {subsection}{\numberline {3.1.1}Error}{8}
+\contentsline {subsection}{\numberline {3.1.2}Error porcentual}{8}
+\contentsline {section}{\numberline {3.2}Termocupla-Total}{9}
+\contentsline {subsection}{\numberline {3.2.1}Error}{9}
+\contentsline {subsection}{\numberline {3.2.2}Error porcentual}{10}
+\contentsline {section}{\numberline {3.3}Termocupla-Parcial}{10}
+\contentsline {subsection}{\numberline {3.3.1}Error}{11}
+\contentsline {subsection}{\numberline {3.3.2}Error porcentual}{11}
+\contentsline {section}{\numberline {3.4}Errores cuadr\IeC {\'a}ticos medios}{12}
+\contentsline {chapter}{\numberline {4}Conclusiones}{13}
+\contentsline {chapter}{Bibliograf\'{\i }a}{15}
