@@ -1,0 +1,113 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
+\usepackage{amsfonts,amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{here}
+\newcommand{\mbf}{\mathbf} 
+\newcommand{\mrm}{\mathrm}
+\title{Segunda práctica calificada: ML202B}
+\author{Josue Huaroto Villavicencio\\
+Código: 20174070I}
+\begin{document}
+\maketitle
+\section*{Problema 1}
+\subsubsection*{Parámetros de cortocircuito}
+$$
+\theta_{cc} = \arccos\left (\frac{P_{NCu}}{V_{cc}I_{1n}} \right) = 73.210627339^{\circ}
+$$
+\begin{align*}
+R_{eq1} &= \frac{P_{cc}}{I_{1n}^{2}} = 2.5161961\\
+Z_{eq1} &= \frac{V_{cc}}{I_{1n}} = 8.71095\\
+X_{eq1} &= \sqrt{Z_{eq1}^{2} - R_{eq1}^{2}} = 8.339634
+\end{align*}
+\subsubsection*{Parámetros de vacío}
+$$
+\theta_{vc} = \arccos\left (\frac{P_{NFe}}{V_{1n}I_{0}} \right) = 77.3659^{\circ}
+$$
+\begin{align*}
+    g_{1} &= \frac{P_{NFe}}{V_{1n}^{2}} = 2.71177686\times 10^{-5}\\
+    y_{1} &= \frac{I_{0}}{V_{1n}} = 0.00012398182\\
+    b_{1} &= \sqrt{y_{1}^{2} - g_{1}^{2}} = 0.00012098
+\end{align*}
+\subsubsection*{Regulación a plena carga}
+\begin{align*}
+    R_{eq2} &= \frac{R_{eq1}}{a^{2}} = 0.629049\\
+    X_{eq2} &= \frac{X_{eq1}}{a^{2}} = 2.0849084\\
+    r\% &= \frac{I_{2n}(R_{eq2}+X_{eq2})}{V_{2}} \times 100\% = 5.607350047\%\\
+    \alpha_{\max} &= \sqrt{\frac{P_{NFe}}{PNCu}} = 0.6354889
+\end{align*}
+\section*{Problema 2}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.4]{c1.jpg}
+\end{figure}
+\begin{align*}
+I_{N1} &= \frac{P}{V_{1}} = 208.33\\
+I_{N2} &= \frac{P}{V_{2}} = 20.8333\\
+a &= \frac{V_{1}}{V_{2}} = 0.1\\
+I_{C} &= I_{L} = I_{N1}+I_{N2} = 229.1667\\
+a' &= \frac{V_{1}+V_{2}}{V_{1}} = 11
+\end{align*}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.45]{c2.jpg}
+\end{figure}
+\begin{align*}
+    S_{A} &= V_{2}I_{L} = 550000\\
+    W_{T} &= P\times \mrm{fdp} = 40000\\
+    W_{A} &= S_{A}\times \mrm{fdp} = 440000\\
+    \Delta W &= \Delta W_{0} + \Delta W_{cc} = 803\\
+    \eta_{t} &= 1-\frac{\Delta W}{\Delta W + W_{T}} = 98.032007\%\\
+    \eta_{a} &= 1-\frac{\Delta W}{\Delta W + W_{A}} = 99.8178\%
+\end{align*}
+La eficiencia del autotransformador es mayor, esto significa que la potencia activa:
+$$
+W{A} > W_{T}
+$$
+\section*{Problema 3}
+\begin{itemize}
+    \item En los transformadores, para qué o qué propósito tiene realizar las pruebas de cortocircuito y circuito abierto.
+    \begin{itemize}
+        \item \textbf{Prueba de vacío}
+        \begin{itemize}
+            \item Se alimenta al trafo con su tensión normal y frecuencia nominal por uno de sus lados, mientras el otro se mantiene en circuito abierto.
+            \item Se recomienda realizar estas pruebas por el lado de bajo tensión:
+            $$
+            P_{fe} = P_{H} + P_{F}
+            $$
+        \end{itemize}
+        \item \textbf{Prueba de cortocircuito}
+        \begin{itemize}
+            \item Se alimenta al trafo con $I_{N}$ o de plena carga por uno de sus lados mientras el otro está en cortocircuito.
+            \item Se recomienda realizar la prueba por el lado de alta tensión.
+            \item Con esta prueba se miden las pérdidas por efecto Joule de los devanado, llamados pérdidas en el cobre.
+        \end{itemize}
+    \end{itemize}
+    \item Dar 4 ventajas teóricas, de los transformadores ideales respecto a los reales.
+    \begin{itemize}
+        \item Los ideales al tener menos pérdidas, se reducirá el consumo eléctrico, haciendo que sea más eficiente.
+        \item Ayuda a proteger el medio ambiente al tener menos pérdidas.
+        \item Como los devanados 1 y 2 tienen resistencia despreciable entonces habrán menos pérdidas por efecto Joule.
+        \item Generan menos calor, aumentando su vida útil.
+    \end{itemize}
+    \item En la práctica o en el laboratorio, explique cómo se determina la relación de transformación $a = ?$\\
+    Se realiza por inyección de baja tensión en transformadores desenergizados y la correspondiente medición de la tensión incluida en otro devanado; la prueba de relación se hace para cada fase para cada toma si el transformador tiene varios tomas para cambiar su relación de tensión.
+    \item El transformador en lado del secundario o carga, diga que pasa en los siguientes casos
+    \item Diseño de un transformador de potencia\\
+    Los transformadores son máquinas eléctricas estáticas, ya que convierte energía eléctrica a energía eléctrica, solo varía según su fase y una corriente específica, según el principio por el cual se diseñan sus potencias.\\
+    La capacidad de un transformador se mide de acuerdo con el producto de su voltaje y su corriente, por ello el resultado es VoltAmperios; en la práctica se usa KVA.
+\end{itemize}
+\section*{Problema 4}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.51]{c4.jpg}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.15]{c3.jpg}
+\end{figure}
+Índice horario: 210$^{\circ}$\\
+Se denota: Dy7
+\end{document}
