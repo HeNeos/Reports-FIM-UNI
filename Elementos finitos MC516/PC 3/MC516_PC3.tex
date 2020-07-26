@@ -1,0 +1,228 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-sloppy]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{here}
+\usepackage[left=1.8cm,right=1.8cm,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage{verbments}
+%\definecolor{fondo1}{rgb}{0.9764, 0.9764, 0.9762}
+%\definecolor{fondo2}{rgb}{0.1647, 0.4980, 0.7}
+\definecolor{fondo1}{rgb}{0.88, 0.88, 0.88}
+\definecolor{fondo2}{rgb}{0.15, 0.15, 0.5}
+\author{Josue Huaroto Villavicencio - 20174070I\\Sección: E}
+\title{3$^{\circ}$ Práctica de Cálculo por Elementos Finitos - MC516}
+\begin{document}
+\fvset{frame=bottomline, framerule=0.02cm,numbers=left, numbersep=8pt}
+\plset{language=python,texcl=true,listingnamefont=\sffamily\bfseries\color{white},captionbgcolor=fondo2, bgcolor=fondo1,listingname=\textbf{Código}, captionfont=\sffamily\color{white},fontsize=\normalsize}
+\maketitle
+%\tableofcontents
+\section{Diagrama de flujo}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.9]{Flow.pdf}
+    \caption{Diagrama de flujo}
+\end{figure}
+\section{Ejecución del código}
+Del solver principal, se modifica algunas funciones para implementar ahora los elementos de la armadura.
+\begin{pyglist}[language=python,caption={Cálculo de la longitud y el ángulo entre nodos},style=pastie]
+def DistNodes(f,s):
+    if(s[0] == f[0]):
+        aux = np.pi/2
+        if(s[1] < f[1]):
+             aux *= -1
+        return (np.sqrt((s[0]-f[0])**2+(s[1]-f[1])**2),aux)
+    else:
+        aux = np.arctan((s[1]-f[1])/(s[0]-f[0]))
+    if(aux < 0 and s[1] > f[1]):
+        aux += np.pi
+    if(s[1] < f[1]):
+        aux += np.pi
+        if(s[0] > f[0]):
+            aux += np.pi
+
+    return (np.sqrt((s[0]-f[0])**2+(s[1]-f[1])**2),aux)
+\end{pyglist}
+Ahora, es necesario modificar la inserción de las matrices de rigidez de los elementos a la matriz de rigidez global.
+\begin{pyglist}[language=python,caption={Ensamble de la matriz de rigidez},style=pastie]
+def AssemblyStiffness(nStiffnessMatrix,k,i,j):
+    for p in range(0,2):
+        for m in range(0,2):
+            nStiffnessMatrix[2*i+p][2*i+m] += k[p][m]
+            nStiffnessMatrix[2*i+p][2*j+m] += k[p][2+m]
+            nStiffnessMatrix[2*j+p][2*i+m] += k[p+2][m]
+            nStiffnessMatrix[2*j+p][2*j+m] += k[p+2][2+m]
+ 
+def Initialize(nStiffnessMatrix,nU,nF):
+    for i in range(0,Nodes):
+        nU[i][0] = 0
+        nF[i][0] = 0
+        
+    for i in range(0,NumberOfElement):
+        AssemblyStiffness(nStiffnessMatrix,K[i],
+        int(Elements[i][0]),int(Elements[i][1]))
+\end{pyglist}
+Todos los demás elementos del código permanecen igual; ahora solo se necesita definir las condiciones del problema a resolver.
+\begin{pyglist}[language=python,caption={Condiciones del problema},style=pastie]
+NodesCondition = []
+Nodes = 5
+Nodes *= 2
+NumberOfElement = 6
+
+h = 1500e-3#m
+E = 3.2e8 #kPA
+K = []
+A = (0.25*np.pi*(50e-3)**2)*np.ones(Nodes) #m$^{2}$
+L = []
+P_A = 5000e-3 #kN
+P_B = 4200e-3 #kN
+P_C = 2500e-3 #kN
+P_E = 3000e-3 #kN
+
+PosNodes = np.array([(0,0),(h,0),(0,h),(h,h),(h,2*h)])
+Elements = np.array([(0,2),(1,2),(1,3),(2,3),(2,4),(3,4)])
+
+for i in range(0,NumberOfElement):
+    L.append(DistNodes(PosNodes[Elements[i][0]],PosNodes[Elements[i][1]]))
+
+L = np.array(L)
+
+for i in range(0,NumberOfElement):
+    aux = np.zeros((4,4))
+    angle = L[i][1]
+    rows = [np.cos(angle),np.sin(angle),-np.cos(angle),-np.sin(angle)]
+    cols = [np.cos(angle),np.sin(angle),-np.cos(angle),-np.sin(angle)]
+    for j in range(0,4):
+        for k in range(0,4):
+            aux[j][k] = rows[j]*cols[k]
+    aux = aux*E*A[i]/L[i][0]
+    K.append(aux)
+
+StiffnessMatrix = np.zeros((Nodes,Nodes))
+
+U = np.zeros(Nodes).reshape(Nodes,1)
+F = np.zeros(Nodes).reshape(Nodes,1)
+
+Initialize(StiffnessMatrix,U,F)
+
+#Node in UBoundary = Node*2+(x=0,y=1)
+UBoundaryCondition(U,0,2*0+0) #Nodo 0 en X
+UBoundaryCondition(U,0,2*0+1) #Nodo 0 en Y
+UBoundaryCondition(U,0,2*1+0) #Nodo 1 en X
+UBoundaryCondition(U,0,2*1+1) #Nodo 1 en Y
+
+FBoundaryCondition(F,-P_C,2*2+0) #Nodo 2 en X
+FBoundaryCondition(F,-P_E,2*3+0) #Nodo 3 en X
+FBoundaryCondition(F,-P_B,2*4+0) #Nodo 4 en X
+FBoundaryCondition(F,P_A,2*4+1) #Nodo 4 en Y
+
+U,F=Solve(StiffnessMatrix,U,F)
+
+print("Stiffness Matrix:\n",StiffnessMatrix,'\n')
+
+print("Displacements:\n",U,'\n')
+
+print("Forces:\n",F)
+\end{pyglist}
+La notación para las condiciones del problema es muy similar a los problemas anteriores de barras, siendo la diferencia más notable que no hay una relación directa entre nodos y cantidad de elementos. La representación esquemática del modelo a resolver se muestra a continuación:
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1.3]{esq.pdf}
+    \caption{Representación esquemática}
+\end{figure}
+La geometría del problema ha sido rotada 90$^{\circ}$ para que los apoyos sean definidos correctamente. También en la figura (2) se ha denotado los nodos con color {\color{blue}azul} y los elementos con color {\color{red} rojo}.
+\section{Resultados del problema}
+Al finalizar la ejecución del solver, obtenemos la matriz de rigidez, las fuerzas y desplazamientos:
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.45]{Stif.png}
+    \includegraphics[scale=0.45]{Stif2.png}
+    \caption{Matriz de rigidez, desplazamientos y fuerzas}
+\end{figure}
+Cada desplazamiento y fuerza corresponde a un nodo en una dirección ($x$ o $y$); por lo que al nodo $i$ le corresponde las reacciones $2i$ ($x$) y $2i+1$ ($y$).\\
+Organizamos los datos en una tabla para cada nodo/elemento para tener una mejor compresión de los resultados:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c||c|c|}
+        \hline
+        Nodo & Fuerza x (kN) & Fuerza y (kN) & Elemento & Esfuerzo (MPa) \\
+        \hline
+        0 & 0 & 13.9 & 0 & -7.07921187\\
+        \hline
+        1 & 9.7 & -18.9 & 1 & 6.98645461\\
+        \hline
+        2 & -2.5 & 0 & 2 & 4.68552152\\
+        \hline
+        3 & -3 & 0 & 3 & -1.52788745\\
+        \hline
+        4 & -4.2 & 5 & 4 & -3.02506282\\
+        \hline
+         &  &  & 5 & 4.68552152\\
+        \hline
+    \end{tabular}
+    \caption{Reacciones y esfuerzos sobre cada nodo y elemento}
+\end{table}
+\section{Problema generalizado para $n$ elementos}
+Es posible incrementar la cantidad de elementos en el problema; imagine cada elemento inicial de la armadura que se subdivide en $m$ partes y cada parte está unida mediante un nuevo nodo. Sin embargo, los resultados son muy similares aún incrementando la cantidad de elementos.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.55]{s1.pdf}
+    \includegraphics[scale = 0.55]{s2.pdf}
+    \caption{Esfuerzos para 1500 elementos}
+\end{figure}
+Observe que, ambas gráficas son las mismas, solo se modificó la escala para que sea más fácil notar la variación de esfuerzos en los elementos.
+\section{Verificación de resultados}
+Para la verificación de los cálculos se utilizó el software Autodesk Fusion 360.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.33]{Render_Trust.png}
+    \includegraphics[scale = 0.58]{Stress1.png}
+    \caption{Geometría y esfuerzos de la armadura en Autodesk Fusion 360}
+\end{figure}
+\section{Conclusiones}
+\begin{enumerate}
+\item El esfuerzo máximo es distinto al calculado debido a que la fuerza se aplica de forma puntual y no de forma distribuida sobre un área; tan bien, sabemos que la reacción en el apoyo no se distribuye de forma regular sobre el área.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.5]{Stress2.png}
+    \caption{Esfuerzo máximo sobre un apoyo (nodo 1)}
+\end{figure}
+\item La implementación del código para una armadura no difiere mucho del hecho para barras, debido a la versatilidad y flexibilidad con la que se desarrolló el código inicial.
+\item Los resultados brindados por la simulación en Fusion 360, son muy similares a los obtenidos por el código, siendo los elementos de mayor esfuerzo el 0 y el 1; mientras que el de menor esfuerzo es el elemento 3.
+\item Si bien, es posible incrementar la cantidad de elementos en la armadura, no tiene un gran efecto sobre los resultados y es suficiente tratar a cada elemento de la armadura como uno solo.
+\item El tiempo esperado por solución es de a lo mucho 3 segundos para 10000 elementos en C++.
+\item La implementación del código en MATLAB es más simple y corta pero demasiado lenta; tardando varios minutos para ejecutar 1000 elementos.
+\item Debido a limitaciones de memoria no es posible usar más elementos, siendo el límite de 20000 elementos; usando 3.2 GB de RAM.
+\end{enumerate}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline 
+Lenguaje/Cantidad de elementos & Tiempo de ejecución (s) \\ 
+\hline 
+C++/5000 & 2.1 \\ 
+\hline 
+Python/5000 & 30.34 \\ 
+\hline 
+MATLAB/5000 & 5854.79 \\ 
+\hline 
+\end{tabular}
+\end{center}
+\begin{thebibliography}{9}
+\bibitem{d1} Optimized methods in FEM:\\
+https://www.sciencedirect.com/topics/engineering/gauss-seidel-method
+\bibitem{d3}
+Sparse Matrix:\\
+https://en.wikipedia.org/wiki/Sparse$\_$matrix
+\bibitem{d4}
+Sparse Matrix Library:\\
+https://github.com/uestla/Sparse-Matrix
+\bibitem{d5}
+Mailman algorithm:\\
+http://www.cs.yale.edu/homes/el327/papers/matrixVectorApp.pdf
+\bibitem{d6}
+Fast Algorithms with Preprocessing for Matrix-Vector Multiplication Problems:\\
+https://www.sciencedirect.com/science/article/pii/S0885064X84710211
+\end{thebibliography}
+\end{document}
