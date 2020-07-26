@@ -1,0 +1,145 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[left=1.5cm,right=1.5cm,top=1.4cm,bottom=1.5cm]{geometry}
+\usepackage{graphicx}
+\newcommand{\mrm}{\mathrm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{here}
+\begin{document}
+\subsection*{Problema 7.}
+    \textbf{Por qué razones no se puede instalar la turbina a gas a 4 000 msnm?. Fundamente su respuesta.}\\[4pt]
+La razón es que, en una turbina a gas, no puede elevar suficiente relación de compresión o temperatura de entrada para las etapas de expansión. Por lo tanto, tiene un ciclo de gas con eficiencia limitada (35\% como máximo).\\
+A 4000 msnm, la presión atmosférica es considerablemente menor a la de la costa; por lo tanto, se requiere destinar una mayor cantidad de potencia en el acondicionamiento del aire; es decir, el compresor de la instalación necesita más potencia, lo cual disminuye la eficiencia de la turbina.
+\subsection*{Problema 17.}
+\textbf{En una bomba de flujo axial, el rotor tiene un diámetro exterior de 75 cm y un diámetro interior de 40 cm, si gira a 500 RPM. En el radio medio del álabe , el ángulo en la entrada es de 128$^{\circ}$ y el ángulo a la salida es 158$^{\circ}$. Dibuje los diagramas de velocidad correspondiente en entrada y salida, y estimar a partir de ellos (1) la altura que la bomba generaría, (2) la descarga o la tasa de flujo en L/s, (3) la potencia al eje de entrada necesaria para accionar la bomba, y (4) la velocidad específica de la bomba. Supongamos una eficiencia manométrica o hidráulica de 88\% y una eficiencia total o global de 81\%}\\[4pt]
+Se asume que la velocidad de entrada en la bomba axial es vertical:
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1.55]{17_vel.pdf}
+    \caption{Triángulo de velocidades}
+\end{figure}
+\begin{itemize}
+    \item $\beta_{1} = 128^{\circ}$
+    \item $\beta_{2} = 158^{\circ}$
+    \item $N = 500$ RPM
+    \item $D_{1} = 75$e-2 m
+    \item $D_{2} = 40$e-2 m
+\end{itemize}
+Con los datos del problema, se calculan las velocidades:
+\begin{align}
+    u &= \frac{N\pi D}{60} = 15.0534648\,\mrm{m/s}\\[3pt]
+    c_{1} &= u\tan(180^{\circ} -\beta_{1}) = 19.2675563\,\mrm{m/s} = c_{m}\\[3pt]
+    w_{1} &= \sqrt{u^{2} + c_{1}^{2}} = 24.45088\,\mrm{m/s}\\[3pt]
+    w_{2} &= \frac{c_{m}}{\sin (180^{\circ} - \beta_{2})} = 51.4341088\,\mrm{m/s}\\[4pt]
+    c_{2} &= \sqrt{w_{2}^{2} + u^{2} - 2w_{2}u\cos(180^{\circ} - \beta_{2})} = 37.898664\,\mrm{m/s}\\[4pt]
+    c_{2u} &= w_{2}\cos(22^{\circ}) - u = 32.6354105\,\mrm{m/s}
+\end{align}
+Mientras que, la altura útil, caudal, potencia y velocidad específica:
+\begin{align}
+    H_{\infty} &= \frac{c_{2u}u}{\mrm{g}} = 50.079103288\,\mrm{m} \longrightarrow H_{\mrm{util}} = 88\%H_{\infty} = 44.06961089\,\mrm{m}\\[4pt]
+    Q &= c_{m}\frac{\pi (D_{1}^{2}-D_{2}^{2})}{4} = 6.09091309\,\mrm{m^{3}/s} = 6090.91309 \mrm{L/s}\\[4pt]
+    P_{\mrm{eje}} &= \frac{1000 Q H_{\mrm{util}}}{102\times 0.81} = 3248.9006277 \,\mrm{kW} = 4360.138\,\mrm{HP}\\[4pt] 
+    N_{q} &= \frac{N\sqrt{Q}}{H^{3/4}_{\mrm{util}}} = 72.1463
+\end{align}
+\subsection*{Problema 27.}
+\textbf{Marque con V si es verdadera o con F si es falsa a las siguientes afirmaciones:}\\[4pt]
+\begin{itemize}
+    \item En una turbina Francis con tubo difusor, la presión manométrica a la salida del rodete es negativa. \textbf{(V)}.\\
+    Aumenta la altura útil y mejora la eficiencia, además si el tubo es difusor mejora más
+    \item Teóricamente la velocidad relativa en la cuchara de la turbina Pelton es constante. \textbf{(V)}.\\
+    Teóricamente sí es constante pues $u_{1}=u_{2}$, entonces $w_{1}=w_{2}$ para que $H_{\mrm{estatica}} = 0$.
+    \item La altura útil de un aerogenerador es $C^{2}$/2g, donde $C$ es la velocidad del viento en la entrada y despreciable la  velocidad del viento a la salida. \textbf{(V)}.\\
+     Sí, la velocidad de salida es casi nula, y como sale a la misma presión que entra, la única energía transmitida es la cinética.
+    \item La turbina Francis es lenta cuando el ángulo de la velocidad relativa es mayor a 90$^{\circ}$. \textbf{(V)}.\\
+    Pues $C_{2u}>u_{2}$, entonces $\beta_{2}$ es obtuso y es Francis lenta.
+    \item Se inyecta agua a la cámara de combustión de una turbina a gas para aumentar la potencia y la eficiencia. \textbf{(F)}.\\
+     La potencia aumenta pero la eficiencia disminuye.
+\end{itemize}
+\newpage
+\subsection*{Problema 37.}
+\textbf{En la fig. se muestra una bomba, donde la presión atmosférica es 14.7 PSIA, su eficiencia 79\%, para los datos indicados y tomando las consideraciones que sean necesarias. Determinar: 
+    \begin{itemize}
+        \item El caudal en m$^{3}$/s 
+        \item La altura útil en m de agua 
+        \item La potencia hidráulica y la potencia al eje en kW 
+        \item Haga un diagrama h-s  donde se muestre la altura útil.
+    \end{itemize}
+    }
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{37.pdf}
+    \caption{Bomba hidráulica}
+\end{figure}
+\subsubsection*{Caso 1:}
+De las ecuaciones de energía en (0) y (2), (1) y (2) y la condición de continuidad del flujo:
+\begin{align}
+    H_{B} + \frac{P_{0}}{\gamma} + \frac{v_{0}^{2}}{2\mrm{g}} + z_{0} &= \frac{P_{2}}{\gamma} + \frac{v^{2}_{2}}{2\mrm{g}} + z_{2}\\[4pt]
+    H_{B} + \frac{P_{1}}{\gamma} + \frac{v^{2}_{1}}{2\mrm{g}} + z_{1} &= \frac{P_{2}}{\gamma} + \frac{v^{2}_{2}}{2\mrm{g}} + z_{2}\\[4pt]
+    \frac{v_{1}}{4^2} &= \frac{v_{2}}{6^2}
+\end{align}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1.5]{HS.pdf}
+    \caption{Diagrama h-s}
+\end{figure}
+Resolviendo el sistema de ecuaciones no lineales:
+\begin{align}
+    v_{1} &= 4.41082633\,\mrm{m/s} \\[3pt]
+    v_{2} &= 9.924359\, \mrm{m/s} \\[3pt]
+    H_{B} &= 34.43210516\,\mrm{m} \\[3pt]
+    Q &= A_{1}v_{1} = 0.08046\,\mrm{m^{3}/s}\\[4pt]
+    P_{H} &= \frac{\rho Q H_{B}}{102} = 27.160838804\,\mrm{kW}\\[4pt]
+    P &= \frac{P_{H}}{\eta} = 34.38080861\,\mrm{kW}
+\end{align}
+\subsubsection*{Caso 2:}
+\begin{equation}
+A_{2} = 0.0081073\,\mrm{m^{2}}, \hspace{20pt} A_{1} = 0.01824147\,\mrm{m^{2}}
+\end{equation}
+A falta de datos, se asume velocidades iguales a las áreas:
+\begin{equation}
+    v_{1} = 0.81073\,\mrm{m/s},\hspace{20pt} v_{2} = 1.824147\,\mrm{m/s} \longrightarrow Q = v_{1}A_{1} = 0.014789\,\mrm{m^{3}/s}
+\end{equation}
+\begin{align}
+    H_{B} &= \frac{P_{2}-P_{1}}{h} + \frac{v^{2}_{2}-v^{2}_{1}}{2\mrm{g}} + z_{2}-z_{1}\\[4pt]
+    H_{B} &= \frac{49.5-13}{10^{3}\times (0.0254)^{2}\times 2.2} + \frac{v^{2}_{2}-v^{2}_{1}}{2\mrm{g}} + (16\times 12 - 8)\times(0.0254)\\[4pt]
+    H_{B} &= 30.5250837\,\mrm{m}
+\end{align}
+\begin{align}
+    P_{H} &= \frac{1000 Q H_{B}}{102} = 4.42581\,\mrm{kW} \\[3pt]
+    P &= 5.6022912\,\mrm{kW}
+\end{align}
+\subsection*{Problema 47.}
+\textbf{Una turbina hidráulica llamada 1 opera con un salto de 50 m y el caudal de 10 m$^{3}$/s, el modelo llamado 2 en semejanza funciona con un salto de 10 m y el caudal de 100 L/s. se pide:
+\begin{itemize}
+    \item ¿Cuál es la relación entre la velocidad de rotación del modelo con la velocidad de rotación del prototipo?
+    \item ¿Cuál es la relación entre el diámetro del modelo con la del prototipo? 
+    \item Si el modelo genera una potencia de 9 KW ¿Cuál es la potencia de la turbina real?
+\end{itemize}
+}\\[4pt]
+Turbina 1 (Prototipo)
+\begin{itemize}
+    \item $H_{p} = 50\,\mrm{m}$
+    \item $Q_{p} = 10\,\mrm{m^{3}/s}$
+\end{itemize}
+Turbina 2 (Modelo)
+\begin{itemize}
+    \item $H_{m} = 10\,\mrm{m}$
+    \item $Q_{m} = 0.1\,\mrm{m^{3}/s}$
+\end{itemize}
+a)\\
+        $$
+        N_{q} = \frac{NQ^{1/2}}{H^{3/4}} \longrightarrow \frac{N_{P}\sqrt{10}}{50^{3/4}} = \frac{N_{M}\sqrt{0.1}}{10^{3/4}} \longrightarrow \frac{N_{M}}{N_{P}} = 2.991
+        $$
+b)\\
+        $$
+        \psi = \frac{gH}{(ND)^{2}} = \frac{g\times 50}{(N_{P}D_{P})^{2}} = \frac{g\times 10}{(N_{M}D_{M})^{2}} \longrightarrow \frac{D_{M}}{D_{P}} = \sqrt{\frac{1}{S}} \frac{N_{P}}{N_{M}} = 0.1495
+        $$
+c)\\
+        $$
+        P_{M} = 9\,\mrm{kW}, \hat{P} = \frac{P}{\rho N^{3} D^{5}} \longrightarrow \frac{P_{P}}{\rho N_{P}^{3} D_{P}^{5}} = \frac{9}{\rho N^{3}_{M}D^{5}_{M}} \longrightarrow P_{P} = 4503.885\,\mrm{kW} = 6037.38\,\mrm{HP}
+        $$
+\end{document}
