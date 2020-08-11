@@ -1,0 +1,62 @@
+\documentclass{standalone}
+\usepackage[subpreambles=true]{standalone}
+\usepackage{import}
+\usepackage{mathrsfs}
+\usepackage[x11names]{xcolor}
+\usepackage{tikz, tkz-euclide}
+\usepackage[american]{circuitikz}
+\usepackage{siunitx}
+\usepackage{textcomp}
+\usetikzlibrary{arrows}
+\begin{document}
+
+\begin{tikzpicture}[draw=Black,thick]
+\tkzDefPoints{
+0/0/A,
+2/0/B,
+8/0/C,
+11/0/D,
+16/0/E,
+
+16/8/F,
+13/8/G,
+11/8/H,
+8/8/I,
+5/8/J,
+3/5/K,
+0/8/L,
+
+5.5/3.3/T}
+
+\draw (0,0) to (8,0);
+\draw (8,0) to (16,0);
+\draw[draw opacity=0, fill=black] (8,0) circle (0.12);
+\draw[draw opacity=0, fill=black] (8,6) circle (0.12);
+\draw[draw opacity=0, fill=black] (8,3) circle (0.12);
+\draw (8,3) to[R={\Large \(R_{M}\)}] (8,6);
+\draw (8,0) to[cute inductor={\Large \(X_{M}\)}] (8,3);
+
+
+\draw[color=blue] (0,6) to[R={\Large \(R_{1}\)},color=blue] (4,6);
+\draw[color=blue] (4,6) to[cute inductor={\Large \(X_{1}\)},color=blue] (8,6);
+
+\draw[draw opacity=0, fill=blue] (0,6) circle (0.12);
+\draw[draw opacity=0, fill=blue] (0,0) circle (0.12);
+\draw[draw opacity=0, fill=blue] (4,6) circle (0.12);
+
+
+\draw[color=red] (8,6) to[R={\Large \(R_{2'}\)},color=red] (13,6);
+\draw[color=red] (13,6) to[cute inductor={\Large \(X_{2}\)}, color=red] (16,6);
+
+\draw[draw opacity=0, fill=red] (12,6) circle (0.12);
+
+
+\draw[color=violet!65] (16,0) to[european resistor, color=blue!70, fill = violet!25] (16,6);
+
+\draw[draw opacity=0, fill=violet!65] (16,6) circle (0.12);
+\draw[draw opacity=0, fill=violet!65] (16,0) circle (0.12);
+
+\tkzLabelPoint[above](17.75,2.6){{\Large $R_{L} =  R_{2'}\frac{1-S}{S}$}}
+
+\end{tikzpicture}
+\end{document}
