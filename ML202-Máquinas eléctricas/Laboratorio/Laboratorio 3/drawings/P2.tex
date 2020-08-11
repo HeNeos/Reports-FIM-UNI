@@ -1,0 +1,182 @@
+\documentclass{standalone}
+\usepackage{mathrsfs}
+\usepackage[x11names]{xcolor}
+\usepackage{tikz, tkz-euclide}
+\usepackage[american]{circuitikz}
+\usepackage{siunitx}
+\usepackage{textcomp}
+\usetikzlibrary{arrows}
+\begin{document}
+
+\begin{tikzpicture}[draw=black,thick]
+\tkzDefPoints{
+2/12/A,
+3/11/B,
+4/10/C,
+
+7/12/D,
+8/11/E,
+9/10/F,
+
+12/12/G,
+13/11/H,
+14/10/I,
+
+17/12/J,
+18/11/K,
+19/10/L,
+
+0/12/sR,
+0/11/sS,
+0/10/sT,
+
+22/12/eR,
+22/11/eS,
+22/10/eT
+}
+\draw (1.25,3) rectangle (4.75,5.5);
+\draw (6.25,3) rectangle (9.75,5.5);
+\draw (11.25,3) rectangle (14.75,5.5);
+\draw (16.25,3) rectangle (19.75,5.5);
+
+\draw (2+0.3,5) arc (0:180:0.3);
+\draw (2+0.3,3.5) arc (0:-180:0.3);
+\draw (2-0.3,5) -- (2-0.3,3.5);
+\draw (2+0.3,5) -- (2+0.3,3.5);
+
+\draw (3+0.3,5) arc (0:180:0.3);
+\draw (3+0.3,3.5) arc (0:-180:0.3);
+\draw (3-0.3,5) -- (3-0.3,3.5);
+\draw (3+0.3,5) -- (3+0.3,3.5);
+
+\draw (4+0.3,5) arc (0:180:0.3);
+\draw (4+0.3,3.5) arc (0:-180:0.3);
+\draw (4-0.3,5) -- (4-0.3,3.5);
+\draw (4+0.3,5) -- (4+0.3,3.5);
+
+
+\draw (7+0.3,5) arc (0:180:0.3);
+\draw (7+0.3,3.5) arc (0:-180:0.3);
+\draw (7-0.3,5) -- (7-0.3,3.5);
+\draw (7+0.3,5) -- (7+0.3,3.5);
+
+\draw (8+0.3,5) arc (0:180:0.3);
+\draw (8+0.3,3.5) arc (0:-180:0.3);
+\draw (8-0.3,5) -- (8-0.3,3.5);
+\draw (8+0.3,5) -- (8+0.3,3.5);
+
+\draw (9+0.3,5) arc (0:180:0.3);
+\draw (9+0.3,3.5) arc (0:-180:0.3);
+\draw (9-0.3,5) -- (9-0.3,3.5);
+\draw (9+0.3,5) -- (9+0.3,3.5);
+
+
+\draw (12,3.5+0.3) arc (90:270:0.3);
+\draw (14,3.5-0.3) arc (270:450:0.3);
+\draw (12,3.5+0.3) -- (14,3.5+0.3);
+\draw (12,3.5-0.3) -- (14,3.5-0.3);
+
+\draw (17,3.5+0.3) arc (90:270:0.3);
+\draw (19,3.5-0.3) arc (270:450:0.3);
+\draw (17,3.5+0.3) -- (19,3.5+0.3);
+\draw (17,3.5-0.3) -- (19,3.5-0.3);
+
+
+
+\draw (0,12) to (21,12);
+\draw (0,11) to (21,11);
+\draw (0,10) to (21,10);
+
+\draw(2,12) to (2,5);
+\draw(3,11) to (3,5);
+\draw(4,10) to (4,5);
+
+\draw(7,12) to (7,5);
+\draw(8,11) to (9,5);
+\draw(9,10) to (8,5);
+
+\draw (12,12) to (12,5);
+\draw (13,11) to (13,5);
+\draw (14,10) to (14,5);
+
+\draw (17,12) to (17,5);
+\draw (18,11) to (19,5);
+\draw (19,10) to (18,5);
+
+
+\draw[draw opacity=0, fill=black] (2,12) circle (0.1);
+\draw[draw opacity=0, fill=black] (3,11) circle (0.1);
+\draw[draw opacity=0, fill=black] (4,10) circle (0.1);
+\draw[draw opacity=0, fill=black] (7,12) circle (0.1);
+\draw[draw opacity=0, fill=black] (8,11) circle (0.1);
+\draw[draw opacity=0, fill=black] (9,10) circle (0.1);
+\draw[draw opacity=0, fill=black] (12,12) circle (0.1);
+\draw[draw opacity=0, fill=black] (13,11) circle (0.1);
+\draw[draw opacity=0, fill=black] (14,10) circle (0.1);
+\draw[draw opacity=0, fill=black] (17,12) circle (0.1);
+\draw[draw opacity=0, fill=black] (18,11) circle (0.1);
+\draw[draw opacity=0, fill=black] (19,10) circle (0.1);
+
+\draw[draw opacity=0, fill=black] (2,5) circle (0.1);
+\draw[draw opacity=0, fill=black] (3,5) circle (0.1);
+\draw[draw opacity=0, fill=black] (4,5) circle (0.1);
+\draw[draw opacity=0, fill=black] (7,5) circle (0.1);
+\draw[draw opacity=0, fill=black] (8,5) circle (0.1);
+\draw[draw opacity=0, fill=black] (9,5) circle (0.1);
+\draw[draw opacity=0, fill=black] (12,5) circle (0.1);
+\draw[draw opacity=0, fill=black] (13,5) circle (0.1);
+\draw[draw opacity=0, fill=black] (14,5) circle (0.1);
+\draw[draw opacity=0, fill=black] (17,5) circle (0.1);
+\draw[draw opacity=0, fill=black] (18,5) circle (0.1);
+\draw[draw opacity=0, fill=black] (19,5) circle (0.1);
+
+
+\draw[draw opacity=0, fill=black] (2,3.5) circle (0.1);
+\draw[draw opacity=0, fill=black] (3,3.5) circle (0.1);
+\draw[draw opacity=0, fill=black] (4,3.5) circle (0.1);
+\draw[draw opacity=0, fill=black] (7,3.5) circle (0.1);
+\draw[draw opacity=0, fill=black] (8,3.5) circle (0.1);
+\draw[draw opacity=0, fill=black] (9,3.5) circle (0.1);
+\draw[draw opacity=0, fill=black] (12,3.5) circle (0.1);
+\draw[draw opacity=0, fill=black] (13,3.5) circle (0.1);
+\draw[draw opacity=0, fill=black] (14,3.5) circle (0.1);
+\draw[draw opacity=0, fill=black] (17,3.5) circle (0.1);
+\draw[draw opacity=0, fill=black] (18,3.5) circle (0.1);
+\draw[draw opacity=0, fill=black] (19,3.5) circle (0.1);
+
+\tkzLabelPoint[above](-0.3,11.75){{\Large R}}
+\tkzLabelPoint[above](-0.3,10.75){{\Large S}}
+\tkzLabelPoint[above](-0.3,9.75){{\Large T}}
+
+\tkzLabelPoint[above](2,2.25){{\large $W_{2}$}}
+\tkzLabelPoint[above](3,2.25){{\large $U_{2}$}}
+\tkzLabelPoint[above](4,2.25){{\large $V_{2}$}}
+
+\tkzLabelPoint[above](7,2.25){{\large $W_{2}$}}
+\tkzLabelPoint[above](8,2.25){{\large $U_{2}$}}
+\tkzLabelPoint[above](9,2.25){{\large $V_{2}$}}
+
+\tkzLabelPoint[above](12,2.25){{\large $W_{2}$}}
+\tkzLabelPoint[above](13,2.25){{\large $U_{2}$}}
+\tkzLabelPoint[above](14,2.25){{\large $V_{2}$}}
+
+\tkzLabelPoint[above](17,2.25){{\large $W_{2}$}}
+\tkzLabelPoint[above](18,2.25){{\large $U_{2}$}}
+\tkzLabelPoint[above](19,2.25){{\large $V_{2}$}}
+
+
+\tkzLabelPoint[above](3,1.5){{\Large Triángulo}}
+\tkzLabelPoint[above](8,1.5){{\Large Triángulo}}
+\tkzLabelPoint[above](13,1.5){{\Large Estrella}}
+\tkzLabelPoint[above](18,1.5){{\Large Estrella}}
+
+\draw [->,>=stealth',color=orange,line width=1.1mm] (2-0.1,0.5) to [out=90,in=90] (4+0.1,0.5);
+
+\draw [->,>=stealth',color=blue,line width=1.1mm] (9+0.1,0.5) to [out=90,in=90] (7-0.1,0.5);
+
+\draw [->,>=stealth',color=orange,line width=1.1mm] (12-0.1,0.5) to [out=90,in=90] (14+0.1,0.5);
+
+\draw [->,>=stealth',color=blue,line width=1.1mm] (19+0.1,0.5) to [out=90,in=90] (17-0.1,0.5);
+
+\end{tikzpicture}
+\end{document}
