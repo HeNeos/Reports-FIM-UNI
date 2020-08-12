@@ -1,4 +1,4 @@
-\documentclass[a4paper,11pt]{article}
+\documentclass[a4paper,12pt]{article}
 \usepackage[T1]{fontenc}
 \usepackage{import}
 \usepackage[utf8]{inputenc}
@@ -8,11 +8,18 @@
 \newcommand{\mrm}{\mathrm}
 \usepackage{amsmath}
 \usepackage{amsfonts}
+\usepackage{caption}
 \usepackage{xcolor}
 \usepackage{tcolorbox}
 \usepackage{amssymb}
+\usepackage{verbments}
+\definecolor{fondo1}{rgb}{0.88, 0.88, 0.88}
+\definecolor{fondo2}{rgb}{0.15, 0.15, 0.5}
 \usepackage{here}
+\newcommand\setItemnumber[1]{\setcounter{enumi}{\numexpr#1-1\relax}}
 \begin{document}
+\fvset{frame=bottomline, framerule=0.02cm,numbers=left, numbersep=8pt}
+\plset{language=python,texcl=true,listingnamefont=\sffamily\bfseries\color{white},captionbgcolor=fondo2, bgcolor=fondo1,listingname=\textbf{Código}, captionfont=\sffamily\color{white},fontsize=\normalsize}
 \tcbset{colframe=black!50!gray,colback=gray!20,colupper=black,fonttitle=\bfseries,nobeforeafter,center title}
 \setcounter{page}{1}
 \pagenumbering{Roman}
@@ -53,6 +60,7 @@ Los objetivos del presente laboratorio son:
     \item Evaluación de las mediciones realizadas y registradas.
     \item Presentación del protocolo de pruebas según normas establecidas.
 \end{enumerate}
+\newpage
 \section{Precauciones}
 Dados las circunstancias del laboratorio y teniendo en cuenta que los equipos son muy valiosos es que se deber tener muy en cuenta lo siguiente:
 \begin{enumerate}
@@ -63,24 +71,131 @@ Dados las circunstancias del laboratorio y teniendo en cuenta que los equipos so
     \item La escala de todos los instrumentos debe ser la máxima.
     \item Al operar el freno, comenzar con una carga mínima y aumentarlo en forma gradual hasta llegar al máximo permisible.
 \end{enumerate}
+\newpage
 \section{Fundamento teórico}
+\subsection{Motores asíncronos trifásicos}
 Este motor se creó debido a la demanda de un motor síncrono polifásico con arranque propio en tamaños menores, de menos de 50 HP. Que no necesitarán excitación del campo con CD y que poseen las características de velocidad constante del motor. El rotor consiste de un devanado de jaula de ardilla embobinado o vaciado, distribuido uniformemente en las ranuras.
 
 Cuando una corriente alterna polifásica se aplica a la armadura normal de un estator polifásico, el motor arranca como motor de inducción. Debido al rotor de polo saliente, el motor llega muy fácil a su sincronía y desarrolla con rapidez el par máximo del motor síncrono de la máquina de polos salientes.
 
 Así el motor síncrono de inducción desarrolla el par de reluctancia, proporcional a $\sin(2\alpha)$ y al cuál se le llama a veces motor polifásico de reluctancia. Pero este es un nombre equivocado porque el motor síncrono de inducción trabaja con las características combinadas del par del motor síncrono y de inducción. Cuando está diseñado con devanados de rotor de alta resistencia, se pueden desarrollar pares de arranque bastante altos, hasta del 400\% del par a plena carga. Por otro lado, el empleo de devanados del rotor con alta resistencia ocasiona desplazamiento mayor, menor eficiencia y menor posibilidades de entrada en sincronismo con carga mediante el par de reluctancia.
+
+Las máquinas de inducción trifásicas comprenden tanto motores como generadores. Los motores de inducción (o motores asíncronos) trifásicos son los motores más utilizados en la industria. Son simples, resistentes, baratos y fáciles de mantener. Funcionan a velocidad esencialmente constante desde cero hasta plena carga. La velocidad depende de la frecuencia, por lo que estos motores no se adaptan con facilidad al control de velocidad. Sin embargo, cada vez se utilizan más los controladores electrónicos de frecuencia variable para controlar la velocidad de motores de inducción comerciales.
+
+\subsubsection{Componentes principales}
+Un motor de inducción trifásico consta de dos partes principales: un estator estacionario y un rotor giratorio. El rotor está separado del estator por un pequeño entrehierro que va de 0.4 mm a 4mm, según la potencia del motor.
+
+El \textbf{estator} consta de un armazón de acero que soporta un núcleo cilíndrico hueco compuesto de laminaciones apiladas. Varias ranuras equidistantes entre sí, hechas en la circunferencia interna de las laminaciones, proporcionan el espacio para el devanado del estator.
+
+El \textbf{rotor} también se compone de laminaciones ranuradas. Éstas están apiladas cuidadosamente para crear una serie de ranuras para el devanado del rotor. Se utilizan dos tipos de devanados de rotor:
+\begin{itemize}
+    \item Devanados trifásicos convencionales hechos de alambres aislado.
+    \item Devanados de jaula de ardilla.
+\end{itemize}
+El tipo de devanado da lugar a dos clases principales de motores: \textbf{motores de inducción de jaula de ardilla} y \textbf{motores de inducción de rotor devanado}.
 \subsection{Rotor de Jaula de ardilla}
+Se compone de barras de cobre, un poco más largas que el rotor, las cuales están insertadas en las ranuras por uno de sus extremos. Los extremos opuestos se sueldan a dos anillos de cobre para que todas las barras estén en cortocircuito entre sí. Toda la construcción (barras y anillos extremos) se asemeja a una jaula de ardilla, de donde se deriva el nombre. En motores pequeños y medianos, las barras y los anillos extremos son de aluminio moldeado a presión y forman un bloque integral.
+
 En su forma instalada, es un cilindro montado en un eje. Internamente contiene barras conductoras longitudinales de aluminio o de cobre con surcos y conectados juntos en ambos extremos poniendo en cortocircuito los anillos que forman la jaula.
 
 El nombre se deriva de la semejanza entre esta jaula de anillos y barras y la rueda de un hámster (ruedas probablemente similares existen para las ardillas domésticas). La base del rotor se construye de un apilado de hierro de laminación.
+\subsection{Par inducido en un motor de inducción}
+Al aplicar al estator un conjunto trifásico de voltajes, un conjunto trifásico de corrientes estatóricas que producen un campo magnético \textbf{B}, que rota en dirección contraria a las manecillas del reloj. La velocidad de rotación del campo magnético está dada por:
+\begin{equation}
+    n_{\mrm{sinc}} = \frac{120f_{e}}{P}
+\end{equation}
+Donde $f_{e}$ es la frecuencia del sistema, en hertz, y $P$ es el número de polos de la máquina. Este campo magnético rotacional $B$ pasa sobre las barras del rotor e induce voltaje en ellas.
+
+El voltaje inducido en una barra determinada del rotor está dado por la ecuación:
+\begin{equation}
+    e_{\mrm{ind}} = (\mathbf{v} \times \mathbf{B}) \cdot \mathbf{l}
+\end{equation}
+donde
+\begin{itemize}
+    \item $\mathbf{v}$: velocidad de la barra
+    \item $\mathbf{B}$: vector de densidad de flujo magnético
+    \item $\mathbf{l}$: longitud del conductor en el campo magnético
+\end{itemize}
+El movimiento relativo del rotor con respecto al campo magnético del estator produce voltaje inducido en una barra del rotor. La velocidad de las barras de la parte superior del rotor, con relación al campo magnético, tiende hacia la derecha de modo que el voltaje inducido en las barras superiores tiende hacia fuera de la página. Esto origina un flujo de corriente hacia fuera en las barras superiores, y hacia dentro en las inferiores. Finalmente, puesto que el par inducido está dado por
+\begin{equation}
+    \tau_{\mrm{ind}} = k\mathbf{B}_{R} \times \mathbf{B}_{S}
+\end{equation}
+la dirección del par resultante va en sentido contrario a las manecillas del reloj. Puesto que la dirección del par inducido en el rotor va en sentido contrario a las manecillas del reloj, el rotor se acelera en esa dirección.
 \subsection{Funcionamiento}
-Los devanados en el estator de un motor de inducción instan al campo magnético a rotar alrededor del rotor. El movimiento relativo entre este campo y la rotación del rotor induce corriente eléctrica, un flujo en las barras conductoras. Alternamente estas corrientes que fluyen longitudinalmente en los conductores reaccionan con el campo magnético del motor produciendo una fuerza que actúa tangente al rotor, dando por resultado un esfuerzo de torsión para dar vuelta al eje. En efecto, el rotor se lleva alrededor el campo magnético, pero en un índice levemente más de la rotación. La diferencia en velocidad se llama deslizamiento y aumenta con la carga.
+La operación de un motor de inducción trifásico está basada en la aplicación de la ley de Faraday y la fuerza de Lorentz en un conductor.
+\begin{enumerate}
+    \item Se induce un voltaje $E = Blv$ en cada uno de los conductores mientras el flujo pasa por ellos (ley de Faraday).
+    \item El voltaje inducido produce de inmediato una corriente $I$, la cual fluye por el conductor debajo de la cara del polo, a través de las barras extremas y regresa a través de los demás conductores.
+    \item Como el conductor que transporta corriente queda en el campo magnético del imán permanente, experimenta una fuerza mecánica (fuerza de Lorentz).
+    \item La fuerza siempre actúa en una dirección para arrastrar el conductor junto con el campo magnético.
+\end{enumerate}
+Los devanados en el estator de un motor de inducción instan al campo magnético a rotar alrededor del rotor. El movimiento relativo entre este campo y la rotación del rotor induce corriente eléctrica, un flujo en las barras conductoras.
+
+Alternamente estas corrientes que fluyen longitudinalmente en los conductores reaccionan con el campo magnético del motor produciendo una fuerza que actúa tangente al rotor, dando por resultado un esfuerzo de torsión para dar vuelta al eje. En efecto, el rotor se lleva alrededor el campo magnético, pero en un índice levemente más de la rotación. La diferencia en velocidad se llama deslizamiento y aumenta con la carga.
 
 A menudo, los conductores se inclinan levemente a lo largo de la longitud del rotor para reducir ruido y para reducir las fluctuaciones del esfuerzo de torsión que pudieron resultar, a algunas velocidades, y debido a las interacciones con las barras del estator. El número de barras en la jaula de la ardilla se determina según las corrientes inducidas en las bobinas del estator y por lo tanto según la corriente a través de ellas. Las construcciones que ofrecen menos problemas de regeneración emplean números primos de barras.
 
 El núcleo de hierro sirve para llevar el campo magnético a través del motor. En estructura y material se diseña para reducir al mínimo las pérdidas. Las láminas finas, separadas por el aislamiento de barniz, reducen las corrientes parásitas que circulan resultantes de las corrientes de Foucault. El material, un acero bajo en carbono pero alto en silicio, con varias veces la resistencia del hierro puro, en la reductora adicional. El contenido bajo de carbono le hace un material magnético suave con pérdidas bajas por histéresis.
 
 El mismo diseño básico se utiliza para los motores monofásicos y trifásicos sobre una amplia gama de tamaños. Los rotores para trifásica tienen variaciones en la profundidad y la forma de barras para satisfacer los requerimientos del diseño. Este motor es de gran utilidad en variadores de velocidad.
+\subsubsection{El campo rotatorio}
+Considere un estator simple que tiene 6 polos salientes, cada uno de los cuales porta una bobina de 5 vueltas (Figura \ref{136}).
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.53]{136.png}
+    \caption{Estator elemental con sus terminales A, B y C}
+    \label{136}
+\end{figure}
+Las bobinas que se encuentran diametralmente opuestas están conectadas en serie por medio de tres puentes o alambres de cierre que conectan respectivamente las terminales a-a, b-b y c-c. Esto crea tres juegos idénticos de devanados AN, BD, CN que están separados mecánicamente 120$^{\circ}$ entre sí.
+
+Las dos bobinas de cada devanado producen fuerzas magnetomotrices que actúan en la misma dirección.
+
+Los tres juegos de devanados están conectados en Y, por lo que forman un neutro común N, A causa de la disposición perfectamente simétrica, las impedancias de línea a neutro son idénticas. En otras palabras, en lo referente a las terminales A, B, C, los devanados constituyen un sistema trifásico balanceado.
+
+Si conectamos una fuente trifásica a las terminales A, B, C, las corrientes alternas $I_{a}, I_{b}, I_{c}$ fluirán en los devanados. Las corrientes tendrán el mismo valor pero con el tiempo estarán desplazadas en un ángulo de 120$^{\circ}$. Estas corrientes producen fuerzas magnetomotrices que, a su vez, crean un flujo magnético. Este flujo es el que nos interesa.
+
+Para seguir la secuencia de eventos, suponemos que las corrientes positivas siempre fluyen en los devanados de la línea al neutro. A la inversa, las corrientes negativas fluyen del neutro a la línea. Además, para poder trabajar con números, supongamos que la corriente pico por fase es de 10 A. Por lo tanto, cuando $I_{a} = +7$A, las dos bobinas de la fase A juntas producirán una fmm de 7 A $\times$ 10 vueltas= 70 ampere-vueltas y un valor de flujo correspondiente. Como la corriente es positiva, el flujo es dirigido verticalmente hacia arriba, de acuerdo con la regla de la mano derecha.
+
+Conforme pasa el tiempo, podemos determinar el valor instantáneo y la dirección de la corriente en cada devanado y establecer de esa manera los patrones de flujo sucesivos. Por lo tanto, de acuerdo con la Figura \ref{137}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.46]{137.png}
+    \caption{Valores instantáneos de las corrientes y posición de flujo}
+    \label{137}
+\end{figure}
+, en el instante 1 la corriente $I_{a}$ tiene un valor de +10A, mientras que $I_{b}$ e $I_{c}$ tienen un valor de -5A. La fmm de la fase A es 10 A $\times$ 10 vueltas = 100 ampere-vueltas, mientras que las fmm de las fases B y C son de 50 ampere-vueltas. La dirección de las fmm depende de los flujos de corriente instantáneos y, utilizando la regla de la mano derecha, encontramos que la dirección del campo magnético resultante es la que se indica en la Figura \ref{138a}. 
+\begin{center}
+\begin{minipage}{0.45\textwidth}
+\includegraphics[scale = 0.34]{138a.png}
+\captionof*{figure}{Patrón de flujo en instante 1}
+\end{minipage}\hfill
+\begin{minipage}{0.45\textwidth}
+\includegraphics[scale = 0.34]{138b.png}
+\captionof*{figure}{Patrón de flujo en instante 2}
+\end{minipage}
+\captionof{figure}{Patrón de flujo}
+\label{138a}
+\end{center}
+Los seis polos salientes juntos producen un campo magnético que tiene básicamente un amplio polo norte y un amplio polo sur. Esto significa que al estator de 6 polos produce en realidad un campo de 2 polos. El campo magnético combinado apunta hacia arriba.
+
+En el instante 2, un sexto de ciclo más tarde, la corriente $I_{c}$, alcanza un pico de -10 A, en tanto que $I_{a}$ e $I_{b}$ tienen un valor de +5A. Entonces el nuevo campo tiene la misma forma que antes, excepto que se ha movido un ángulo de $60^{\circ}$ en el sentido horario. En otras palabras, el flujo realiza 1/6 de vuelta entre los instantes 1 y 2.
+
+\subsection{Características de arranque}
+
+Cuando se conecta un estator de un motor de inducción a una fuente trifásica, con el rotor bloqueado. El flujo rotatorio creado por el estator atraviesa las barras del rotor e induce un voltaje en ellas.
+
+Éste es un voltaje de ca porque cada conductor es atravesado, en rápida sucesión, por un polo N seguido por un polo S. La frecuencia del voltaje depende del número de polos N y S que pasan por un conductor por segundo; cuando el rotor está en reposo, siempre es igual a la frecuencia de la fuente.
+
+Como los anillos extremos ponen en cortocircuito las barras del rotor, el voltaje inducido hace que fluya una gran corriente (por lo general de varios cientos de amperes por barra en máquinas de mediana potencia). Los conductores que transportan corriente se encuentran en la trayectoria del flujo creado por el estator, así que todos experimentan una fuerte fuerza mecánica. Estas fuerzas tienen a arrastrar el rotor junto con el campo rotatorio.
+
+\begin{enumerate}
+    \item Se establece un campo magnético rotatorio cuando se aplica un voltaje trifásico al estator de un motor de inducción.
+    \item El campo rotatorio induce un voltaje en las barras del rotor.
+    \item El voltaje inducido crea grandes corrientes que fluyen en las barras del rotor y en los anillos extremos.
+    \item Las barras del rotor que transportan corriente están dentro del campo magnético creado por el estator del campo magnético creado por el estator; por lo tanto, se ven sometidas a una gran fuerza mecánica.
+    \item La suma de las fuerzas mecánicas en todas las barras del rotor produce un par o momento de torsión que tiende a arrastrar el rotor en la misma dirección del campo rotatorio.
+\end{enumerate}
+
 \subsection{Tipos de rotores}
 Existen varios tipos de estos elementos, pero los que son más usados en la industria; es decir, los rotores para motores asíncronos de corriente alterna son 4.
 \subsubsection{Rotor de jaula de ardilla simple}
@@ -108,12 +223,13 @@ Los motores de la línea monofásica pueden ser clasificados como ``Motores de U
     \item A prueba de explosión.
     \item Lavadoras y electrodomésticos en general.
 \end{itemize}
+\newpage
 \section{Equipos y máquinas eléctricas a utilizar}
 \begin{enumerate}
     \item \textbf{Autotransformador variable.}
     \begin{figure}[H]
         \centering
-        \includegraphics[scale=0.45]{autotransformador.png}
+        \includegraphics[scale=0.55]{autotransformador.png}
         \caption{Autotransformador variable}
     \end{figure}
     \item \textbf{Motor jaula de ardilla trifásico.}
@@ -227,7 +343,7 @@ Item & Descripción general de las máquinas y equipos & Cantidad \\
 \subsection[Medición de la resistencia de aislamiento normalizado IEEE 112/1978]{Medición de la resistencia de aislamiento normalizado (IEEE 112/1978 item 4.1)}
 \begin{figure}[H]
         \centering
-        \includegraphics[scale = 1.1]{e1.png}
+        \includegraphics[scale = 0.95]{e1.png}
         \caption{Diagrama de circuito (conexión delta)}
 \end{figure}
 \begin{figure}[H]
@@ -288,7 +404,7 @@ Para el ensayo de rotor bloqueado se utilizará exactamente el mismo esquema de 
 \tcbox[left=0mm,right=0mm,top=0mm,bottom=0mm,boxsep=0mm,toptitle=0.8mm,bottomtitle=0.8mm,title=Reactancias estatóricas y retóricas - IEEE 112 1978 ITEM 4.8]{
 \renewcommand{\arraystretch}{1.2}%
 \begin{tabular}{c|c|c|c|c|c}
-Tipo de motor & Clase NEMA A & Clase NEMA B & Clase NEMA C & Clase NEMA D & Rotor bobinado\\
+Tipo de motor & NEMA A & NEMA B & NEMA C & NEMA D & Rotor bobinado\\
 \hline
 $X_{1}$ & 0.5 $X_{cc}$ & 0.4 $X_{cc}$ & 0.3 $X_{cc}$ & 0.5 $X_{cc}$ & 0.5 $X_{cc}$\\
 \hline
@@ -316,8 +432,6 @@ RPM & N-m & $V_{RS}$ (V) & $I_{R}$ (A) & $P_{\mrm{total}}$ (Vatios) & $Q_{\mrm{t
 \hline
  & & & & & & & & & \\
 \hline
- & & & & & & & & & \\
-\hline
  & & & & & & & & &
 \end{tabular}}
 \end{table}
@@ -325,6 +439,7 @@ RPM & N-m & $V_{RS}$ (V) & $I_{R}$ (A) & $P_{\mrm{total}}$ (Vatios) & $Q_{\mrm{t
 \subsection[Ensayo de temperatura IEEE 112/1978]{Ensayo de temperatura (IEEE 112/1978 item 5.3 MET. 3)}
 Consiste el registrar la temperatura y el tiempo y tener la curva Temperatura vs Tiempo. El tiempo mínimo es 4 horas cuando la temperatura comienza a disminuir en 2$^{\circ}$C durante las dos horas siguientes.
 \subsection[Compensación reactiva IEC 831 y VDE 560]{Compensación reactiva IEC 831 - item 1,2 y VDE 560 item 4}
+\newpage
 \section{Aplicaciones industriales}
 Su construcción robusta e IPW adecuado hace que estos motores sean utilizados en ambientes agresivos tales como: las embarcaciones navieras, la industria textil, industrias químicas, etc. Teniendo en cuenta la categorización, sería muy importante y necesario hacer una buena selección del motor para lo cual el torque de la carga es la información base.
 
@@ -339,6 +454,7 @@ Las cargas más importantes son nominadas a continuación:
 \end{itemize}
 %\section{Procedimiento}
 %\section{Cálculos y resultados}
+\newpage
 \section{Cuestionario}
 \begin{enumerate}
     \item \textbf{Enumere y defina las características nominales de las máquinas rotativas de inducción jaula de ardilla. Presente las características de placa del motor utilizados en su experiencia}.
@@ -369,17 +485,60 @@ Las cargas más importantes son nominadas a continuación:
         \item \textbf{Corriente de arranque.} Todos los motores eléctricos para operar consumen un excedente de corriente, mayor que su corriente nominal, que es aproximadamente de dos a ocho veces superior.
         \item \textbf{Corriente a rotor bloqueado.} Es la corriente máxima que soportará la máquina cuando su rotor esté totalmente detenido.
     \end{itemize}
+    \newpage
     \item \textbf{¿Cómo se invierte el sentido de giro de éste motor asíncrono y cuantas posibilidades existen de hacerlo? Hagas las conexiones que se han realizado}.
     
     Se consigue permutando dos líneas cualesquiera de los tres que alimentan al motor; con ello se logra cambiar el sentido de giro del campo magnético giratorio de estator, y por ende el giro del rotor.
     
     \begin{figure}[H]
         \centering
-        \includegraphics[scale=0.8]{P2.pdf}
+        \includegraphics[scale=0.82]{P2.pdf}
         \caption{Conexiones realizadas}
     \end{figure}
-    \item \textbf{Realice todos los cálculos necesarios que le conduzca a construir el diagrama equivalente monofásico valorado, referido al estator con los valores registrados y calculados en los ensayos realizados en el laboratorio}.
-    
+    \item[7.] \textbf{Elabore un formato de protocolo de pruebas que Ud. realizaría en las máquinas eléctricas tipo jaula de ardilla industrial}.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale = 0.4]{t1.png}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale = 0.4]{t2.png}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale = 0.4]{t3.png}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale = 0.4]{t4.png}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale = 0.4]{t5.png}
+    \end{figure}
+\end{enumerate}
+\newpage
+\section{Recomendaciones}
+\begin{enumerate}
+    \item Al regular la corriente, el cambio debe ser entre 0.1 y 0.2 A. La máquina soporta hasta 0.6 A.
+    \item Se debe tener mucho cuidado y precaución en el empleo de los motores del laboratorio, para evitar el daño de los equipos y evitar accidentes.
+    \item Debe revisarse que se tenga el equipo necesario, adecuado y en buen estado antes de empezar la experiencia de laboratorio.
+    \item Revisar cuidadosamente que las conexiones estén bien realizadas.
+    \item Si la máquinas se calienta mucho, dejar de operar por algunos minutos hasta que se enfríe hasta la temperatura ambiente.
+\end{enumerate}
+\section{Conclusiones}
+\begin{enumerate}
+    \item La impedancia del motor disminuye cuando aumentamos la corriente, dado que el voltaje disminuye, por lo tanto varía la impedancia.
+    \item Conforme se aumenta la intensidad de corriente en la prueba de carga, aumenta el factor de potencia y el torque; sin embargo, la velocidad angular disminuye junto con la fuerza electromotriz.
+    \item La potencia aumenta cuando la corriente incrementa.
+    \item La resistencia del vacío es pequeña comparada con la reactancia.
+\end{enumerate}
+\newpage
+\addcontentsline{toc}{section}{Anexos}
+\section*{Anexos}
+Simulando con parámetros coherentes a los posibles obtenidos en el laboratorio, es posible responder las preguntas 3-6 del cuestionario:
+\begin{enumerate}
+    \item[3.] \textbf{Realice todos los cálculos necesarios que le conduzca a construir el diagrama equivalente monofásico valorado, referido al estator con los valores registrados y calculados en los ensayos realizados en el laboratorio}.
     \begin{itemize}
         \item \textbf{Prueba de vacío.}
         \begin{table}[H]
@@ -467,8 +626,7 @@ Las cargas más importantes son nominadas a continuación:
             \caption{Datos de la prueba de carga}
         \end{table}
     \end{itemize}
-    \newpage
-    \item \textbf{Grafique las curvas de vacío y corto circuito de la máquina de prueba}.
+    \item[4.] \textbf{Grafique las curvas de vacío y corto circuito de la máquina de prueba}.
     \begin{figure}[H]
         \centering
         \includegraphics[scale = 0.85]{vacio1.pdf}
@@ -499,8 +657,7 @@ Las cargas más importantes son nominadas a continuación:
         \includegraphics[scale = 0.75]{corto3.pdf}
         \caption{Ensayo de cortocircuito}
     \end{figure}
-    \newpage
-    \item \textbf{Grafique las curvas $P_{\mrm{nucleo}}$ vs $I_{1}$, $T$, EF, FP vs velocidad}.
+    \item[5.] \textbf{Grafique las curvas $P_{\mrm{nucleo}}$ vs $I_{1}$, $T$, EF, FP vs velocidad}.
     \begin{figure}[H]
         \centering
         \includegraphics[scale = 0.83]{carga1.pdf}
@@ -518,11 +675,10 @@ Las cargas más importantes son nominadas a continuación:
     \end{figure}
     \begin{figure}[H]
         \centering
-        \includegraphics[scale = 0.75]{carga4.pdf}
+        \includegraphics[scale = 0.7]{carga4.pdf}
         \caption{Ensayo de cortocircuito}
     \end{figure}
-    \newpage
-    \item \textbf{Determinar las pérdidas rotacionales del motor probado}.
+    \item[6.] \textbf{Determinar las pérdidas rotacionales del motor probado}.
     
     Se sabe que:
     \begin{align*}
@@ -564,50 +720,43 @@ Las cargas más importantes son nominadas a continuación:
         \end{tabular}}
         \caption{Datos calculados para $P_{\mrm{rotacional}}$}
     \end{table}
-    \item \textbf{Elabore un formato de protocolo de pruebas que Ud. realizaría en las máquinas eléctricas tipo jaula de ardilla industrial}.
-    \begin{figure}[H]
-        \centering
-        \includegraphics[scale = 0.4]{t1.png}
-    \end{figure}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[scale = 0.4]{t2.png}
-    \end{figure}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[scale = 0.4]{t3.png}
-    \end{figure}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[scale = 0.4]{t4.png}
-    \end{figure}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[scale = 0.4]{t5.png}
-    \end{figure}
 \end{enumerate}
-\newpage
-\section{Recomendaciones}
-\begin{enumerate}
-    \item Al regular la corriente, el cambio debe ser entre 0.1 y 0.2 A. La máquina soporta hasta 0.6 A.
-    \item Se debe tener mucho cuidado y precaución en el empleo de los motores del laboratorio, para evitar el daño de los equipos y evitar accidentes.
-    \item Debe revisarse que se tenga el equipo necesario, adecuado y en buen estado antes de empezar la experiencia de laboratorio.
-    \item Revisar cuidadosamente que las conexiones estén bien realizadas.
-    \item Si la máquinas se calienta mucho, dejar de operar por algunos minutos hasta que se enfríe hasta la temperatura ambiente.
-\end{enumerate}
-\section{Conclusiones}
-\begin{enumerate}
-    \item La impedancia del motor disminuye cuando aumentamos la corriente, dado que el voltaje disminuye, por lo tanto varía la impedancia.
-    \item Conforme se aumenta la intensidad de corriente en la prueba de carga, aumenta el factor de potencia y el torque; sin embargo, la velocidad angular disminuye junto con la fuerza electromotriz.
-    \item La potencia aumenta cuando la corriente incrementa.
-    \item La resistencia del vacío es pequeña comparada con la reactancia.
-\end{enumerate}
-\newpage
-\addcontentsline{toc}{section}{Anexos}
-\section*{Anexos}
+Para el ploteo de las gráficas y el cálculo de los parámetros se utilizó las siguientes piezas de código para verificar que los datos elegidos sean coherentes con lo explicado en la teoría:
+\begin{pyglist}[language=python,caption={Prueba de vacío},style=pastie]
+V = np.array([392,338,300,270]) 
+I = np.array([0.22,0.19,0.17,0.14]) 
+P = np.array([30.45,26.48,22.26,18.34]) 
+fdp = np.array([0.35,0.41,0.44,0.56]) 
+RPM = np.array([3580,3580,3570,3550])
+# $Z = \cfrac{V}{I}$
+Z = V/I
+# $R = \cfrac{P}{I^{2}}$
+R = P/(I*I)
+# $Z^{2} = R^{2} + X^{2} \longrightarrow X = \sqrt{Z^{2}-R^{2}}$
+X = np.sqrt(Z*Z-R*R)
+# $\cos\!\,(\phi) = \cfrac{R}{Z}$
+_fdp = R/Z
+\end{pyglist}
+
+\begin{pyglist}[language=python,caption={Prueba de cortocircuito},style=pastie]
+V = np.array([60.4,99.1,143.7,175.7]) 
+I = np.array([0.34,0.55,0.81,0.99]) 
+P = np.array([15.22,40.17,85.9,130]) 
+_fdp = np.array([0.729,0.73,0.749,0.745])
+\end{pyglist}
+
+\begin{pyglist}[language=python,caption={Prueba de carga},style=pastie]
+V = np.array([391,390.7,387.4,388,386,383.8,385.3,380.6]) 
+I = np.array([0.24,0.32,0.47,0.53,0.64,0.79,0.86,1.02]) 
+P = np.array([50.8,98.4,160.5,184.5,225.4,281.12,306.66,350.00]) 
+T = np.array([0.43,0.79,1.23,1.38,1.63,1.94,2.07,2.15]) 
+_fdp = np.array([0.54,0.784,0.885,0.9,0.92,0.927,0.93,0.91]) 
+RPM = np.array([3560,3490,3410,3370,3300,3190,3120,2980]) 
+Rfe = 3*V*V/P 
+\end{pyglist}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.63,angle=-90]{a1.png}
+    \includegraphics[scale=0.66,angle=-90]{a1.png}
 \end{figure}
 \newpage
 \renewcommand\refname{Bibliografía}
@@ -615,6 +764,8 @@ Las cargas más importantes son nominadas a continuación:
 \addcontentsline{toc}{section}{Bibliografía}
 \bibitem{Lasheras}{Huaman L., Floren A. y Guadalupe, E. ``Guía de laboratorio de máquinas eléctricas''. {\em{Universidad Nacional de Ingeniería.}}}
 \bibitem{Keyser}{Fitzgerald, A. E. y Kingsley, C. ``Teoría y análisis de las máquinas eléctricas''. {\em{Mac Graw Hill.}}}
+\bibitem{Lasheras}{Chapman, Stephen J. ``Máquinas eléctricas''. {\em{Mac Graw Hill.}}}
+\bibitem{Lasheras}{Wildi, T. ``Máquinas eléctricas y sistemas de potencia''. {\em{Prentice Hall.}}}
 \bibitem{Zolotorevski}{Shult, George P. ``Transformer and motors''. {\em{A division of Prentice Hall Computer 11711.}}}
 \bibitem{Lasheras}{Kosow, Irving L. ``Máquinas eléctricas y transformadores''. {\em{Prentice Hall Inc 1991.}}}
 \bibitem{Lasheras}{Richardson, Donald V. y Caisse, Arthur J. ``Rotating electric machinery and transformer technology''. {\em{Prentice Hall Inc 1998.}}}
