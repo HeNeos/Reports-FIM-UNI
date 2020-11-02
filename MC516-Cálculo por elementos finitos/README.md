@@ -76,9 +76,9 @@ I'm not a very good coder in MATLAB, so my code probably works slowly in it, so 
 
 40 elements | 1000000 elements
 ------------|-----------------
-<img src = "https://raw.githubusercontent.com/HeNeos/Reports-FIM-UNI/master/MC516-C%C3%A1lculo%20por%20elementos%20finitos/images/deformation_40.jpg" width = "250" height = "250"> | <img src = "https://raw.githubusercontent.com/HeNeos/Reports-FIM-UNI/master/MC516-C%C3%A1lculo%20por%20elementos%20finitos/images/deformation_1e6.jpg" width = "250" height = "250">
+<img src = "https://raw.githubusercontent.com/HeNeos/Reports-FIM-UNI/master/MC516-C%C3%A1lculo%20por%20elementos%20finitos/images/deformation_40.jpg" width = "500" height = "500"> | <img src = "https://raw.githubusercontent.com/HeNeos/Reports-FIM-UNI/master/MC516-C%C3%A1lculo%20por%20elementos%20finitos/images/deformation_1e6.jpg" width = "500" height = "500">
 
-<img src = "https://raw.githubusercontent.com/HeNeos/Reports-FIM-UNI/master/MC516-C%C3%A1lculo%20por%20elementos%20finitos/images/frame.jpg" width = "550" height = "250">
+<img src = "https://raw.githubusercontent.com/HeNeos/Reports-FIM-UNI/master/MC516-C%C3%A1lculo%20por%20elementos%20finitos/images/frame.jpg" width = "1100" height = "500">
 
 <img src = "https://raw.githubusercontent.com/HeNeos/Reports-FIM-UNI/master/MC516-C%C3%A1lculo%20por%20elementos%20finitos/images/stiffness.jpg">
 
