@@ -71,3 +71,15 @@ You can notice that I used ```bits/stdc++.h``` as a library, this is a very well
 ### MATLAB
 
 I'm not a very good coder in MATLAB, so my code probably works slowly in it, so I strongly recommend to use C++ or Python code. But if you want to use my MATLAB version only copy the code an run with your values.
+
+## Examples
+
+![def_40](https://raw.githubusercontent.com/HeNeos/Reports-FIM-UNI/master/MC516-C%C3%A1lculo%20por%20elementos%20finitos/images/deformation_40.jpg)
+
+![def_1e6](https://raw.githubusercontent.com/HeNeos/Reports-FIM-UNI/master/MC516-C%C3%A1lculo%20por%20elementos%20finitos/images/deformation_1e6.jpg)
+
+![frame](https://raw.githubusercontent.com/HeNeos/Reports-FIM-UNI/master/MC516-C%C3%A1lculo%20por%20elementos%20finitos/images/frame.jpg)
+
+![stiffness](https://raw.githubusercontent.com/HeNeos/Reports-FIM-UNI/master/MC516-C%C3%A1lculo%20por%20elementos%20finitos/images/stiffness.jpg)
+
+![beam](https://raw.githubusercontent.com/HeNeos/Reports-FIM-UNI/master/MC516-C%C3%A1lculo%20por%20elementos%20finitos/images/beam.jpg)
