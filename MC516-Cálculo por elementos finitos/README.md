@@ -25,9 +25,9 @@ for(int i=0; i<A.size(); i++){
     }
 }
 ```
-Time complexity in a naive multiplication is $\mathcal{O}(n^{3})$, a big complexity!
+Time complexity in a naive multiplication is ![n3](https://render.githubusercontent.com/render/math?math=\mathcal{O}(n^{3})), a big complexity!
 
-The Strassen algorithm provides a small optimization, the idea behind of this algorithm is a programming paradigm called *Divide & Conquer*. **Divide** the matrix ino *symmetric* sub-matrix and multiply them, if you list the operations you can see that there are 8 of them, but 1 of them can be deduced by the other 7, so that the final complexity is reduced from $\mathcal{O}(n^{\log_{2}8})$ to $\mathcal{O}(n^{\log_{2}7}) \approx \mathcal{O}(n^{2.807355})$.
+The Strassen algorithm provides a small optimization, the idea behind of this algorithm is a programming paradigm called *Divide & Conquer*. **Divide** the matrix ino *symmetric* sub-matrix and multiply them, if you list the operations you can see that there are 8 of them, but 1 of them can be deduced by the other 7, so that the final complexity is reduced from ![nlog28](https://render.githubusercontent.com/render/math?math=\mathcal{O}(n^{\log_{2}8})) to ![approximation](https://render.githubusercontent.com/render/math?math=\mathcal{O}(n^{\log_{2}7})%20\approx%20\mathcal{O}(n^{2.807355})).
 
 You can read more here:
 
