@@ -58,7 +58,7 @@ You can clone my repository and open the .ipynb you need. You can also download 
 ### C++
 
 You need a library for Sparse Matrix data structure. You can find the library at https://github.com/uestla/Sparse-Matrix.
-You can notice that I used ```bits/stdc++.h``` as a library, this is a very well knonw library used in competitive programming, but you can change this line if you don't have this library and add some as:
+You can notice that I used ```bits/stdc++.h``` as a library, this is a very well known library used in competitive programming, but you can change this line if you don't have this library and add some as:
 
 - ```#include <iostream>```
 - ```#include <set>```
