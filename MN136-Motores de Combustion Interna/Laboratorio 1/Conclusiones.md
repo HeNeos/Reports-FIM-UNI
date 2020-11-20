@@ -1,3 +1,3 @@
 - Es posible determinar el sentido de giro del motor haciendo una inspección del comportamiento del balancín al girar la leva en sentido horario.
-- La sincronización variable de válvulas nos permite regular el tiempo de las válvulas para optimizar el rendimmiento del motor cuando las velocidades sean altas o bajas.
+- La sincronización variable de válvulas nos permite optimizar el rendimiento del motor cuando las velocidades son bajas o altas.
 - Es importante el correcto ajuste de la luz de válvulas para evitar pérdidas de potencia en el motor.
