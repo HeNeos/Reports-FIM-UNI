@@ -1,3 +1,7 @@
+### Steel truss optimization using genetic algorithms and FEA
+https://doi.org/10.1016/j.protcy.2013.12.496
+
+
 ### STRUCTURAL OPTIMIZATION USING A MUTATION-BASED GENETIC ALGORITHM
 http://ijoce.iust.ac.ir/article-1-80-en.pdf 
 
